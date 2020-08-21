@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="zh-Hans" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>有限状态机 - 维基百科，自由的百科全书</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRequestId":"05a6a6a7-dffb-4fc0-9306-0a9c024da229","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"有限状态机","wgTitle":"有限状态机","wgCurRevisionId":59565349,"wgRevisionId":59565349,"wgArticleId":4341,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["含有英語的條目","自2018年3月带有失效链接的条目","条目有永久失效的外部链接","自2018年1月带有失效链接的条目","使用ISBN魔术链接的页面","自动机","编译原理","数字电子"],"wgPageContentLanguage":"zh-hans","wgPageContentModel":"wikitext","wgRelevantPageName":
+"有限状态机","wgRelevantArticleId":4341,"wgUserVariant":"zh-hans","wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgMediaViewerOnClick":!0,"wgMediaViewerEnabledByDefault":!0,"wgPopupsReferencePreviews":!1,"wgPopupsConflictsWithNavPopupGadget":!1,"wgVisualEditor":{"pageLanguageCode":"zh","pageLanguageDir":"ltr","pageVariantFallbacks":["zh-cn","zh-sg","zh-my"]},"wgMFDisplayWikibaseDescriptions":{"search":!0,"nearby":!0,"watchlist":!0,"tagline":!0},"wgWMESchemaEditAttemptStepOversample":!1,"wgULSCurrentAutonym":"中文（简体）‎","wgNoticeProject":"wikipedia","wgCentralAuthMobileDomain":!1,"wgEditSubmitButtonLabelPublish":!0,"wgULSPosition":"interlanguage","wgWikibaseItemId":"Q176452"};RLSTATE={"ext.gadget.hideConversionTab":"ready","ext.gadget.large-font":"ready","ext.globalCssJs.user.styles":"ready","site.styles":"ready","noscript":"ready","user.styles":"ready","ext.globalCssJs.user":
+"ready","user":"ready","user.options":"loading","ext.math.styles":"ready","skins.vector.styles.legacy":"ready","mediawiki.toc.styles":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.interlanguage":"ready","ext.wikimediaBadges":"ready","wikibase.client.init":"ready"};RLPAGEMODULES=["ext.math.scripts","site","mediawiki.page.startup","mediawiki.page.ready","mediawiki.toc","skins.vector.legacy.js","ext.gadget.edit0","ext.gadget.Edittools-refToolbar","ext.gadget.WikiMiniAtlas","ext.gadget.ReferenceTooltips","ext.gadget.UnihanTooltips","ext.gadget.variant-link-fix","ext.gadget.FixedTopBottomLink","ext.gadget.confirm-logout","ext.gadget.shortURL","ext.gadget.AdvancedSiteNotices","ext.gadget.internalLinkHelper-altcolor","ext.gadget.noteTA","ext.gadget.noteTAvector","ext.gadget.NavFrame","ext.gadget.collapsibleTables","ext.gadget.notifyConversion","ext.centralauth.centralautologin","mmv.head","mmv.bootstrap.autostart","ext.popups",
+"ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.eventLogging","ext.wikimediaEvents","ext.navigationTiming","ext.uls.compactlinks","ext.uls.interface","ext.cx.eventlogging.campaigns","ext.centralNotice.geoIP","ext.centralNotice.startUp"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});mw.user.options.set({"language":"zh-hans","variant":"zh-hans"});
+});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=zh-hans&amp;modules=ext.math.styles%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediaBadges%7Cmediawiki.toc.styles%7Cskins.vector.styles.legacy%7Cwikibase.client.init&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?lang=zh-hans&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?lang=zh-hans&amp;modules=ext.gadget.hideConversionTab%2Clarge-font&amp;only=styles&amp;skin=vector"/>
+<link rel="stylesheet" href="/w/load.php?lang=zh-hans&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.36.0-wmf.4"/>
+<meta name="referrer" content="origin"/>
+<meta name="referrer" content="origin-when-crossorigin"/>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Finite_state_machine_example_with_comments.svg/1200px-Finite_state_machine_example_with_comments.svg.png"/>
+<link rel="alternate" media="only screen and (max-width: 720px)" href="//zh.m.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"/>
+<link rel="alternate" type="application/x-wiki" title="编辑" href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit"/>
+<link rel="edit" title="编辑" href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit"/>
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png"/>
+<link rel="shortcut icon" href="/static/favicon/wikipedia.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (zh)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//zh.wikipedia.org/w/api.php?action=rsd"/>
+<link rel="alternate" hreflang="zh" href="/zh/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hans" href="/zh-hans/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hant" href="/zh-hant/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hans-CN" href="/zh-cn/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hant-HK" href="/zh-hk/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hant-MO" href="/zh-mo/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hans-MY" href="/zh-my/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hans-SG" href="/zh-sg/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hant-TW" href="/zh-tw/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"/>
+<link rel="alternate" hreflang="x-default" href="/wiki/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"/>
+<link rel="license" href="//creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="canonical" href="https://zh.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"/>
+<link rel="dns-prefetch" href="//login.wikimedia.org"/>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-有限状态机 rootpage-有限状态机 skin-vector action-view skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
+<div id="mw-head-base" class="noprint"></div>
+<div id="content" class="mw-body" role="main">
+	<a id="top"></a>
+	<div id="siteNotice" class="mw-body-content"><!-- CentralNotice --></div>
+	<div class="mw-indicators mw-body-content">
+	<div id="mw-indicator-noteTA-87887a8d" class="mw-indicator"><img alt="本页使用了标题或全文手工转换" src="//upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Zh_conversion_icon_m.svg/35px-Zh_conversion_icon_m.svg.png" decoding="async" title="本页使用了标题或全文手工转换" width="35" height="22" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Zh_conversion_icon_m.svg/53px-Zh_conversion_icon_m.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Zh_conversion_icon_m.svg/70px-Zh_conversion_icon_m.svg.png 2x" data-file-width="32" data-file-height="20" /></div>
+	</div>
+	<h1 id="firstHeading" class="firstHeading" lang="zh-Hans">有限状态机</h1>
+	<div id="bodyContent" class="mw-body-content">
+		<div id="siteSub" class="noprint">维基百科，自由的百科全书</div>
+		<div id="contentSub" lang="zh-Hans" dir="ltr"></div>
+		<div id="contentSub2"></div>
+		
+		<div id="jump-to-nav"></div>
+		<a class="mw-jump-link" href="#mw-head">跳到导航</a>
+		<a class="mw-jump-link" href="#searchInput">跳到搜索</a>
+		<div id="mw-content-text" lang="zh-Hans" dir="ltr" class="mw-content-ltr"><div class="mw-parser-output"><div id="noteTA-87887a8d" class="noteTA"><div class="noteTA-group"><div data-noteta-group-source="module" data-noteta-group="Electronics"></div><div data-noteta-group-source="module" data-noteta-group="IT"></div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:227px;"><a href="/wiki/File:Finite_state_machine_example_with_comments.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Finite_state_machine_example_with_comments.svg/225px-Finite_state_machine_example_with_comments.svg.png" decoding="async" width="225" height="300" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Finite_state_machine_example_with_comments.svg/338px-Finite_state_machine_example_with_comments.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Finite_state_machine_example_with_comments.svg/450px-Finite_state_machine_example_with_comments.svg.png 2x" data-file-width="420" data-file-height="560" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Finite_state_machine_example_with_comments.svg" class="internal" title="放大"></a></div>图1有限状态机</div></div></div>
+<p><b>有限状态机</b>（英语：<span lang="en">finite-state machine</span>，<a href="/wiki/%E7%B8%AE%E5%AF%AB" title="缩写">缩写</a>：<b>FSM</b>）又称<b>有限状态自动机</b>（英语：<span lang="en">finite-state automation</span>，<a href="/wiki/%E7%B8%AE%E5%AF%AB" title="缩写">缩写</a>：<b>FSA</b>），简称<b>状态机</b>，是表示有限个<a href="/wiki/%E7%8A%B6%E6%80%81" class="mw-disambig" title="状态">状态</a>以及在这些状态之间的转移和动作等行为的<a href="/wiki/%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9E%8B_(%E6%95%B0%E5%AD%A6)" title="计算模型 (数学)">数学计算模型</a>。
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="zh-Hans" dir="ltr"><h2 id="mw-toc-heading">目录</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#概念和术语"><span class="tocnumber">1</span> <span class="toctext">概念和术语</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#分类"><span class="tocnumber">2</span> <span class="toctext">分类</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#接受器和识别器"><span class="tocnumber">2.1</span> <span class="toctext">接受器和识别器</span></a>
+<ul>
+<li class="toclevel-3 tocsection-4"><a href="#开始状态"><span class="tocnumber">2.1.1</span> <span class="toctext">开始状态</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-5"><a href="#变换器"><span class="tocnumber">2.2</span> <span class="toctext">变换器</span></a>
+<ul>
+<li class="toclevel-3 tocsection-6"><a href="#Moore机"><span class="tocnumber">2.2.1</span> <span class="toctext">Moore机</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="#Mealy机"><span class="tocnumber">2.2.2</span> <span class="toctext">Mealy机</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="#FSM逻辑"><span class="tocnumber">3</span> <span class="toctext">FSM逻辑</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#数学模型"><span class="tocnumber">4</span> <span class="toctext">数学模型</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#优化"><span class="tocnumber">5</span> <span class="toctext">优化</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#实现"><span class="tocnumber">6</span> <span class="toctext">实现</span></a>
+<ul>
+<li class="toclevel-2 tocsection-12"><a href="#硬件应用"><span class="tocnumber">6.1</span> <span class="toctext">硬件应用</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="#软件应用"><span class="tocnumber">6.2</span> <span class="toctext">软件应用</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-14"><a href="#參考書目"><span class="tocnumber">7</span> <span class="toctext">参考书目</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="#外部链接"><span class="tocnumber">8</span> <span class="toctext">外部链接</span></a></li>
+<li class="toclevel-1 tocsection-16"><a href="#参见"><span class="tocnumber">9</span> <span class="toctext">参见</span></a></li>
+</ul>
+</div>
+
+<h2><span id=".E6.A6.82.E5.BF.B5.E5.92.8C.E6.9C.AF.E8.AF.AD"></span><span class="mw-headline" id="概念和术语">概念和术语</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=1" title="编辑章节：概念和术语">编辑</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>状态存储关于过去的信息，就是说：它反映从系统开始到现在时刻的输入变化。转移指示状态变更，并且用必须满足确使转移发生的条件来描述它。动作是在给定时刻要进行的活动的描述。有多种类型的动作：
+</p>
+<dl><dt>进入动作（<span lang="en">entry action</span>）：在进入状态时进行</dt>
+<dt>退出动作（<span lang="en">exit action</span>）：在退出状态时进行</dt>
+<dt>输入动作：依赖于当前状态和输入条件进行</dt>
+<dt>转移动作：在进行特定转移时进行</dt></dl>
+<p>FSM（有限状态机）可以使用上面图1那样的<a href="/wiki/%E7%8A%B6%E6%80%81%E5%9B%BE" title="状态图">状态图</a>（或状态转移图）来表示。此外可以使用多种类型的<a href="/wiki/%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E8%A1%A8" title="状态转移表">状态转移表</a>。下面展示最常见的表示：当前状态（B）和条件（Y）的组合指示出下一个状态（C）。完整的动作信息可以只使用脚注来增加。包括完整动作信息的FSM定义可以使用<a href="/w/index.php?title=%E8%99%9A%E6%8B%9F%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;redlink=1" class="new" title="虚拟有限状态机（页面不存在）">状态表</a>。
+</p>
+<dl><dd><dl><dd><table class="wikitable" style="text-align:center;">
+<caption><b>状态转移表</b>
+</caption>
+<tbody><tr>
+<th>当前状态→<br />条件↓</th>
+<th>状态A</th>
+<th>状态B</th>
+<th>状态C
+</th></tr>
+<tr>
+<th>条件X
+</th>
+<td>…</td>
+<td>…</td>
+<td>…
+</td></tr>
+<tr>
+<th>条件Y
+</th>
+<td>…</td>
+<td>状态C</td>
+<td>…
+</td></tr>
+<tr>
+<th>条件Z
+</th>
+<td>…</td>
+<td>…</td>
+<td>…
+</td></tr>
+</tbody></table></dd></dl></dd></dl>
+<p>除了建模这里介绍的反应系统之外，有限状态自动机在很多不同领域中是重要的，包括<a href="/wiki/%E7%94%B5%E5%AD%90%E5%B7%A5%E7%A8%8B" title="电子工程">电子工程</a>、<a href="/wiki/%E8%AF%AD%E8%A8%80%E5%AD%A6" title="语言学">语言学</a>、<a href="/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6" title="计算机科学">计算机科学</a>、<a href="/wiki/%E5%93%B2%E5%AD%A6" title="哲学">哲学</a>、<a href="/wiki/%E7%94%9F%E7%89%A9%E5%AD%A6" title="生物学">生物学</a>、<a href="/wiki/%E6%95%B0%E5%AD%A6" title="数学">数学</a>和<a href="/wiki/%E9%80%BB%E8%BE%91%E5%AD%A6" class="mw-redirect" title="逻辑学">逻辑学</a>。有限状态机是在<a href="/wiki/%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%90%86%E8%AE%BA" class="mw-redirect" title="自动机理论">自动机理论</a>和<a href="/wiki/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA" title="计算理论">计算理论</a>中研究的一类自动机。在计算机科学中，有限状态机被广泛用于建模应用行为、硬件电路系统设计、软件工程，编译器、网络协议、和计算与语言的研究。
+</p>
+<h2><span id=".E5.88.86.E7.B1.BB"></span><span class="mw-headline" id="分类">分类</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=2" title="编辑章节：分类">编辑</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>有两个不同的群组：接受器／识别器和变换器。
+</p>
+<h3><span id=".E6.8E.A5.E5.8F.97.E5.99.A8.E5.92.8C.E8.AF.86.E5.88.AB.E5.99.A8"></span><span class="mw-headline" id="接受器和识别器">接受器和识别器</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=3" title="编辑章节：接受器和识别器">编辑</a><span class="mw-editsection-bracket">]</span></span></h3>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="/wiki/File:Fsm_parsing_word_nice.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Fsm_parsing_word_nice.svg/400px-Fsm_parsing_word_nice.svg.png" decoding="async" width="400" height="233" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Fsm_parsing_word_nice.svg/600px-Fsm_parsing_word_nice.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Fsm_parsing_word_nice.svg/800px-Fsm_parsing_word_nice.svg.png 2x" data-file-width="606" data-file-height="353" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Fsm_parsing_word_nice.svg" class="internal" title="放大"></a></div>图2接受器FSM：解析单词"nice"</div></div></div>
+<p><b>接受器</b>和<b>识别器</b>（也叫做<b>序列检测器</b>）产生一个二元输出，说要么“是”要么“否”来回答输入是否被机器接受。所有FSM的状态被称为要么接受要么不接受。在所有输入都被处理了的时候，如果当前状态是接受状态，输入被接受，否则被拒绝。作为规则，输入是符号（字符）；动作不使用。图2中的例子展示了接受单词"nice"的有限状态自动机，在这个FSM中唯一的接受状态是状态7。
+</p><p>机器还可以被描述为定义了一个语言，它包含了这个机器所接受而非拒绝的所有字词；我们称这个语言被这个机器接受。通过定义，FSM接受的语言是<a href="/wiki/%E6%AD%A3%E5%88%99%E8%AF%AD%E8%A8%80" title="正则语言">正则语言</a> - 就是说，如果一个语言被某个FSM接受，那么它是正则的（cf. Kleene的定理）。
+</p>
+<h4><span id=".E5.BC.80.E5.A7.8B.E7.8A.B6.E6.80.81"></span><span class="mw-headline" id="开始状态">开始状态</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=4" title="编辑章节：开始状态">编辑</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>开始状态通常用“没有起点的箭头”指向它来表示（Sipser（2006）p.34）
+</p>
+<dl><dd><div class="thumb tright"><div class="thumbinner" style="width:222px;"><a href="/wiki/File:DFAexample.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/9/9d/DFAexample.svg/220px-DFAexample.svg.png" decoding="async" width="220" height="124" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/9/9d/DFAexample.svg/330px-DFAexample.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/9/9d/DFAexample.svg/440px-DFAexample.svg.png 2x" data-file-width="274" data-file-height="155" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:DFAexample.svg" class="internal" title="放大"></a></div>图3：一个FSM的示意图：检测二进制数是否含有偶数个0，其中<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle S_{1}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>S</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>1</mn>
+          </mrow>
+        </msub>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle S_{1}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5bf84e7fd4fb8259a9b37f956afdf83ee2a020f9" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.479ex; height:2.509ex;" alt="S_{1}"/></span> 是<b>接受状态</b></div></div></div></dd></dl>
+<p><b>接受状态</b>（或称<b>最终状态</b>）是一个机器回报到目前为止，输入字串属于它所接受的内容之状态。状态图中通常将其标示为双圆圈。<br />
+开始状态也可以是接受状态，此情况下自动机会接受空字串。如果开始状态不是接受状态，且没有可以连到任何接受状态的箭头，那么此自动机就不会“接受”任何输入。<br />
+一个接受状态的例子如图3：一台判断输入<a href="/wiki/%E4%BA%8C%E8%BF%9B%E5%88%B6" title="二进制">二进位</a>字串是否含有偶数个0的 <a href="/wiki/%E7%A2%BA%E5%AE%9A%E6%9C%89%E9%99%90%E8%87%AA%E5%8B%95%E6%A9%9F" class="mw-redirect" title="确定有限自动机">确定有限自动机</a>（DFA）。<br />
+<i>S</i><sub>1</sub> 代表着已经输入了偶数个0，因此<i>S</i><sub>1</sub> 即为接受状态（同时亦为开始状态）。若输入含有偶数个0（包含没有0的字串），则此机器会以接受状态来结束。<br />
+被这台DFA接受的字串，举例来说是<a href="/wiki/%CE%95" title="Ε">ε</a>（<a href="/wiki/%E7%A9%BA%E5%AD%97%E4%B8%B2" title="空字串">空字串</a>）, 1, 11, 11…, 00, 010, 1010, 10110…等等。
+</p>
+<h3><span id=".E5.8F.98.E6.8D.A2.E5.99.A8"></span><span class="mw-headline" id="变换器">变换器</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=5" title="编辑章节：变换器">编辑</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E5%8F%98%E6%8D%A2%E5%99%A8&amp;action=edit&amp;redlink=1" class="new" title="有限状态变换器（页面不存在）">变换器</a>使用动作基于给定输入和／或状态生成输出。它们用于控制应用。常分为两种类型：
+</p>
+<h4><span id="Moore.E6.9C.BA"></span><span class="mw-headline" id="Moore机">Moore机</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=6" title="编辑章节：Moore机">编辑</a><span class="mw-editsection-bracket">]</span></span></h4>
+<div role="note" class="hatnote navigation-not-searchable">主条目：<a href="/wiki/%E6%91%A9%E5%B0%94%E5%9E%8B%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" title="摩尔型有限状态机">摩尔型有限状态机</a></div>
+<p>只使用进入动作的FSM，就是说输出只依赖于状态。Moore模型的好处是行为的简单性。图1的例子展示了一个电梯门的Moore FSM。这个状态机识别两个命令：“command_open”和“command_close”触发状态变更。在状态“Opening”中的进入动作 (E:)开启电机开门，在状态“Closing”中的进入动作以反方向开启电机关门。状态“Opened”和“Closed”不进行任何动作。它们信号通知外部世界（比如其他状态机）情况：“门开着”或“门关着”。
+</p>
+<h4><span id="Mealy.E6.9C.BA"></span><span class="mw-headline" id="Mealy机">Mealy机</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=7" title="编辑章节：Mealy机">编辑</a><span class="mw-editsection-bracket">]</span></span></h4>
+<div class="thumb tright"><div class="thumbinner" style="width:352px;"><a href="/wiki/File:Fsm_mealy_model_door_control.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/7/72/Fsm_mealy_model_door_control.svg/350px-Fsm_mealy_model_door_control.svg.png" decoding="async" width="350" height="117" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/7/72/Fsm_mealy_model_door_control.svg/525px-Fsm_mealy_model_door_control.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/7/72/Fsm_mealy_model_door_control.svg/700px-Fsm_mealy_model_door_control.svg.png 2x" data-file-width="512" data-file-height="171" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Fsm_mealy_model_door_control.svg" class="internal" title="放大"></a></div>图4变换器FSM: Mealy模型例子</div></div></div>
+<div role="note" class="hatnote navigation-not-searchable">主条目：<a href="/wiki/%E7%B1%B3%E5%88%A9%E5%9E%8B%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" title="米利型有限状态机">米利型有限状态机</a></div>
+<p>只使用输入动作的FSM，就是说输出依赖于输入和状态。Mealy FSM的使用经常导致状态数目的简约。在图4中的例子展示了实现同上面Moore机同样行为的Mealy FSM（行为依赖于实现的FSM执行模型，比如对<a href="/w/index.php?title=%E8%99%9A%E6%8B%9F%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;redlink=1" class="new" title="虚拟有限状态机（页面不存在）">虚拟FSM</a>可工作但对<a href="/w/index.php?title=%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;redlink=1" class="new" title="事件驱动有限状态机（页面不存在）">事件驱动FSM</a>不行）。有两个输入动作（I:）：“开启电机关门如果command_close下达”和“反向开启电机开门如果command_open下达”。
+</p><p>在实践中经常使用混合模型。
+</p><p>进一步可区分为<b>确定型</b>（<a href="/wiki/%E7%A1%AE%E5%AE%9A%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA" title="确定有限状态自动机">DFA</a>）和<b>非确定型</b>（<a href="/wiki/%E9%9D%9E%E7%A1%AE%E5%AE%9A%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA" title="非确定有限状态自动机">NDFA</a>、<a href="/w/index.php?title=GNFA&amp;action=edit&amp;redlink=1" class="new" title="GNFA（页面不存在）">GNFA</a>）自动机。在确定型自动机中，每个状态对每个可能输入只有精确的一个转移。在非确定型自动机中，给定状态对给定可能输入可以没有或有多于一个转移。这个区分在实践而非理论中更有用，因为存在算法把任何NDFA转换成等价的DFA，尽管这种转换一般会增加自动机的复杂性。
+</p><p>只有一个状态的FSM叫做组合FSM并只使用输入动作。这个概念在多个FSM要一起工作的情况下是有用的，这时把纯组合部分看作一种形式的FSM来适合设计工具可能是方便的。
+</p>
+<h2><span id="FSM.E9.80.BB.E8.BE.91"></span><span class="mw-headline" id="FSM逻辑">FSM逻辑</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=8" title="编辑章节：FSM逻辑">编辑</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:202px;"><a href="/wiki/File:Finite_State_Machine_Logic.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/6/64/Finite_State_Machine_Logic.svg/200px-Finite_State_Machine_Logic.svg.png" decoding="async" width="200" height="313" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/64/Finite_State_Machine_Logic.svg/300px-Finite_State_Machine_Logic.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/6/64/Finite_State_Machine_Logic.svg/400px-Finite_State_Machine_Logic.svg.png 2x" data-file-width="512" data-file-height="802" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Finite_State_Machine_Logic.svg" class="internal" title="放大"></a></div>图5 FSM逻辑</div></div></div>
+<p>FSM的下一个状态和输出是由输入和当前状态决定的。FSM逻辑在图5中展示。
+</p>
+<h2><span id=".E6.95.B0.E5.AD.A6.E6.A8.A1.E5.9E.8B"></span><span class="mw-headline" id="数学模型">数学模型</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=9" title="编辑章节：数学模型">编辑</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>依据类型不同有多种定义。<b>接受器</b>有限状态机是<a href="/wiki/%E5%A4%9A%E5%85%83%E7%BB%84" title="多元组">五元组</a><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle (\Sigma ,S,s_{0},\delta ,F)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo stretchy="false">(</mo>
+        <mi mathvariant="normal">&#x03A3;<!-- Σ --></mi>
+        <mo>,</mo>
+        <mi>S</mi>
+        <mo>,</mo>
+        <msub>
+          <mi>s</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+        </msub>
+        <mo>,</mo>
+        <mi>&#x03B4;<!-- δ --></mi>
+        <mo>,</mo>
+        <mi>F</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle (\Sigma ,S,s_{0},\delta ,F)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/aae5816b47a1d60ad6c3aa775f0e012fe89edddc" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:14.056ex; height:2.843ex;" alt="(\Sigma ,S,s_{0},\delta ,F)"/></span>，这里的：
+</p>
+<ul><li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle \Sigma }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#x03A3;<!-- Σ --></mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Sigma }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9e1f558f53cda207614abdf90162266c70bc5c1e" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.678ex; height:2.176ex;" alt="\Sigma "/></span>是输入<a href="/wiki/%E5%AD%97%E6%AF%8D%E8%A1%A8_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)" title="字母表 (计算机科学)">字母表</a>（符号的非空有限集合）。</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle S}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>S</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle S}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4611d85173cd3b508e67077d4a1252c9c05abca2" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.499ex; height:2.176ex;" alt="S"/></span>是状态的非空有限集合。</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle s_{0}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>s</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+        </msub>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle s_{0}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/25c32f35eb134d23b3c45f1c878d59b0a112ede4" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.145ex; height:2.009ex;" alt="s_{0}"/></span>是初始状态，它是<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle S}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>S</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle S}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4611d85173cd3b508e67077d4a1252c9c05abca2" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.499ex; height:2.176ex;" alt="S"/></span>的元素。在<a href="/wiki/%E9%9D%9E%E7%A1%AE%E5%AE%9A%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA" title="非确定有限状态自动机">非确定有限状态自动机</a>中，<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle s_{0}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>s</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+        </msub>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle s_{0}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/25c32f35eb134d23b3c45f1c878d59b0a112ede4" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.145ex; height:2.009ex;" alt="s_{0}"/></span>是初始状态的集合。</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle \delta }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#x03B4;<!-- δ --></mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \delta }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c5321cfa797202b3e1f8620663ff43c4660ea03a" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.049ex; height:2.343ex;" alt="\delta "/></span>是状态转移函数：<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle \delta :S\times \Sigma \rightarrow S}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#x03B4;<!-- δ --></mi>
+        <mo>:</mo>
+        <mi>S</mi>
+        <mo>&#x00D7;<!-- × --></mo>
+        <mi mathvariant="normal">&#x03A3;<!-- Σ --></mi>
+        <mo stretchy="false">&#x2192;<!-- → --></mo>
+        <mi>S</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \delta :S\times \Sigma \rightarrow S}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/65f6cb1ecf4bb5f8a7e72ed569561934475a3d45" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:14.117ex; height:2.343ex;" alt="\delta :S\times \Sigma \rightarrow S"/></span>。</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle F}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>F</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle F}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/545fd099af8541605f7ee55f08225526be88ce57" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.741ex; height:2.176ex;" alt="F"/></span>是最终状态的集合，<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle S}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>S</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle S}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4611d85173cd3b508e67077d4a1252c9c05abca2" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.499ex; height:2.176ex;" alt="S"/></span>的（可能为空）子集。</li></ul>
+<p><b>变换器</b>有限状态自动机是<a href="/wiki/%E5%A4%9A%E5%85%83%E7%BB%84" title="多元组">六元组</a><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle (\Sigma ,\Gamma ,S,s_{0},\delta ,\omega )}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo stretchy="false">(</mo>
+        <mi mathvariant="normal">&#x03A3;<!-- Σ --></mi>
+        <mo>,</mo>
+        <mi mathvariant="normal">&#x0393;<!-- Γ --></mi>
+        <mo>,</mo>
+        <mi>S</mi>
+        <mo>,</mo>
+        <msub>
+          <mi>s</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+        </msub>
+        <mo>,</mo>
+        <mi>&#x03B4;<!-- δ --></mi>
+        <mo>,</mo>
+        <mi>&#x03C9;<!-- ω --></mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle (\Sigma ,\Gamma ,S,s_{0},\delta ,\omega )}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/2ee02696007a5569fbb05b2aefe534322db4ef03" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:16.248ex; height:2.843ex;" alt="(\Sigma ,\Gamma ,S,s_{0},\delta ,\omega )"/></span>，这里的：
+</p>
+<ul><li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle \Sigma }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#x03A3;<!-- Σ --></mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Sigma }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9e1f558f53cda207614abdf90162266c70bc5c1e" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.678ex; height:2.176ex;" alt="\Sigma "/></span>是输入字母表（符号的非空有限集合）。</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle \Gamma }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#x0393;<!-- Γ --></mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Gamma }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4cfde86a3f7ec967af9955d0988592f0693d2b19" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.453ex; height:2.176ex;" alt="\Gamma "/></span>是输出字母表（符号的非空有限集合）。</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle S}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>S</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle S}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4611d85173cd3b508e67077d4a1252c9c05abca2" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.499ex; height:2.176ex;" alt="S"/></span>是状态的非空有限集合。</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle s_{0}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>s</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+        </msub>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle s_{0}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/25c32f35eb134d23b3c45f1c878d59b0a112ede4" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.145ex; height:2.009ex;" alt="s_{0}"/></span>是初始状态，它是<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle S}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>S</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle S}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4611d85173cd3b508e67077d4a1252c9c05abca2" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.499ex; height:2.176ex;" alt="S"/></span>的元素。在<a href="/wiki/%E9%9D%9E%E7%A1%AE%E5%AE%9A%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA" title="非确定有限状态自动机">非确定有限状态自动机</a>中，<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle s_{0}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>s</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+        </msub>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle s_{0}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/25c32f35eb134d23b3c45f1c878d59b0a112ede4" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.145ex; height:2.009ex;" alt="s_{0}"/></span>是初始状态的集合。</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle \delta }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#x03B4;<!-- δ --></mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \delta }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c5321cfa797202b3e1f8620663ff43c4660ea03a" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.049ex; height:2.343ex;" alt="\delta "/></span>是状态转移函数：<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle \delta :S\times \Sigma \rightarrow S}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#x03B4;<!-- δ --></mi>
+        <mo>:</mo>
+        <mi>S</mi>
+        <mo>&#x00D7;<!-- × --></mo>
+        <mi mathvariant="normal">&#x03A3;<!-- Σ --></mi>
+        <mo stretchy="false">&#x2192;<!-- → --></mo>
+        <mi>S</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \delta :S\times \Sigma \rightarrow S}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/65f6cb1ecf4bb5f8a7e72ed569561934475a3d45" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:14.117ex; height:2.343ex;" alt="\delta :S\times \Sigma \rightarrow S"/></span>。</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle \omega }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#x03C9;<!-- ω --></mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \omega }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/48eff443f9de7a985bb94ca3bde20813ea737be8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.446ex; height:1.676ex;" alt="\omega "/></span>是输出函数。</li></ul>
+<p>如果输出函数是状态和输入字母表的函数（<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle \omega :S\times \Sigma \rightarrow \Gamma }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#x03C9;<!-- ω --></mi>
+        <mo>:</mo>
+        <mi>S</mi>
+        <mo>&#x00D7;<!-- × --></mo>
+        <mi mathvariant="normal">&#x03A3;<!-- Σ --></mi>
+        <mo stretchy="false">&#x2192;<!-- → --></mo>
+        <mi mathvariant="normal">&#x0393;<!-- Γ --></mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \omega :S\times \Sigma \rightarrow \Gamma }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8a1714a8b284adc167cb480f1b1e4867ff366ca7" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:14.468ex; height:2.176ex;" alt="\omega :S\times \Sigma \rightarrow \Gamma "/></span>），则定义对应于<b>Mealy模型</b>，它可以建模为<a href="/wiki/Mealy%E6%9C%BA" class="mw-redirect" title="Mealy机">Mealy机</a>。如果输出函数只依赖于状态 (<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML"  alttext="{\displaystyle \omega :S\rightarrow \Gamma }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#x03C9;<!-- ω --></mi>
+        <mo>:</mo>
+        <mi>S</mi>
+        <mo stretchy="false">&#x2192;<!-- → --></mo>
+        <mi mathvariant="normal">&#x0393;<!-- Γ --></mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \omega :S\rightarrow \Gamma }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/eea022d0f2030c0ff2f7728380d9786278d681db" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:9.949ex; height:2.176ex;" alt="\omega :S\rightarrow \Gamma "/></span>），则定义对应于<b>Moore模型</b>，它可建模为<a href="/wiki/Moore%E6%9C%BA" class="mw-redirect" title="Moore机">Moore机</a>。根本没有输出函数的有限状态机叫做<a href="/wiki/%E5%8D%8A%E8%87%AA%E5%8A%A8%E6%9C%BA" title="半自动机">半自动机</a>或<a href="/wiki/%E8%BD%AC%E7%A7%BB%E7%B3%BB%E7%BB%9F" class="mw-redirect" title="转移系统">转移系统</a>。
+</p>
+<h2><span id=".E4.BC.98.E5.8C.96"></span><span class="mw-headline" id="优化">优化</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=10" title="编辑章节：优化">编辑</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>优化一个FSM意味着缩减状态机的状态数目, 同时保证状态机能实现同样功能。一种可能是使用<a href="/wiki/%E7%9C%9F%E5%80%BC%E8%A1%A8" title="真值表">真值表</a>或<a href="/w/index.php?title=Moore%E7%AE%80%E7%BA%A6%E8%BF%87%E7%A8%8B&amp;action=edit&amp;redlink=1" class="new" title="Moore简约过程（页面不存在）">Moore简约过程</a>。另一种可能是<a rel="nofollow" class="external text" href="http://www.cs.jhu.edu/~hajic/courses/cs226/alg.html">无环FSA的自底向上算法</a>。
+</p>
+<h2><span id=".E5.AE.9E.E7.8E.B0"></span><span class="mw-headline" id="实现">实现</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=11" title="编辑章节：实现">编辑</a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span id=".E7.A1.AC.E4.BB.B6.E5.BA.94.E7.94.A8"></span><span class="mw-headline" id="硬件应用">硬件应用</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=12" title="编辑章节：硬件应用">编辑</a><span class="mw-editsection-bracket">]</span></span></h3>
+<div class="thumb tright"><div class="thumbinner" style="width:402px;"><a href="/wiki/File:4_bit_counter.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/7/76/4_bit_counter.svg/400px-4_bit_counter.svg.png" decoding="async" width="400" height="212" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/7/76/4_bit_counter.svg/600px-4_bit_counter.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/7/76/4_bit_counter.svg/800px-4_bit_counter.svg.png 2x" data-file-width="1281" data-file-height="680" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:4_bit_counter.svg" class="internal" title="放大"></a></div>图6 4位<a href="/wiki/%E9%9B%BB%E6%99%B6%E9%AB%94-%E9%9B%BB%E6%99%B6%E9%AB%94%E9%82%8F%E8%BC%AF%E9%9B%BB%E8%B7%AF" class="mw-redirect" title="电晶体-电晶体逻辑电路">TTL</a>计数器的<a href="/wiki/%E9%9B%BB%E8%B7%AF%E5%9C%96" title="电路图">电路图</a></div></div></div>
+<p>在<a href="/wiki/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF" title="数字电路">数字电路</a>中，FSM可以用<a href="/wiki/%E5%8F%AF%E7%BC%96%E7%A8%8B%E9%80%BB%E8%BE%91%E8%AE%BE%E5%A4%87" class="mw-redirect" title="可编程逻辑设备">可编程逻辑设备</a>、<a href="/wiki/%E5%8F%AF%E7%BC%96%E7%A8%8B%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8" title="可编程逻辑控制器">可编程逻辑控制器</a>、<a href="/wiki/%E9%80%BB%E8%BE%91%E9%97%A8" class="mw-redirect" title="逻辑门">逻辑门</a>和<a href="/wiki/%E8%A7%A6%E5%8F%91%E5%99%A8" title="触发器">触发器</a>或<a href="/wiki/%E7%BB%A7%E7%94%B5%E5%99%A8" title="继电器">继电器</a>来建造。更明确的说，硬件实现要求<a href="/wiki/%E5%AF%84%E5%AD%98%E5%99%A8" title="寄存器">寄存器</a>来存储状态变量，确定状态转移的一块组合逻辑，和确定FSM输出的另一块组合逻辑。一类经典硬件实现是<a href="/wiki/Richards_%E6%8E%A7%E5%88%B6%E5%99%A8" class="mw-redirect" title="Richards 控制器">Richards 控制器</a>。
+</p>
+<h3><span id=".E8.BD.AF.E4.BB.B6.E5.BA.94.E7.94.A8"></span><span class="mw-headline" id="软件应用">软件应用</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=13" title="编辑章节：软件应用">编辑</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>下列概念经常用来建造有有限状态机的软件应用：
+</p>
+<ul><li><a href="/w/index.php?title=%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;redlink=1" class="new" title="事件驱动有限状态机（页面不存在）">事件驱动FSM</a></li>
+<li><a href="/w/index.php?title=%E8%99%9A%E6%8B%9F%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;redlink=1" class="new" title="虚拟有限状态机（页面不存在）">虚拟FSM (VFSM)</a></li>
+<li><a href="/wiki/%E5%9F%BA%E4%BA%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%BC%96%E7%A8%8B" class="mw-redirect" title="基于自动机编程">基于自动机编程</a></li></ul>
+<h2><span id=".E5.8F.83.E8.80.83.E6.9B.B8.E7.9B.AE"></span><span class="mw-headline" id="參考書目">参考书目</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=14" title="编辑章节：参考书目">编辑</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li>Wagner, F., "Modeling Software with Finite State Machines: A Practical Approach", Auerbach Publications, 2006, <a href="/wiki/Special:%E7%BD%91%E7%BB%9C%E4%B9%A6%E6%BA%90/0849380863" class="internal mw-magiclink-isbn">ISBN 0-8493-8086-3</a>.</li>
+<li>Samek, M., <a rel="nofollow" class="external text" href="http://www.state-machine.com/psicc1/"><i>Practical Statecharts in C/C++</i></a><sup class="noprint Inline-Template"><span style="white-space: nowrap;">&#91;<i><a href="/wiki/Wikipedia:%E5%A4%B1%E6%95%88%E9%93%BE%E6%8E%A5" title="Wikipedia:失效链接"><span title="自2018年3月失效">永久失效链接</span></a></i>&#93;</span></sup>, CMP Books, 2002, <a href="/wiki/Special:%E7%BD%91%E7%BB%9C%E4%B9%A6%E6%BA%90/1578201101" class="internal mw-magiclink-isbn">ISBN 1-57820-110-1</a>.</li>
+<li>Samek, M., <a rel="nofollow" class="external text" href="http://www.state-machine.com/psicc2/"><i>Practical UML Statecharts in C/C++, 2nd Edition</i></a>, Newnes, 2008, <a href="/wiki/Special:%E7%BD%91%E7%BB%9C%E4%B9%A6%E6%BA%90/0750687061" class="internal mw-magiclink-isbn">ISBN 0-7506-8706-1</a>.</li>
+<li>Cassandras, C., Lafortune, S., "Introduction to Discrete Event Systems". Kluwer, 1999, <a href="/wiki/Special:%E7%BD%91%E7%BB%9C%E4%B9%A6%E6%BA%90/0792386094" class="internal mw-magiclink-isbn">ISBN 0-7923-8609-4</a>.</li>
+<li>Timothy Kam, <i>Synthesis of Finite State Machines: Functional Optimization</i>. Kluwer Academic Publishers, Boston 1997, <a href="/wiki/Special:%E7%BD%91%E7%BB%9C%E4%B9%A6%E6%BA%90/0792398424" class="internal mw-magiclink-isbn">ISBN 0-7923-9842-4</a></li>
+<li>Tiziano Villa, <i>Synthesis of Finite State Machines: Logic Optimization</i>. Kluwer Academic Publishers, Boston 1997, <a href="/wiki/Special:%E7%BD%91%E7%BB%9C%E4%B9%A6%E6%BA%90/0792398920" class="internal mw-magiclink-isbn">ISBN 0-7923-9892-0</a></li>
+<li>Carroll, J., Long, D. , <i>Theory of Finite Automata with an Introduction to Formal Languages</i>. Prentice Hall, Englewood Cliffs, 1989.</li>
+<li>Kohavi, Z., <i>Switching and Finite Automata Theory</i>. McGraw-Hill, 1978.</li>
+<li>Gill, A., <i>Introduction to the Theory of Finite-state Machines</i>. McGraw-Hill, 1962.</li>
+<li>Ginsburg, S., <i>An Introduction to Mathematical Machine Theory</i>. Addison-Wesley, 1962.</li></ul>
+<h2><span id=".E5.A4.96.E9.83.A8.E9.93.BE.E6.8E.A5"></span><span class="mw-headline" id="外部链接">外部链接</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=15" title="编辑章节：外部链接">编辑</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li><a rel="nofollow" class="external text" href="http://foldoc.doc.ic.ac.uk/foldoc/foldoc.cgi?query=finite+state+machine">Description from the Free On-Line Dictionary of Computing</a><sup class="noprint Inline-Template"><span style="white-space: nowrap;">&#91;<i><a href="/wiki/Wikipedia:%E5%A4%B1%E6%95%88%E9%93%BE%E6%8E%A5" title="Wikipedia:失效链接"><span title="自2018年1月失效">永久失效链接</span></a></i>&#93;</span></sup></li>
+<li>NIST Dictionary of Algorithms and Data Structures <a rel="nofollow" class="external text" href="http://www.nist.gov/dads/HTML/finiteStateMachine.html">entry</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.eventhelix.com/RealtimeMantra/HierarchicalStateMachine.htm">Hierarchical State Machines</a></li>
+<li><a rel="nofollow" class="external text" href="https://web.archive.org/web/20070630125241/http://www.intelliwizard.com/">Round-trip Engineering State Machines</a></li>
+<li><a rel="nofollow" class="external text" href="https://web.archive.org/web/20071011031135/http://www.sccs.swarthmore.edu/users/06/adem/engin/e15/lab4/">Using state machines in practical applications</a></li>
+<li><a rel="nofollow" class="external text" href="https://web.archive.org/web/20071013171320/http://osteele.com/tools/reanimator/?detectflash=false">Flash based demonstration of Finite State Machines being used in regular expressions</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.stateworks.com/active/content/en/technology/technical_notes.php#tn10">"Moore or Mealy model?"</a>关于使用Moore和Mealy模型的区别的细节，包括执行例子</li></ul>
+<h2><span id=".E5.8F.82.E8.A7.81"></span><span class="mw-headline" id="参见">参见</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;section=16" title="编辑章节：参见">编辑</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li><a href="/wiki/%E8%87%AA%E5%8A%A8%E6%9C%BA" class="mw-redirect" title="自动机">自动机</a></li>
+<li><a href="/wiki/%E7%A1%AE%E5%AE%9A%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA" title="确定有限状态自动机">确定有限状态自动机</a></li>
+<li><a href="/wiki/%E9%9D%9E%E7%A1%AE%E5%AE%9A%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA" title="非确定有限状态自动机">非确定有限状态自动机</a></li>
+<li><a href="/wiki/Mealy%E6%9C%BA" class="mw-redirect" title="Mealy机">Mealy机</a></li>
+<li><a href="/wiki/Moore%E6%9C%BA" class="mw-redirect" title="Moore机">Moore机</a></li>
+<li><a href="/wiki/%E7%AE%97%E6%B3%95%E7%8A%B6%E6%80%81%E6%9C%BA" title="算法状态机">算法状态机</a></li></ul>
+<p><br />
+</p>
+<table cellspacing="0" class="navbox" style="border-spacing:0"><tbody><tr><td style="padding:2px"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tbody><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view"><a href="/wiki/Template:%E5%A4%84%E7%90%86%E5%99%A8%E6%8A%80%E6%9C%AF" title="Template:处理器技术"><abbr title="查看该模板" style=";;background:none transparent;border:none;">查</abbr></a></li><li class="nv-talk"><a href="/w/index.php?title=Template_talk:%E5%A4%84%E7%90%86%E5%99%A8%E6%8A%80%E6%9C%AF&amp;action=edit&amp;redlink=1" class="new" title="Template talk:处理器技术（页面不存在）"><abbr title="讨论该模板" style=";;background:none transparent;border:none;">论</abbr></a></li><li class="nv-edit"><a class="external text" href="https://zh.wikipedia.org/w/index.php?title=Template:%E5%A4%84%E7%90%86%E5%99%A8%E6%8A%80%E6%9C%AF&amp;action=edit"><abbr title="编辑该模板" style=";;background:none transparent;border:none;">编</abbr></a></li></ul></div><div style="font-size:110%"><a href="/wiki/%E5%A4%84%E7%90%86%E5%99%A8_(%E8%AE%A1%E7%AE%97)" title="处理器 (计算)">处理器技术</a></div></th></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9E%8B_(%E6%95%B0%E5%AD%A6)" title="计算模型 (数学)">模型</a></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0"><tbody><tr><th scope="row" class="navbox-group">顺序模型</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E5%9B%BE%E7%81%B5%E6%9C%BA" title="图灵机">图灵机</a>
+<ul><li><a href="/wiki/%E9%80%9A%E7%94%A8%E5%9C%96%E9%9D%88%E6%A9%9F" title="通用图灵机">通用</a></li>
+<li><a href="/wiki/%E6%B3%A2%E6%96%AF%E7%89%B9-%E5%9B%BE%E7%81%B5%E6%9C%BA" title="波斯特-图灵机">波斯特-图灵机</a></li>
+<li><a href="/wiki/%E9%87%8F%E5%AD%90%E5%9C%96%E9%9D%88%E6%A9%9F" title="量子图灵机">量子</a></li></ul></li>
+<li><span class="ilh-all" data-orig-title="传动带机器" data-lang-code="en" data-lang-name="英语" data-foreign-title="Belt machine"><span class="ilh-page"><a href="/w/index.php?title=%E4%BC%A0%E5%8A%A8%E5%B8%A6%E6%9C%BA%E5%99%A8&amp;action=edit&amp;redlink=1" class="new" title="传动带机器（页面不存在）">传动带机器</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Belt_machine" class="extiw" title="en:Belt machine"><span lang="en" dir="auto">Belt machine</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E5%A0%86%E7%96%8A%E7%B5%90%E6%A7%8B%E6%A9%9F%E5%99%A8" title="堆叠结构机器">堆叠结构机器</a></li>
+<li><a class="mw-selflink selflink">有限状态机</a>
+<ul><li><span class="ilh-all" data-orig-title="具数据路径的有限状态机" data-lang-code="en" data-lang-name="英语" data-foreign-title="Finite state machine with datapath"><span class="ilh-page"><a href="/w/index.php?title=%E5%85%B7%E6%95%B0%E6%8D%AE%E8%B7%AF%E5%BE%84%E7%9A%84%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;redlink=1" class="new" title="具数据路径的有限状态机（页面不存在）">具数据路径</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Finite_state_machine_with_datapath" class="extiw" title="en:Finite state machine with datapath"><span lang="en" dir="auto">Finite state machine with datapath</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="分层状态机" data-lang-code="en" data-lang-name="英语" data-foreign-title="Hierarchical state machine"><span class="ilh-page"><a href="/w/index.php?title=%E5%88%86%E5%B1%82%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit&amp;redlink=1" class="new" title="分层状态机（页面不存在）">分层</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Hierarchical_state_machine" class="extiw" title="en:Hierarchical state machine"><span lang="en" dir="auto">Hierarchical state machine</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="队列自动机" data-lang-code="en" data-lang-name="英语" data-foreign-title="Queue automaton"><span class="ilh-page"><a href="/w/index.php?title=%E9%98%9F%E5%88%97%E8%87%AA%E5%8A%A8%E6%9C%BA&amp;action=edit&amp;redlink=1" class="new" title="队列自动机（页面不存在）">队列</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Queue_automaton" class="extiw" title="en:Queue automaton"><span lang="en" dir="auto">Queue automaton</span></a></span>）</span></span></li></ul></li>
+<li><a href="/wiki/%E5%AF%84%E5%AD%98%E5%99%A8%E6%9C%BA" title="寄存器机">寄存器机</a>
+<ul><li><a href="/wiki/%E8%AE%A1%E6%95%B0%E5%99%A8%E6%9C%BA" title="计数器机">计数器</a></li>
+<li><span class="ilh-all" data-orig-title="指针机" data-lang-code="en" data-lang-name="英语" data-foreign-title="Pointer machine"><span class="ilh-page"><a href="/w/index.php?title=%E6%8C%87%E9%92%88%E6%9C%BA&amp;action=edit&amp;redlink=1" class="new" title="指针机（页面不存在）">指针</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Pointer_machine" class="extiw" title="en:Pointer machine"><span lang="en" dir="auto">Pointer machine</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E9%9A%A8%E6%A9%9F%E5%AD%98%E5%8F%96%E6%A9%9F" title="随机存取机">随机存取机</a></li>
+<li><a href="/wiki/%E9%9A%A8%E6%A9%9F%E5%AD%98%E5%8F%96%E5%84%B2%E5%AD%98%E7%A8%8B%E5%BC%8F%E6%A9%9F" title="随机存取储存程式机">随机存取储存程式机</a></li></ul></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group">函数式模型</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0" title="递归函数">递归函数</a></li>
+<li><a href="/wiki/%CE%9B%E6%BC%94%E7%AE%97" title="Λ演算">Λ演算</a></li>
+<li><a href="/wiki/%E7%BB%84%E5%90%88%E5%AD%90%E9%80%BB%E8%BE%91" title="组合子逻辑">组合子逻辑</a></li>
+<li><a href="/wiki/%E7%B4%B0%E8%83%9E%E8%87%AA%E5%8B%95%E6%A9%9F" title="细胞自动机">细胞自动机</a></li></ul>
+</div></td></tr></tbody></table><div></div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E9%9B%BB%E8%85%A6%E7%B3%BB%E7%B5%B1%E7%B5%90%E6%A7%8B" class="mw-redirect" title="电脑系统结构">架构</a></th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E5%BE%AE%E6%9E%B6%E6%A7%8B" title="微架构">微架构</a></li>
+<li><a href="/wiki/%E5%86%AF%C2%B7%E8%AF%BA%E4%BC%8A%E6%9B%BC%E7%BB%93%E6%9E%84" title="冯·诺伊曼结构">冯·诺伊曼结构</a></li>
+<li><a href="/wiki/%E5%93%88%E4%BD%9B%E6%9E%B6%E6%A7%8B" class="mw-redirect" title="哈佛架构">哈佛架构</a>
+<ul><li><span class="ilh-all" data-orig-title="修正哈佛架構" data-lang-code="en" data-lang-name="英语" data-foreign-title="Modified Harvard architecture"><span class="ilh-page"><a href="/w/index.php?title=%E4%BF%AE%E6%AD%A3%E5%93%88%E4%BD%9B%E6%9E%B6%E6%A7%8B&amp;action=edit&amp;redlink=1" class="new" title="修正哈佛架构（页面不存在）">修正哈佛架构</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Modified_Harvard_architecture" class="extiw" title="en:Modified Harvard architecture"><span lang="en" dir="auto">Modified Harvard architecture</span></a></span>）</span></span></li></ul></li>
+<li><span class="ilh-all" data-orig-title="資料流架構" data-lang-code="en" data-lang-name="英语" data-foreign-title="Dataflow architecture"><span class="ilh-page"><a href="/w/index.php?title=%E8%B3%87%E6%96%99%E6%B5%81%E6%9E%B6%E6%A7%8B&amp;action=edit&amp;redlink=1" class="new" title="资料流架构（页面不存在）">资料流架构</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Dataflow_architecture" class="extiw" title="en:Dataflow architecture"><span lang="en" dir="auto">Dataflow architecture</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="传输触发架构" data-lang-code="en" data-lang-name="英语" data-foreign-title="Transport triggered architecture"><span class="ilh-page"><a href="/w/index.php?title=%E4%BC%A0%E8%BE%93%E8%A7%A6%E5%8F%91%E6%9E%B6%E6%9E%84&amp;action=edit&amp;redlink=1" class="new" title="传输触发架构（页面不存在）">传输触发</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Transport_triggered_architecture" class="extiw" title="en:Transport triggered architecture"><span lang="en" dir="auto">Transport triggered architecture</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="元胞结构" data-lang-code="en" data-lang-name="英语" data-foreign-title="Cellular architecture"><span class="ilh-page"><a href="/w/index.php?title=%E5%85%83%E8%83%9E%E7%BB%93%E6%9E%84&amp;action=edit&amp;redlink=1" class="new" title="元胞结构（页面不存在）">元胞</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Cellular_architecture" class="extiw" title="en:Cellular architecture"><span lang="en" dir="auto">Cellular architecture</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E5%AD%97%E8%8A%82%E5%BA%8F" title="字节序">字节序</a></li>
+<li><span class="ilh-all" data-orig-title="异构系统架构" data-lang-code="en" data-lang-name="英语" data-foreign-title="Heterogeneous System Architecture"><span class="ilh-page"><a href="/w/index.php?title=%E5%BC%82%E6%9E%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84&amp;action=edit&amp;redlink=1" class="new" title="异构系统架构（页面不存在）">异构</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Heterogeneous_System_Architecture" class="extiw" title="en:Heterogeneous System Architecture"><span lang="en" dir="auto">Heterogeneous System Architecture</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="Fabric计算" data-lang-code="en" data-lang-name="英语" data-foreign-title="Fabric computing"><span class="ilh-page"><a href="/w/index.php?title=Fabric%E8%AE%A1%E7%AE%97&amp;action=edit&amp;redlink=1" class="new" title="Fabric计算（页面不存在）">Fabric</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Fabric_computing" class="extiw" title="en:Fabric computing"><span lang="en" dir="auto">Fabric computing</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E5%A4%9A%E5%85%83%E8%99%95%E7%90%86" title="多元处理">多元处理</a></li>
+<li><span class="ilh-all" data-orig-title="认知计算" data-lang-code="en" data-lang-name="英语" data-foreign-title="Cognitive computing"><span class="ilh-page"><a href="/w/index.php?title=%E8%AE%A4%E7%9F%A5%E8%AE%A1%E7%AE%97&amp;action=edit&amp;redlink=1" class="new" title="认知计算（页面不存在）">认知计算</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Cognitive_computing" class="extiw" title="en:Cognitive computing"><span lang="en" dir="auto">Cognitive computing</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="神经形态处理器" data-lang-code="en" data-lang-name="英语" data-foreign-title="Neuromorphic engineering"><span class="ilh-page"><a href="/w/index.php?title=%E7%A5%9E%E7%BB%8F%E5%BD%A2%E6%80%81%E5%A4%84%E7%90%86%E5%99%A8&amp;action=edit&amp;redlink=1" class="new" title="神经形态处理器（页面不存在）">神经形态</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Neuromorphic_engineering" class="extiw" title="en:Neuromorphic engineering"><span lang="en" dir="auto">Neuromorphic engineering</span></a></span>）</span></span></li></ul>
+</div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0"><tbody><tr><th scope="row" class="navbox-group"><a href="/wiki/%E9%9B%BB%E8%85%A6%E6%95%B8%E6%93%9A%E5%AD%98%E8%B2%AF%E5%99%A8" title="电脑数据存贮器">内存访问</a></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E9%9D%9E%E5%9D%87%E5%8C%80%E8%AE%BF%E5%AD%98%E6%A8%A1%E5%9E%8B" title="非均匀访存模型">非均匀访存模型</a>(NUMA)</li>
+<li><a href="/wiki/%E5%9D%87%E5%8C%80%E8%AE%BF%E5%AD%98%E6%A8%A1%E5%9E%8B" title="均匀访存模型">均匀访存模型</a>(HUMA)</li>
+<li><span class="ilh-all" data-orig-title="载入/存储架构" data-lang-code="en" data-lang-name="英语" data-foreign-title="Load/store architecture"><span class="ilh-page"><a href="/w/index.php?title=%E8%BD%BD%E5%85%A5/%E5%AD%98%E5%82%A8%E6%9E%B6%E6%9E%84&amp;action=edit&amp;redlink=1" class="new" title="载入/存储架构（页面不存在）">载入/存储</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Load/store_architecture" class="extiw" title="en:Load/store architecture"><span lang="en" dir="auto">Load/store architecture</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="寄存器/存储器架构" data-lang-code="en" data-lang-name="英语" data-foreign-title="Register memory architecture"><span class="ilh-page"><a href="/w/index.php?title=%E5%AF%84%E5%AD%98%E5%99%A8/%E5%AD%98%E5%82%A8%E5%99%A8%E6%9E%B6%E6%9E%84&amp;action=edit&amp;redlink=1" class="new" title="寄存器/存储器架构（页面不存在）">寄存器/存储器</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Register_memory_architecture" class="extiw" title="en:Register memory architecture"><span lang="en" dir="auto">Register memory architecture</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E5%9D%87%E5%8C%80%E8%AE%BF%E5%AD%98%E6%A8%A1%E5%9E%8B" title="均匀访存模型">均匀访存模型</a>(UMA)</li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><span class="ilh-all" data-orig-title="缓存层级" data-lang-code="en" data-lang-name="英语" data-foreign-title="Cache hierarchy"><span class="ilh-page"><a href="/w/index.php?title=%E7%BC%93%E5%AD%98%E5%B1%82%E7%BA%A7&amp;action=edit&amp;redlink=1" class="new" title="缓存层级（页面不存在）">缓存层级</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Cache_hierarchy" class="extiw" title="en:Cache hierarchy"><span lang="en" dir="auto">Cache hierarchy</span></a></span>）</span></span></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><span class="ilh-all" data-orig-title="缓存层级" data-lang-code="en" data-lang-name="英语" data-foreign-title="Cache hierarchy"><span class="ilh-page"><a href="/w/index.php?title=%E7%BC%93%E5%AD%98%E5%B1%82%E7%BA%A7&amp;action=edit&amp;redlink=1" class="new" title="缓存层级（页面不存在）">缓存层级</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Cache_hierarchy" class="extiw" title="en:Cache hierarchy"><span lang="en" dir="auto">Cache hierarchy</span></a></span>）</span></span></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E8%A8%98%E6%86%B6%E9%AB%94%E9%9A%8E%E5%B1%A4" title="记忆体阶层">记忆体阶层</a></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98" title="虚拟内存">虚拟内存</a></li>
+<li><a href="/wiki/%E9%9B%BB%E8%85%A6%E6%95%B8%E6%93%9A%E5%AD%98%E8%B2%AF%E5%99%A8#第二級記憶體" title="电脑数据存贮器">第二级存储器</a></li></ul>
+</div></td></tr></tbody></table><div>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E6%8C%87%E4%BB%A4%E9%9B%86%E6%9E%B6%E6%A7%8B" title="指令集架构">指令集架构</a></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0"><tbody><tr><th scope="row" class="navbox-group">类型</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E5%A4%8D%E6%9D%82%E6%8C%87%E4%BB%A4%E9%9B%86" title="复杂指令集">复杂指令集</a>(CISC)</li>
+<li><a href="/wiki/%E7%B2%BE%E7%AE%80%E6%8C%87%E4%BB%A4%E9%9B%86" title="精简指令集">精简指令集</a>(RISC)</li>
+<li><a href="/wiki/%E4%B8%93%E7%94%A8%E6%8C%87%E4%BB%A4%E9%9B%86%E5%A4%84%E7%90%86%E5%99%A8" title="专用指令集处理器">专用指令集处理器</a></li>
+<li><span class="ilh-all" data-orig-title="显式数据图像并行" data-lang-code="en" data-lang-name="英语" data-foreign-title="Explicit_data_graph_execution"><span class="ilh-page"><a href="/w/index.php?title=%E6%98%BE%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%9B%BE%E5%83%8F%E5%B9%B6%E8%A1%8C&amp;action=edit&amp;redlink=1" class="new" title="显式数据图像并行（页面不存在）">显式数据图像并行</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Explicit_data_graph_execution" class="extiw" title="en:Explicit data graph execution"><span lang="en" dir="auto">Explicit_data_graph_execution</span></a></span>）</span></span>(EDGE)
+<ul><li><span class="ilh-all" data-orig-title="TRIPS架构" data-lang-code="en" data-lang-name="英语" data-foreign-title="TRIPS architecture"><span class="ilh-page"><a href="/w/index.php?title=TRIPS%E6%9E%B6%E6%9E%84&amp;action=edit&amp;redlink=1" class="new" title="TRIPS架构（页面不存在）">TRIPS</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/TRIPS_architecture" class="extiw" title="en:TRIPS architecture"><span lang="en" dir="auto">TRIPS architecture</span></a></span>）</span></span></li></ul></li>
+<li><a href="/wiki/%E8%B6%85%E9%95%B7%E6%8C%87%E4%BB%A4%E9%9B%86" class="mw-redirect" title="超长指令集">超长指令集</a>(VLIW)</li>
+<li><a href="/wiki/%E9%A1%AF%E5%BC%8F%E4%B8%A6%E8%A1%8C%E6%8C%87%E4%BB%A4%E9%81%8B%E7%AE%97" title="显式并行指令运算">显式并行指令运算</a>(EPIC)</li>
+<li><span class="ilh-all" data-orig-title="最小指令集" data-lang-code="en" data-lang-name="英语" data-foreign-title="Minimal_instruction_set_computer"><span class="ilh-page"><a href="/w/index.php?title=%E6%9C%80%E5%B0%8F%E6%8C%87%E4%BB%A4%E9%9B%86&amp;action=edit&amp;redlink=1" class="new" title="最小指令集（页面不存在）">最小指令集</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Minimal_instruction_set_computer" class="extiw" title="en:Minimal instruction set computer"><span lang="en" dir="auto">Minimal_instruction_set_computer</span></a></span>）</span></span>(MISC)</li>
+<li><a href="/wiki/%E5%96%AE%E4%B8%80%E6%8C%87%E4%BB%A4%E9%9B%86" class="mw-redirect" title="单一指令集">单一指令集</a>(OISC)</li>
+<li><span class="ilh-all" data-orig-title="無指令集" data-lang-code="en" data-lang-name="英语" data-foreign-title="No instruction set computing"><span class="ilh-page"><a href="/w/index.php?title=%E7%84%A1%E6%8C%87%E4%BB%A4%E9%9B%86&amp;action=edit&amp;redlink=1" class="new" title="无指令集（页面不存在）">无指令集</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/No_instruction_set_computing" class="extiw" title="en:No instruction set computing"><span lang="en" dir="auto">No instruction set computing</span></a></span>）</span></span>(NISC)</li>
+<li><a href="/wiki/%E9%9B%B6%E6%8C%87%E4%BB%A4%E9%9B%86" title="零指令集">零指令集</a>(ZISC)</li>
+<li><span class="ilh-all" data-orig-title="比較" data-lang-code="en" data-lang-name="英语" data-foreign-title="Comparison of CPU architectures"><span class="ilh-page"><a href="/w/index.php?title=%E6%AF%94%E8%BC%83&amp;action=edit&amp;redlink=1" class="new" title="比较（页面不存在）">比较</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Comparison_of_CPU_architectures" class="extiw" title="en:Comparison of CPU architectures"><span lang="en" dir="auto">Comparison of CPU architectures</span></a></span>）</span></span></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group">指令集</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/X86" title="X86">x86</a></li>
+<li><a href="/wiki/ARM%E6%9E%B6%E6%A7%8B" title="ARM架构">ARM</a></li>
+<li><a href="/wiki/MIPS%E6%9E%B6%E6%A7%8B" title="MIPS架构">MIPS</a></li>
+<li><a href="/w/index.php?title=LoongArch&amp;action=edit&amp;redlink=1" class="new" title="LoongArch（页面不存在）">LoongArch</a></li>
+<li><span class="ilh-all" data-orig-title="Power ISA" data-lang-code="en" data-lang-name="英语" data-foreign-title="Power ISA"><span class="ilh-page"><a href="/w/index.php?title=Power_ISA&amp;action=edit&amp;redlink=1" class="new" title="Power ISA（页面不存在）">Power架构</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Power_ISA" class="extiw" title="en:Power ISA"><span lang="en" dir="auto">Power ISA</span></a></span>）</span></span></li>
+<li><a href="/wiki/SPARC" title="SPARC">SPARC</a></li>
+<li><a href="/wiki/IA-64" title="IA-64">IA-64</a></li>
+<li><span class="ilh-all" data-orig-title="Unicore" data-lang-code="en" data-lang-name="英语" data-foreign-title="Unicore"><span class="ilh-page"><a href="/w/index.php?title=Unicore&amp;action=edit&amp;redlink=1" class="new" title="Unicore（页面不存在）">Unicore</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Unicore" class="extiw" title="en:Unicore"><span lang="en" dir="auto">Unicore</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="MicroBlaze" data-lang-code="en" data-lang-name="英语" data-foreign-title="MicroBlaze"><span class="ilh-page"><a href="/w/index.php?title=MicroBlaze&amp;action=edit&amp;redlink=1" class="new" title="MicroBlaze（页面不存在）">MicroBlaze</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/MicroBlaze" class="extiw" title="en:MicroBlaze"><span lang="en" dir="auto">MicroBlaze</span></a></span>）</span></span></li>
+<li><a href="/wiki/RISC-V" title="RISC-V">RISC-V</a></li>
+<li><span class="ilh-all" data-orig-title="小个子计算机" data-lang-code="en" data-lang-name="英语" data-foreign-title="Little man computer"><span class="ilh-page"><a href="/w/index.php?title=%E5%B0%8F%E4%B8%AA%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA&amp;action=edit&amp;redlink=1" class="new" title="小个子计算机（页面不存在）">LMC</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Little_man_computer" class="extiw" title="en:Little man computer"><span lang="en" dir="auto">Little man computer</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="指令集列表" data-lang-code="en" data-lang-name="英语" data-foreign-title="List of instruction sets"><span class="ilh-page"><a href="/w/index.php?title=%E6%8C%87%E4%BB%A4%E9%9B%86%E5%88%97%E8%A1%A8&amp;action=edit&amp;redlink=1" class="new" title="指令集列表（页面不存在）">其他</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/List_of_instruction_sets" class="extiw" title="en:List of instruction sets"><span lang="en" dir="auto">List of instruction sets</span></a></span>）</span></span></li></ul>
+</div></td></tr></tbody></table><div></div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E6%8C%87%E4%BB%A4%E5%91%A8%E6%9C%9F" title="指令周期">执行</a></th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0"><tbody><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;"><a href="/wiki/%E6%8C%87%E4%BB%A4%E7%AE%A1%E7%B7%9A%E5%8C%96" title="指令管线化">指令流水线</a></div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%81%9C%E9%A1%BF" title="流水线停顿">流水线停顿</a></li>
+<li><span class="ilh-all" data-orig-title="操作数转发" data-lang-code="en" data-lang-name="英语" data-foreign-title="Operand forwarding"><span class="ilh-page"><a href="/w/index.php?title=%E6%93%8D%E4%BD%9C%E6%95%B0%E8%BD%AC%E5%8F%91&amp;action=edit&amp;redlink=1" class="new" title="操作数转发（页面不存在）">操作数转发</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Operand_forwarding" class="extiw" title="en:Operand forwarding"><span lang="en" dir="auto">Operand forwarding</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="经典 RISC 流水线" data-lang-code="en" data-lang-name="英语" data-foreign-title="Classic RISC pipeline"><span class="ilh-page"><a href="/w/index.php?title=%E7%BB%8F%E5%85%B8_RISC_%E6%B5%81%E6%B0%B4%E7%BA%BF&amp;action=edit&amp;redlink=1" class="new" title="经典 RISC 流水线（页面不存在）">经典 RISC 流水线</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Classic_RISC_pipeline" class="extiw" title="en:Classic RISC pipeline"><span lang="en" dir="auto">Classic RISC pipeline</span></a></span>）</span></span></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;"><a href="/wiki/%E5%86%92%E9%99%A9_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84)" title="冒险 (计算机体系结构)">冒险</a></div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E6%95%B0%E6%8D%AE%E4%BE%9D%E8%B5%96" title="数据依赖">数据依赖</a></li>
+<li><a href="/wiki/%E5%86%92%E9%99%A9_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84)#结构冒险" title="冒险 (计算机体系结构)">结构冒险</a></li>
+<li><a href="/wiki/%E5%86%92%E9%99%A9_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84)#控制冒险（分支冒险）" title="冒险 (计算机体系结构)">控制冒险</a></li>
+<li><span class="ilh-all" data-orig-title="伪共享" data-lang-code="en" data-lang-name="英语" data-foreign-title="False sharing"><span class="ilh-page"><a href="/w/index.php?title=%E4%BC%AA%E5%85%B1%E4%BA%AB&amp;action=edit&amp;redlink=1" class="new" title="伪共享（页面不存在）">伪共享</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/False_sharing" class="extiw" title="en:False sharing"><span lang="en" dir="auto">False sharing</span></a></span>）</span></span></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;"><a href="/wiki/%E4%B9%B1%E5%BA%8F%E6%89%A7%E8%A1%8C" title="乱序执行">乱序执行</a></div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Tomasulo%E7%AE%97%E6%B3%95" title="Tomasulo算法">Tomasulo算法</a>
+<ul><li><a href="/wiki/%E4%BF%9D%E7%95%99%E7%AB%99" title="保留站">保留站</a></li>
+<li><a href="/wiki/%E9%87%8D%E6%8E%92%E5%BA%8F%E7%BC%93%E5%86%B2%E5%8C%BA" title="重排序缓冲区">重排序缓冲区</a></li></ul></li>
+<li><a href="/wiki/%E5%AF%84%E5%AD%98%E5%99%A8%E9%87%8D%E5%91%BD%E5%90%8D" title="寄存器重命名">寄存器重命名</a></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;"><a href="/wiki/%E6%8E%A8%E6%B5%8B%E6%89%A7%E8%A1%8C" title="推测执行">推测执行</a></div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E5%88%86%E6%94%AF%E9%A0%90%E6%B8%AC%E5%99%A8" title="分支预测器">分支预测</a>
+<ul><li><span class="ilh-all" data-orig-title="存储相关性预测" data-lang-code="en" data-lang-name="英语" data-foreign-title="Memory dependence prediction"><span class="ilh-page"><a href="/w/index.php?title=%E5%AD%98%E5%82%A8%E7%9B%B8%E5%85%B3%E6%80%A7%E9%A2%84%E6%B5%8B&amp;action=edit&amp;redlink=1" class="new" title="存储相关性预测（页面不存在）">存储相关性预测</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Memory_dependence_prediction" class="extiw" title="en:Memory dependence prediction"><span lang="en" dir="auto">Memory dependence prediction</span></a></span>）</span></span></li></ul></li></ul>
+</div></td></tr></tbody></table><div></div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97" title="并行计算">并行计算</a></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0"><tbody><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;">并行层次</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E4%BD%8D%E7%BA%A7%E5%B9%B6%E8%A1%8C" class="mw-redirect" title="位级并行">位级并行</a>
+<ul><li><span class="ilh-all" data-orig-title="Bit-serial architecture" data-lang-code="en" data-lang-name="英语" data-foreign-title="Bit-serial architecture"><span class="ilh-page"><a href="/w/index.php?title=Bit-serial_architecture&amp;action=edit&amp;redlink=1" class="new" title="Bit-serial architecture（页面不存在）">位序列</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Bit-serial_architecture" class="extiw" title="en:Bit-serial architecture"><span lang="en" dir="auto">Bit-serial architecture</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E5%AD%97_(%E8%AE%A1%E7%AE%97%E6%9C%BA)" title="字 (计算机)">字</a></li></ul></li>
+<li><a href="/wiki/%E6%8C%87%E4%BB%A4%E7%BA%A7%E5%B9%B6%E8%A1%8C" class="mw-redirect" title="指令级并行">指令级并行</a></li>
+<li><a href="/wiki/%E6%8C%87%E4%BB%A4%E7%AE%A1%E7%B7%9A%E5%8C%96" title="指令管线化">流水线</a>
+<ul><li><a href="/wiki/%E6%A0%87%E9%87%8F%E5%A4%84%E7%90%86%E5%99%A8" title="标量处理器">标量</a></li>
+<li><a href="/wiki/%E6%A0%87%E9%87%8F%E5%A4%84%E7%90%86%E5%99%A8" title="标量处理器">纯量</a></li>
+<li><a href="/wiki/%E8%B6%85%E7%B4%94%E9%87%8F" title="超纯量">超纯量</a></li></ul></li>
+<li><a href="/wiki/%E4%BB%BB%E5%8A%A1%E5%B9%B6%E8%A1%8C" title="任务并行">任务并行</a>
+<ul><li><a href="/wiki/%E7%BA%BF%E7%A8%8B" title="线程">线程</a></li>
+<li><a href="/wiki/%E8%A1%8C%E7%A8%8B" title="行程">进程</a></li></ul></li>
+<li><a href="/wiki/%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%A1%8C" class="mw-redirect" title="数据并行">数据并行</a>
+<ul><li><a href="/wiki/%E5%90%91%E9%87%8F%E5%A4%84%E7%90%86%E5%99%A8" title="向量处理器">向量</a></li></ul></li>
+<li><a href="/wiki/%E8%A8%98%E6%86%B6%E9%AB%94%E5%B1%A4%E7%B4%9A%E5%B9%B3%E8%A1%8C" title="记忆体层级平行">记忆体</a></li>
+<li><a href="/wiki/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97" title="分布式计算">分布式</a></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;">执行绪</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E5%A4%9A%E5%9F%B7%E8%A1%8C%E7%B7%92" class="mw-redirect" title="多执行绪">多执行绪</a></li>
+<li><a href="/wiki/%E5%90%8C%E6%97%B6%E5%A4%9A%E7%BA%BF%E7%A8%8B" title="同时多线程">同时多线程</a>
+<ul><li><a href="/wiki/%E8%B6%85%E5%9F%B7%E8%A1%8C%E7%B7%92" title="超执行绪">超执行绪</a></li></ul></li>
+<li><a href="/wiki/%E8%B6%85%E5%9F%B7%E8%A1%8C%E7%B7%92" title="超执行绪">超执行绪</a></li>
+<li><span class="ilh-all" data-orig-title="超級線程" data-lang-code="en" data-lang-name="英语" data-foreign-title="Super-threading"><span class="ilh-page"><a href="/w/index.php?title=%E8%B6%85%E7%B4%9A%E7%B7%9A%E7%A8%8B&amp;action=edit&amp;redlink=1" class="new" title="超级线程（页面不存在）">超级线程</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Super-threading" class="extiw" title="en:Super-threading"><span lang="en" dir="auto">Super-threading</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="Speculative multithreading" data-lang-code="en" data-lang-name="英语" data-foreign-title="Speculative multithreading"><span class="ilh-page"><a href="/w/index.php?title=Speculative_multithreading&amp;action=edit&amp;redlink=1" class="new" title="Speculative multithreading（页面不存在）">预测多线程</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Speculative_multithreading" class="extiw" title="en:Speculative multithreading"><span lang="en" dir="auto">Speculative multithreading</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E6%8A%A2%E5%8D%A0%E5%BC%8F%E5%A4%9A%E4%BB%BB%E5%8A%A1%E5%A4%84%E7%90%86" title="抢占式多任务处理">抢占式</a></li>
+<li><a href="/wiki/%E5%8D%8F%E4%BD%9C%E5%BC%8F%E5%A4%9A%E4%BB%BB%E5%8A%A1" title="协作式多任务">协作式</a></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;"><a href="/wiki/%E8%B2%BB%E6%9E%97%E5%88%86%E9%A1%9E%E6%B3%95" title="费林分类法">费林分类法</a></div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E5%96%AE%E6%8C%87%E4%BB%A4%E6%B5%81%E5%96%AE%E6%95%B8%E6%93%9A%E6%B5%81" title="单指令流单数据流">单指令流单数据流</a>(SISD)</li>
+<li><a href="/wiki/%E5%8D%95%E6%8C%87%E4%BB%A4%E6%B5%81%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%B5%81" title="单指令流多数据流">单指令流多数据流</a>(SIMD)
+<ul><li><span class="ilh-all" data-orig-title="寄存器内SIMD" data-lang-code="en" data-lang-name="英语" data-foreign-title="SIMD within a register"><span class="ilh-page"><a href="/w/index.php?title=%E5%AF%84%E5%AD%98%E5%99%A8%E5%86%85SIMD&amp;action=edit&amp;redlink=1" class="new" title="寄存器内SIMD（页面不存在）">寄存器内</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/SIMD_within_a_register" class="extiw" title="en:SIMD within a register"><span lang="en" dir="auto">SIMD within a register</span></a></span>）</span></span></li></ul></li>
+<li><span class="ilh-all" data-orig-title="单指令多线程" data-lang-code="en" data-lang-name="英语" data-foreign-title="Single instruction, multiple threads"><span class="ilh-page"><a href="/w/index.php?title=%E5%8D%95%E6%8C%87%E4%BB%A4%E5%A4%9A%E7%BA%BF%E7%A8%8B&amp;action=edit&amp;redlink=1" class="new" title="单指令多线程（页面不存在）">单指令多线程</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_threads" class="extiw" title="en:Single instruction, multiple threads"><span lang="en" dir="auto">Single instruction, multiple threads</span></a></span>）</span></span>(SIMT)</li>
+<li><a href="/wiki/%E5%A4%9A%E6%8C%87%E4%BB%A4%E6%B5%81%E5%96%AE%E6%95%B8%E6%93%9A%E6%B5%81" title="多指令流单数据流">多指令流单数据流</a>(MISD)</li>
+<li><a href="/wiki/%E5%A4%9A%E6%8C%87%E4%BB%A4%E6%B5%81%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%B5%81" title="多指令流多数据流">多指令流多数据流</a>(MIMD)
+<ul><li><span class="ilh-all" data-orig-title="单程序多数据" data-lang-code="en" data-lang-name="英语" data-foreign-title="SPMD"><span class="ilh-page"><a href="/w/index.php?title=%E5%8D%95%E7%A8%8B%E5%BA%8F%E5%A4%9A%E6%95%B0%E6%8D%AE&amp;action=edit&amp;redlink=1" class="new" title="单程序多数据（页面不存在）">单程序多数据</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/SPMD" class="extiw" title="en:SPMD"><span lang="en" dir="auto">SPMD</span></a></span>）</span></span></li></ul></li></ul>
+</div></td></tr></tbody></table><div></div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E9%9B%BB%E8%85%A6%E6%80%A7%E8%83%BD" title="电脑性能">电脑性能</a></th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E6%99%B6%E9%AB%94%E7%AE%A1%E6%95%B8%E9%87%8F" title="晶体管数量">晶体管数量</a></li>
+<li><a href="/wiki/%E6%AF%8F%E5%91%A8%E6%9C%9F%E6%8C%87%E4%BB%A4" title="每周期指令">每周期指令</a>(IPC)
+<ul><li><a href="/wiki/%E6%AF%8F%E6%8C%87%E4%BB%A4%E5%91%A8%E6%9C%9F" class="mw-redirect" title="每指令周期">每指令周期</a>(CPI)</li></ul></li>
+<li><a href="/wiki/%E6%AF%8F%E7%A7%92%E6%8C%87%E4%BB%A4" title="每秒指令">每秒指令</a>(IPS)</li>
+<li><a href="/wiki/%E6%AF%8F%E7%A7%92%E6%B5%AE%E9%BB%9E%E9%81%8B%E7%AE%97%E6%AC%A1%E6%95%B8" title="每秒浮点运算次数">每秒浮点运算次数</a>(FLOPS)</li>
+<li><a href="/wiki/%E6%AF%8F%E7%A7%92%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E9%87%8F" title="每秒事务处理量">每秒事务处理量</a> (TPS)</li>
+<li><a href="/wiki/%E6%95%88%E8%83%BD%E5%8A%9F%E8%80%97%E6%AF%94" title="效能功耗比">效能功耗比</a>(PPW)</li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group">类别</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8" title="中央处理器">中央处理器</a>(CPU)</li>
+<li><a href="/wiki/%E5%9C%96%E5%BD%A2%E8%99%95%E7%90%86%E5%99%A8" title="图形处理器">图形处理器</a>(GPU)
+<ul><li><a href="/wiki/%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%99%A8%E9%80%9A%E7%94%A8%E8%AE%A1%E7%AE%97" title="图形处理器通用计算">图形处理器通用计算</a>(GPGPU)</li></ul></li>
+<li><a href="/wiki/%E5%90%91%E9%87%8F%E5%A4%84%E7%90%86%E5%99%A8" title="向量处理器">向量处理器</a></li>
+<li><span class="ilh-all" data-orig-title="Barrel processor" data-lang-code="en" data-lang-name="英语" data-foreign-title="Barrel processor"><span class="ilh-page"><a href="/w/index.php?title=Barrel_processor&amp;action=edit&amp;redlink=1" class="new" title="Barrel processor（页面不存在）">桶状</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Barrel_processor" class="extiw" title="en:Barrel processor"><span lang="en" dir="auto">Barrel processor</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E4%B8%B2%E6%B5%81%E8%99%95%E7%90%86" title="串流处理">串流处理</a></li>
+<li><a href="/wiki/%E8%BC%94%E5%8A%A9%E8%99%95%E7%90%86%E5%99%A8" title="辅助处理器">辅助处理器</a></li>
+<li><a href="/wiki/%E7%89%B9%E6%AE%8A%E6%87%89%E7%94%A8%E7%A9%8D%E9%AB%94%E9%9B%BB%E8%B7%AF" title="特殊应用积体电路">特殊应用积体电路</a>(ASIC)</li>
+<li><a href="/wiki/%E7%8E%B0%E5%9C%BA%E5%8F%AF%E7%BC%96%E7%A8%8B%E9%80%BB%E8%BE%91%E9%97%A8%E9%98%B5%E5%88%97" title="现场可编程逻辑门阵列">现场可编程逻辑门阵列</a>(FPGA)</li>
+<li><a href="/wiki/%E8%A4%87%E9%9B%9C%E5%8F%AF%E7%A8%8B%E5%BC%8F%E5%8C%96%E9%82%8F%E8%BC%AF%E8%A3%9D%E7%BD%AE" title="复杂可程式化逻辑装置">复杂可程式化逻辑装置</a>(CPLD)</li>
+<li><a href="/wiki/%E5%A4%9A%E6%99%B6%E7%89%87%E6%A8%A1%E7%B5%84" title="多晶片模组">多晶片模组</a>(MCM)</li>
+<li><a href="/wiki/%E5%B0%81%E8%A3%9D%E9%AB%94%E7%B3%BB" title="封装体系">封装体系</a>(SiP)</li></ul>
+</div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0"><tbody><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;">按应用</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8" title="微处理器">微处理器</a></li>
+<li><a href="/wiki/%E5%96%AE%E7%89%87%E6%A9%9F" class="mw-redirect" title="单片机">单片机</a>(MCU)</li>
+<li><span class="ilh-all" data-orig-title="Mobile processor" data-lang-code="en" data-lang-name="英语" data-foreign-title="Mobile processor"><span class="ilh-page"><a href="/w/index.php?title=Mobile_processor&amp;action=edit&amp;redlink=1" class="new" title="Mobile processor（页面不存在）">移动处理器</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Mobile_processor" class="extiw" title="en:Mobile processor"><span lang="en" dir="auto">Mobile processor</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="Notebook processor" data-lang-code="en" data-lang-name="英语" data-foreign-title="Notebook processor"><span class="ilh-page"><a href="/w/index.php?title=Notebook_processor&amp;action=edit&amp;redlink=1" class="new" title="Notebook processor（页面不存在）">笔记本电脑处理器</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Notebook_processor" class="extiw" title="en:Notebook processor"><span lang="en" dir="auto">Notebook processor</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="Ultra-low-voltage processor" data-lang-code="en" data-lang-name="英语" data-foreign-title="Ultra-low-voltage processor"><span class="ilh-page"><a href="/w/index.php?title=Ultra-low-voltage_processor&amp;action=edit&amp;redlink=1" class="new" title="Ultra-low-voltage processor（页面不存在）">超低电压</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Ultra-low-voltage_processor" class="extiw" title="en:Ultra-low-voltage processor"><span lang="en" dir="auto">Ultra-low-voltage processor</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E4%B8%93%E7%94%A8%E6%8C%87%E4%BB%A4%E9%9B%86%E5%A4%84%E7%90%86%E5%99%A8" title="专用指令集处理器">专用指令集处理器</a>(ASIP)</li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;">片上系统</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E5%8D%95%E7%89%87%E7%B3%BB%E7%BB%9F" title="单片系统">片上系统</a>(SoC)</li>
+<li><span class="ilh-all" data-orig-title="多处理器片上系统" data-lang-code="en" data-lang-name="英语" data-foreign-title="Multi-processor system-on-chip"><span class="ilh-page"><a href="/w/index.php?title=%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%89%87%E4%B8%8A%E7%B3%BB%E7%BB%9F&amp;action=edit&amp;redlink=1" class="new" title="多处理器片上系统（页面不存在）">多处理器片上系统</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Multi-processor_system-on-chip" class="extiw" title="en:Multi-processor system-on-chip"><span lang="en" dir="auto">Multi-processor system-on-chip</span></a></span>）</span></span>(MPSoC)</li>
+<li><a href="/wiki/%E5%8F%AF%E7%BC%96%E7%A8%8B%E7%89%87%E4%B8%8A%E7%B3%BB%E7%BB%9F" title="可编程片上系统">可编程片上系统</a>(PSoC)</li>
+<li><span class="ilh-all" data-orig-title="片上网络" data-lang-code="en" data-lang-name="英语" data-foreign-title="Network on a chip"><span class="ilh-page"><a href="/w/index.php?title=%E7%89%87%E4%B8%8A%E7%BD%91%E7%BB%9C&amp;action=edit&amp;redlink=1" class="new" title="片上网络（页面不存在）">片上网络</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Network_on_a_chip" class="extiw" title="en:Network on a chip"><span lang="en" dir="auto">Network on a chip</span></a></span>）</span></span>(NoC)</li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;"><a href="/wiki/%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F" title="硬件加速">硬件加速</a></div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8A%A0%E9%80%9F%E5%99%A8" title="人工智能加速器">人工智能加速器</a></li>
+<li><span class="ilh-all" data-orig-title="视觉处理单元" data-lang-code="en" data-lang-name="英语" data-foreign-title="Vision processing unit"><span class="ilh-page"><a href="/w/index.php?title=%E8%A7%86%E8%A7%89%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83&amp;action=edit&amp;redlink=1" class="new" title="视觉处理单元（页面不存在）">视觉处理单元</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Vision_processing_unit" class="extiw" title="en:Vision processing unit"><span lang="en" dir="auto">Vision processing unit</span></a></span>）</span></span>(VPU)</li>
+<li><a href="/wiki/%E7%89%A9%E7%90%86%E8%99%95%E7%90%86%E5%99%A8" title="物理处理器">物理处理器</a>(PPU)</li>
+<li><a href="/wiki/%E6%95%B8%E4%BD%8D%E8%A8%8A%E8%99%9F%E8%99%95%E7%90%86%E5%99%A8" title="数位讯号处理器">数位讯号处理器</a>(DSP)</li>
+<li><a href="/wiki/%E5%BC%A0%E9%87%8F%E5%A4%84%E7%90%86%E5%99%A8" class="mw-redirect" title="张量处理器">张量处理器</a>(TPU)</li>
+<li><a href="/wiki/%E5%AE%89%E5%85%A8%E5%8A%A0%E5%AF%86%E5%8D%94%E8%99%95%E7%90%86%E5%99%A8" title="安全加密协处理器">安全加密协处理器</a></li>
+<li><a href="/wiki/%E7%BD%91%E7%BB%9C%E5%A4%84%E7%90%86%E5%99%A8" title="网络处理器">网络处理器</a></li>
+<li><a href="/wiki/%E5%9F%BA%E9%A0%BB%E8%99%95%E7%90%86%E5%99%A8" title="基频处理器">基频处理器</a></li></ul>
+</div></td></tr></tbody></table><div>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E5%AD%97_(%E8%AE%A1%E7%AE%97%E6%9C%BA)" title="字 (计算机)">字长</a></th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/1%E4%BD%8D%E5%85%83" title="1位元">1位</a></li>
+<li><a href="/wiki/4%E4%BD%8D%E5%85%83" title="4位元">4位元</a></li>
+<li><a href="/wiki/8%E4%BD%8D%E5%85%83" title="8位元">8位元</a></li>
+<li><a href="/wiki/12%E4%BD%8D%E5%85%83" title="12位元">12位元</a></li>
+<li><a href="/wiki/%E9%98%BF%E6%B3%A2%E7%BD%97%E5%88%B6%E5%AF%BC%E8%AE%A1%E7%AE%97%E6%9C%BA" title="阿波罗制导计算机">15位</a></li>
+<li><a href="/wiki/16%E4%BD%8D%E5%85%83" title="16位元">16位元</a></li>
+<li><span class="ilh-all" data-orig-title="24位元" data-lang-code="en" data-lang-name="英语" data-foreign-title="24-bit computing"><span class="ilh-page"><a href="/w/index.php?title=24%E4%BD%8D%E5%85%83&amp;action=edit&amp;redlink=1" class="new" title="24位元（页面不存在）">24位元</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/24-bit_computing" class="extiw" title="en:24-bit computing"><span lang="en" dir="auto">24-bit computing</span></a></span>）</span></span></li>
+<li><a href="/wiki/32%E4%BD%8D%E5%85%83" title="32位元">32位元</a></li>
+<li><span class="ilh-all" data-orig-title="48位元" data-lang-code="en" data-lang-name="英语" data-foreign-title="48-bit computing"><span class="ilh-page"><a href="/w/index.php?title=48%E4%BD%8D%E5%85%83&amp;action=edit&amp;redlink=1" class="new" title="48位元（页面不存在）">48位元</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/48-bit_computing" class="extiw" title="en:48-bit computing"><span lang="en" dir="auto">48-bit computing</span></a></span>）</span></span></li>
+<li><a href="/wiki/64%E4%BD%8D%E5%85%83" title="64位元">64位元</a></li>
+<li><a href="/wiki/128%E4%BD%8D%E5%85%83" title="128位元">128位元</a></li>
+<li><a href="/wiki/256%E4%BD%8D%E5%85%83" title="256位元">256位</a></li>
+<li><span class="ilh-all" data-orig-title="位元分割" data-lang-code="en" data-lang-name="英语" data-foreign-title="bit slicing"><span class="ilh-page"><a href="/w/index.php?title=%E4%BD%8D%E5%85%83%E5%88%86%E5%89%B2&amp;action=edit&amp;redlink=1" class="new" title="位元分割（页面不存在）">位元分割</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/bit_slicing" class="extiw" title="en:bit slicing"><span lang="en" dir="auto">bit slicing</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E5%AD%97_(%E8%AE%A1%E7%AE%97%E6%9C%BA)#字长表" title="字 (计算机)">其他</a>
+<ul><li><a href="/wiki/%E5%AD%97_(%E8%AE%A1%E7%AE%97%E6%9C%BA)" title="字 (计算机)">可变字长</a></li></ul></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group">核心数量</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><span class="ilh-all" data-orig-title="单核" data-lang-code="en" data-lang-name="英语" data-foreign-title="Single-core"><span class="ilh-page"><a href="/wiki/%E5%96%AE%E6%A0%B8" class="mw-redirect" title="单核">单核</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Single-core" class="extiw" title="en:Single-core"><span lang="en" dir="auto">Single-core</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E5%A4%9A%E6%A0%B8%E5%BF%83%E8%99%95%E7%90%86%E5%99%A8" title="多核心处理器">多核</a></li>
+<li><span class="ilh-all" data-orig-title="众核处理器" data-lang-code="en" data-lang-name="英语" data-foreign-title="Manycore processor"><span class="ilh-page"><a href="/w/index.php?title=%E4%BC%97%E6%A0%B8%E5%A4%84%E7%90%86%E5%99%A8&amp;action=edit&amp;redlink=1" class="new" title="众核处理器（页面不存在）">众核</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Manycore_processor" class="extiw" title="en:Manycore processor"><span lang="en" dir="auto">Manycore processor</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E5%BC%82%E6%9E%84%E8%AE%A1%E7%AE%97" title="异构计算">异构</a></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group">组件</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8" title="中央处理器">核心</a></li>
+<li><a href="/wiki/%E7%BC%93%E5%AD%98" title="缓存">缓存</a>
+<ul><li><a href="/wiki/CPU%E7%BC%93%E5%AD%98" title="CPU缓存">CPU缓存</a></li>
+<li><a href="/wiki/%E5%BF%AB%E5%8F%96%E6%96%87%E4%BB%B6%E7%BD%AE%E6%8F%9B%E6%A9%9F%E5%88%B6" title="快取文件置换机制">置换机制</a></li>
+<li><a href="/wiki/%E5%BF%AB%E5%8F%96%E4%B8%80%E8%87%B4%E6%80%A7" title="快取一致性">一致性</a></li></ul></li>
+<li><a href="/wiki/%E6%80%BB%E7%BA%BF" title="总线">总线</a></li>
+<li><a href="/wiki/%E6%97%B6%E9%92%9F%E9%A2%91%E7%8E%87" title="时钟频率">时钟频率</a></li>
+<li><a href="/wiki/%E5%AE%9A%E6%99%82%E5%99%A8%E8%A8%8A%E8%99%9F" title="定时器讯号">定时器讯号</a></li>
+<li><a href="/wiki/%E5%85%88%E9%80%B2%E5%85%88%E5%87%BA%E6%BC%94%E7%AE%97%E6%B3%95" title="先进先出演算法">先进先出演算法</a>(FIFO)</li></ul>
+</div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0"><tbody><tr><th scope="row" class="navbox-group"><a href="/wiki/%E6%89%A7%E8%A1%8C%E5%8D%95%E5%85%83" title="执行单元">功能单元</a></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E7%AE%97%E8%A1%93%E9%82%8F%E8%BC%AF%E5%96%AE%E5%85%83" title="算术逻辑单元">算术逻辑单元</a>(ALU)</li>
+<li><a href="/wiki/%E5%9C%B0%E5%9D%80%E7%94%9F%E6%88%90%E5%8D%95%E5%85%83" title="地址生成单元">地址生成单元</a>(AGU)</li>
+<li><a href="/wiki/%E6%B5%AE%E7%82%B9%E8%BF%90%E7%AE%97%E5%99%A8" title="浮点运算器">浮点运算器</a>(FPU)</li>
+<li><a href="/wiki/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83" title="内存管理单元">内存管理单元</a>(MMU)
+<ul><li><span class="ilh-all" data-orig-title="载入-存储单元" data-lang-code="en" data-lang-name="英语" data-foreign-title="Load–store unit"><span class="ilh-page"><a href="/w/index.php?title=%E8%BD%BD%E5%85%A5-%E5%AD%98%E5%82%A8%E5%8D%95%E5%85%83&amp;action=edit&amp;redlink=1" class="new" title="载入-存储单元（页面不存在）">载入-存储单元</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Load%E2%80%93store_unit" class="extiw" title="en:Load–store unit"><span lang="en" dir="auto">Load–store unit</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E8%BD%89%E8%AD%AF%E5%BE%8C%E5%82%99%E7%B7%A9%E8%A1%9D%E5%8D%80" title="转译后备缓冲区">转译后备缓冲区</a>(TLB)</li></ul></li>
+<li><a href="/wiki/%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6%E5%99%A8" title="内存控制器">内存控制器</a>(IMC)</li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E9%82%8F%E8%BC%AF%E9%96%98" title="逻辑闸">逻辑闸</a></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF" title="组合逻辑电路">组合逻辑电路</a></li>
+<li><a href="/wiki/%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF" title="时序逻辑电路">时序逻辑电路</a></li>
+<li><span class="ilh-all" data-orig-title="胶合逻辑" data-lang-code="en" data-lang-name="英语" data-foreign-title="Glue logic"><span class="ilh-page"><a href="/w/index.php?title=%E8%83%B6%E5%90%88%E9%80%BB%E8%BE%91&amp;action=edit&amp;redlink=1" class="new" title="胶合逻辑（页面不存在）">Glue</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Glue_logic" class="extiw" title="en:Glue logic"><span lang="en" dir="auto">Glue logic</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E9%82%8F%E8%BC%AF%E9%96%98" title="逻辑闸">逻辑闸</a>
+<ul><li><a href="/wiki/%E9%87%8F%E5%AD%90%E9%96%98" title="量子闸">量子闸</a></li>
+<li><span class="ilh-all" data-orig-title="逻辑门阵列" data-lang-code="en" data-lang-name="英语" data-foreign-title="Gate array"><span class="ilh-page"><a href="/w/index.php?title=%E9%80%BB%E8%BE%91%E9%97%A8%E9%98%B5%E5%88%97&amp;action=edit&amp;redlink=1" class="new" title="逻辑门阵列（页面不存在）">逻辑门阵列</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Gate_array" class="extiw" title="en:Gate array"><span lang="en" dir="auto">Gate array</span></a></span>）</span></span></li></ul></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E7%A1%AC%E9%AB%94%E6%9A%AB%E5%AD%98%E5%99%A8" title="硬体暂存器">寄存器</a></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E5%AF%84%E5%AD%98%E5%99%A8" title="寄存器">寄存器</a></li>
+<li><span class="ilh-all" data-orig-title="状态寄存器" data-lang-code="en" data-lang-name="英语" data-foreign-title="Status register"><span class="ilh-page"><a href="/w/index.php?title=%E7%8A%B6%E6%80%81%E5%AF%84%E5%AD%98%E5%99%A8&amp;action=edit&amp;redlink=1" class="new" title="状态寄存器（页面不存在）">状态寄存器</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Status_register" class="extiw" title="en:Status register"><span lang="en" dir="auto">Status register</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="栈寄存器" data-lang-code="en" data-lang-name="英语" data-foreign-title="Stack register"><span class="ilh-page"><a href="/w/index.php?title=%E6%A0%88%E5%AF%84%E5%AD%98%E5%99%A8&amp;action=edit&amp;redlink=1" class="new" title="栈寄存器（页面不存在）">栈寄存器</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Stack_register" class="extiw" title="en:Stack register"><span lang="en" dir="auto">Stack register</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E5%AF%84%E5%AD%98%E5%99%A8%E5%A0%86" title="寄存器堆">寄存器堆</a></li>
+<li><a href="/wiki/%E8%A8%98%E6%86%B6%E9%AB%94%E8%B3%87%E6%96%99%E5%AF%84%E5%AD%98%E5%99%A8" title="记忆体资料寄存器">记忆体缓冲区</a></li>
+<li><a href="/wiki/%E7%A8%8B%E5%BC%8F%E8%A8%88%E6%95%B8%E5%99%A8" title="程式计数器">程式计数器</a></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E6%80%BB%E7%BA%BF" title="总线">总线</a></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E4%BD%8D%E5%9D%80%E5%8C%AF%E6%B5%81%E6%8E%92" title="位址汇流排">位址汇流排</a></li>
+<li><a href="/wiki/%E6%8E%A7%E5%88%B6%E5%8C%AF%E6%B5%81%E6%8E%92" title="控制汇流排">控制汇流排</a></li>
+<li><a href="/wiki/%E5%BE%8C%E7%AB%AF%E5%8C%AF%E6%B5%81%E6%8E%92" title="后端汇流排">后端总线</a></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group">控制单元</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><span class="ilh-all" data-orig-title="Instruction unit" data-lang-code="en" data-lang-name="英语" data-foreign-title="Instruction unit"><span class="ilh-page"><a href="/w/index.php?title=Instruction_unit&amp;action=edit&amp;redlink=1" class="new" title="Instruction unit（页面不存在）">指令单元</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Instruction_unit" class="extiw" title="en:Instruction unit"><span lang="en" dir="auto">Instruction unit</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E7%B7%A9%E8%A1%9D%E5%99%A8" title="缓冲器">缓冲器</a></li>
+<li><span class="ilh-all" data-orig-title="Write buffer" data-lang-code="en" data-lang-name="英语" data-foreign-title="Write buffer"><span class="ilh-page"><a href="/w/index.php?title=Write_buffer&amp;action=edit&amp;redlink=1" class="new" title="Write buffer（页面不存在）">写入缓冲区</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Write_buffer" class="extiw" title="en:Write buffer"><span lang="en" dir="auto">Write buffer</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E5%BE%AE%E7%A8%8B%E5%BA%8F" title="微程序">微程序</a><a href="/wiki/ROM%E9%95%9C%E5%83%8F" title="ROM镜像">ROM</a></li>
+<li><a href="/wiki/%E8%AE%A1%E6%95%B0%E5%99%A8" title="计数器">计数器</a></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E6%95%B0%E6%8D%AE%E8%B7%AF%E5%BE%84" title="数据路径">数据路径</a></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E6%95%B0%E6%8D%AE%E9%80%89%E6%8B%A9%E5%99%A8" title="数据选择器">数据选择器</a></li>
+<li><a href="/wiki/%E6%95%B0%E6%8D%AE%E9%80%89%E6%8B%A9%E5%99%A8" title="数据选择器">数据分配器</a></li>
+<li><a href="/wiki/%E5%8A%A0%E6%B3%95%E5%99%A8" title="加法器">加法器</a></li>
+<li><a href="/wiki/%E4%B9%98%E6%B3%95%E5%99%A8" title="乘法器">乘法器</a>
+<ul><li><a href="/wiki/%E5%80%8D%E9%A0%BB%E5%99%A8" title="倍频器">CPU倍频器</a></li></ul></li>
+<li><a href="/wiki/%E8%AF%91%E7%A0%81%E5%99%A8" title="译码器">译码器</a>
+<ul><li><span class="ilh-all" data-orig-title="Address decoder" data-lang-code="en" data-lang-name="英语" data-foreign-title="Address decoder"><span class="ilh-page"><a href="/w/index.php?title=Address_decoder&amp;action=edit&amp;redlink=1" class="new" title="Address decoder（页面不存在）">地址解码器</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Address_decoder" class="extiw" title="en:Address decoder"><span lang="en" dir="auto">Address decoder</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="加和寻址解码器" data-lang-code="en" data-lang-name="英语" data-foreign-title="Sum addressed decoder"><span class="ilh-page"><a href="/w/index.php?title=%E5%8A%A0%E5%92%8C%E5%AF%BB%E5%9D%80%E8%A7%A3%E7%A0%81%E5%99%A8&amp;action=edit&amp;redlink=1" class="new" title="加和寻址解码器（页面不存在）">加和寻址解码器</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Sum_addressed_decoder" class="extiw" title="en:Sum addressed decoder"><span lang="en" dir="auto">Sum addressed decoder</span></a></span>）</span></span></li></ul></li>
+<li><a href="/wiki/%E6%A1%B6%E5%BC%8F%E7%A7%BB%E4%BD%8D%E5%99%A8" title="桶式移位器">桶式移位器</a></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E9%9B%BB%E5%AD%90%E9%9B%BB%E8%B7%AF" title="电子电路">电路</a></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF" title="集成电路">集成电路</a>
+<ul><li><a href="/wiki/%E4%B8%89%E7%B6%AD%E6%99%B6%E7%89%87" title="三维晶片">3D</a></li>
+<li><a href="/wiki/%E6%B7%B7%E5%90%88%E8%A8%8A%E8%99%9F%E7%A9%8D%E9%AB%94%E9%9B%BB%E8%B7%AF" title="混合讯号积体电路">混合讯号</a></li>
+<li><a href="/wiki/%E9%9B%BB%E6%BA%90%E7%AE%A1%E7%90%86IC" title="电源管理IC">电源管理</a></li></ul></li>
+<li><span class="ilh-all" data-orig-title="布尔电路" data-lang-code="en" data-lang-name="英语" data-foreign-title="Boolean circuit"><span class="ilh-page"><a href="/w/index.php?title=%E5%B8%83%E5%B0%94%E7%94%B5%E8%B7%AF&amp;action=edit&amp;redlink=1" class="new" title="布尔电路（页面不存在）">布尔</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Boolean_circuit" class="extiw" title="en:Boolean circuit"><span lang="en" dir="auto">Boolean circuit</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF" title="数字电路">数字</a></li>
+<li><a href="/wiki/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF" title="模拟电路">模拟</a></li>
+<li><a href="/wiki/%E9%87%8F%E5%AD%90%E7%B7%9A%E8%B7%AF" title="量子线路">量子</a></li>
+<li><a href="/wiki/%E9%96%8B%E9%97%9C" title="开关">开关</a></li></ul>
+</div></td></tr></tbody></table><div>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86" title="电源管理">电源管理</a></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><span class="ilh-all" data-orig-title="电源管理单元" data-lang-code="en" data-lang-name="英语" data-foreign-title="Power Management Unit"><span class="ilh-page"><a href="/w/index.php?title=%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86%E5%8D%95%E5%85%83&amp;action=edit&amp;redlink=1" class="new" title="电源管理单元（页面不存在）">电源管理单元</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Power_Management_Unit" class="extiw" title="en:Power Management Unit"><span lang="en" dir="auto">Power Management Unit</span></a></span>）</span></span>(PMU)</li>
+<li><a href="/wiki/%E9%AB%98%E7%BA%A7%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86" title="高级电源管理">高级电源管理</a></li>
+<li><a href="/wiki/%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%94%B5%E6%BA%90%E6%8E%A5%E5%8F%A3" title="高级配置与电源接口">高级配置与电源接口</a>(ACPI)</li>
+<li><a href="/wiki/%E5%8B%95%E6%85%8B%E6%99%82%E8%84%88%E8%AA%BF%E6%95%B4" class="mw-redirect" title="动态时脉调整">动态频率调整</a></li>
+<li><a href="/wiki/%E5%8A%A8%E6%80%81%E7%94%B5%E5%8E%8B%E8%B0%83%E8%8A%82" title="动态电压调节">动态电压调节</a></li>
+<li><a href="/wiki/%E6%97%B6%E9%92%9F%E9%97%A8%E6%8E%A7" title="时钟门控">时钟门控</a></li>
+<li><a href="/wiki/%E6%95%88%E8%83%BD%E5%8A%9F%E8%80%97%E6%AF%94" title="效能功耗比">效能功耗比</a>(PPW)</li>
+<li><span class="ilh-all" data-orig-title="空闲竞争" data-lang-code="en" data-lang-name="英语" data-foreign-title="Race to sleep"><span class="ilh-page"><a href="/w/index.php?title=%E7%A9%BA%E9%97%B2%E7%AB%9E%E4%BA%89&amp;action=edit&amp;redlink=1" class="new" title="空闲竞争（页面不存在）">空闲竞争</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Race_to_sleep" class="extiw" title="en:Race to sleep"><span lang="en" dir="auto">Race to sleep</span></a></span>）</span></span></li></ul>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group">相关内容</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><span class="ilh-all" data-orig-title="通用CPU的历史" data-lang-code="en" data-lang-name="英语" data-foreign-title="History of general-purpose CPUs"><span class="ilh-page"><a href="/w/index.php?title=%E9%80%9A%E7%94%A8CPU%E7%9A%84%E5%8E%86%E5%8F%B2&amp;action=edit&amp;redlink=1" class="new" title="通用CPU的历史（页面不存在）">通用CPU历史</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/History_of_general-purpose_CPUs" class="extiw" title="en:History of general-purpose CPUs"><span lang="en" dir="auto">History of general-purpose CPUs</span></a></span>）</span></span></li>
+<li><span class="ilh-all" data-orig-title="微处理器年代表" data-lang-code="en" data-lang-name="英语" data-foreign-title="Microprocessor chronology"><span class="ilh-page"><a href="/w/index.php?title=%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8%E5%B9%B4%E4%BB%A3%E8%A1%A8&amp;action=edit&amp;redlink=1" class="new" title="微处理器年代表（页面不存在）">微处理器年代表</a></span><span class="noprint ilh-comment">（<span class="ilh-lang">英语</span><span class="ilh-colon">：</span><span class="ilh-link"><a href="https://en.wikipedia.org/wiki/Microprocessor_chronology" class="extiw" title="en:Microprocessor chronology"><span lang="en" dir="auto">Microprocessor chronology</span></a></span>）</span></span></li>
+<li><a href="/wiki/%E5%A4%84%E7%90%86%E5%99%A8%E8%AE%BE%E8%AE%A1" title="处理器设计">处理器设计</a></li>
+<li><a href="/wiki/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF" title="数字电路">数字电路</a></li>
+<li><a href="/wiki/%E7%A1%AC%E4%BB%B6%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9D%97" title="硬件安全模块">硬件安全模块</a></li>
+<li><a href="/wiki/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E5%88%B6%E9%80%A0" title="半导体器件制造">半导体制造</a></li>
+<li><a href="/wiki/Intel_Tick-Tock" title="Intel Tick-Tock">Tick-Tock</a></li></ul>
+</div></td></tr></tbody></table></td></tr></tbody></table>
+<table cellspacing="0" class="navbox" style="border-spacing:0"><tbody><tr><td style="padding:2px"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tbody><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view"><a href="/wiki/Template:%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF" title="Template:数字电路"><abbr title="查看该模板" style=";;background:none transparent;border:none;">查</abbr></a></li><li class="nv-talk"><a href="/wiki/Template_talk:%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF" title="Template talk:数字电路"><abbr title="讨论该模板" style=";;background:none transparent;border:none;">论</abbr></a></li><li class="nv-edit"><a class="external text" href="https://zh.wikipedia.org/w/index.php?title=Template:%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF&amp;action=edit"><abbr title="编辑该模板" style=";;background:none transparent;border:none;">编</abbr></a></li></ul></div><div style="font-size:110%"><a href="/wiki/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF" title="数字电路">数字电路</a></div></th></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group">概念</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"><a href="/wiki/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7" title="数字信号">数字信号</a> · <span class="nowrap"><a href="/wiki/%E5%B8%83%E5%B0%94%E4%BB%A3%E6%95%B0" title="布尔代数">布尔代数</a> ·</span> <span class="nowrap"><a href="/wiki/%E9%96%8B%E9%97%9C" title="开关">开关</a> ·</span> <span class="nowrap"><a href="/wiki/%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF" title="组合逻辑电路">组合逻辑电路</a> ·</span> <span class="nowrap"><a href="/wiki/%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF" title="时序逻辑电路">时序逻辑电路</a>（<a href="/wiki/%E5%90%8C%E6%AD%A5%E9%9B%BB%E8%B7%AF" title="同步电路">同步</a> ·</span> <span class="nowrap"><a href="/wiki/%E9%9D%9E%E5%90%8C%E6%AD%A5%E9%9B%BB%E8%B7%AF" title="非同步电路">异步</a>） ·</span> <span class="nowrap"><a href="/wiki/%E7%9C%9F%E5%80%BC%E8%A1%A8" title="真值表">真值表</a> ·</span> <span class="nowrap"><a href="/wiki/%E5%8D%A1%E8%AF%BA%E5%9B%BE" title="卡诺图">卡诺图</a> ·</span> <span class="nowrap"><a class="mw-selflink selflink">有限状态机</a>（<a href="/wiki/%E7%B1%B3%E5%88%A9%E5%9E%8B%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" title="米利型有限状态机">米利机</a> ·</span> <span class="nowrap"><a href="/wiki/%E6%91%A9%E5%B0%94%E5%9E%8B%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" title="摩尔型有限状态机">摩尔机</a>）</span></div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group">硬件模块</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"><a href="/wiki/%E9%82%8F%E8%BC%AF%E9%96%98" title="逻辑闸">逻辑闸</a>（<a href="/wiki/%E4%B8%8E%E9%97%A8" title="与门">与</a> · <span class="nowrap"><a href="/wiki/%E6%88%96%E9%97%A8" title="或门">或</a> ·</span> <span class="nowrap"><a href="/wiki/%E5%8F%8D%E7%9B%B8%E5%99%A8" title="反相器">非</a> ·</span> <span class="nowrap"><a href="/wiki/%E7%B7%A9%E8%A1%9D%E9%96%98" title="缓冲闸">同</a> ·</span> <span class="nowrap"><a href="/wiki/%E4%B8%8E%E9%9D%9E%E9%97%A8" title="与非门">与非</a> ·</span> <span class="nowrap"><a href="/wiki/%E6%88%96%E9%9D%9E%E9%97%A8" title="或非门">或非</a> ·</span> <span class="nowrap"><a href="/wiki/%E5%BC%82%E6%88%96%E9%97%A8" title="异或门">异或</a> ·</span> <span class="nowrap"><a href="/wiki/%E5%90%8C%E6%88%96%E9%97%A8" title="同或门">同或</a> ·</span> <span class="nowrap"><a href="/wiki/%E8%98%8A%E5%90%AB%E9%96%98" title="蕴含闸">蕴含</a>） ·</span> <span class="nowrap"><a href="/wiki/%E9%9B%BB%E6%99%B6%E9%AB%94%EF%BC%8D%E9%9B%BB%E6%99%B6%E9%AB%94%E9%82%8F%E8%BC%AF" title="电晶体－电晶体逻辑">TTL</a> ·</span> <span class="nowrap"><a href="/wiki/CMOS" class="mw-redirect" title="CMOS">CMOS</a> ·</span> <span class="nowrap"><a href="/wiki/%E5%8A%A0%E6%B3%95%E5%99%A8" title="加法器">加法器</a> ·</span> <span class="nowrap"><a href="/wiki/%E4%B9%98%E6%B3%95%E5%99%A8" title="乘法器">乘法器</a> ·</span> <span class="nowrap"><a href="/wiki/%E4%BC%98%E5%85%88%E7%BC%96%E7%A0%81%E5%99%A8" title="优先编码器">编码器</a> ·</span> <span class="nowrap"><a href="/wiki/%E8%AF%91%E7%A0%81%E5%99%A8" title="译码器">译码器</a> ·</span> <span class="nowrap"><a href="/wiki/%E6%95%B0%E6%8D%AE%E9%80%89%E6%8B%A9%E5%99%A8" title="数据选择器">数据选择器</a> ·</span> <span class="nowrap"><a href="/wiki/%E9%94%81%E5%AD%98%E5%99%A8" title="锁存器">锁存器</a> ·</span> <span class="nowrap"><a href="/wiki/%E5%AF%84%E5%AD%98%E5%99%A8" title="寄存器">寄存器</a> ·</span> <span class="nowrap"><a href="/wiki/%E8%A7%A6%E5%8F%91%E5%99%A8" title="触发器">触发器</a>（<a href="/wiki/%E8%A7%A6%E5%8F%91%E5%99%A8#D触发器" title="触发器">D</a> ·</span> <span class="nowrap"><a href="/wiki/%E8%A7%A6%E5%8F%91%E5%99%A8#T触发器" title="触发器">T</a> ·</span> <span class="nowrap"><a href="/wiki/%E8%A7%A6%E5%8F%91%E5%99%A8#RS触发器" title="触发器">RS</a> ·</span> <span class="nowrap"><a href="/wiki/%E8%A7%A6%E5%8F%91%E5%99%A8#JK触发器" title="触发器">JK</a>） ·</span> <span class="nowrap"><a href="/wiki/%E5%84%B2%E5%AD%98%E8%A3%9D%E7%BD%AE" title="储存装置">储存装置</a>（<a href="/wiki/%E5%94%AF%E8%AE%80%E8%A8%98%E6%86%B6%E9%AB%94" title="唯读记忆体">ROM</a> ·</span> <span class="nowrap"><a href="/wiki/%E9%9A%8F%E6%9C%BA%E5%AD%98%E5%8F%96%E5%AD%98%E5%82%A8%E5%99%A8" title="随机存取存储器">RAM</a>） ·</span> <span class="nowrap"><a href="/wiki/%E9%A1%9E%E6%AF%94%E6%95%B8%E4%BD%8D%E8%BD%89%E6%8F%9B%E5%99%A8" title="类比数位转换器">类比数位转换器</a> ·</span> <span class="nowrap"><a href="/wiki/%E6%95%B8%E4%BD%8D%E9%A1%9E%E6%AF%94%E8%BD%89%E6%8F%9B%E5%99%A8" title="数位类比转换器">数位类比转换器</a></span></div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><th scope="row" class="navbox-group"><a href="/wiki/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF" title="集成电路">IC</a>、<a href="/wiki/%E8%B6%85%E5%A4%A7%E8%A7%84%E6%A8%A1%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF" title="超大规模集成电路">VLSI</a></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"><a href="/wiki/%E5%85%A8%E5%AE%9A%E5%88%B6" title="全定制">定制程度（半、全）</a>、<a href="/wiki/%E5%8F%AF%E7%A8%8B%E5%BC%8F%E9%82%8F%E8%BC%AF%E8%A3%9D%E7%BD%AE" class="mw-redirect" title="可程式逻辑装置">PLD</a>（<a href="/wiki/%E5%8F%AF%E7%A8%8B%E5%BC%8F%E9%99%A3%E5%88%97%E9%82%8F%E8%BC%AF" class="mw-redirect" title="可程式阵列逻辑">PAL</a> · <span class="nowrap"><a href="/wiki/%E5%8F%AF%E7%A8%8B%E5%BC%8F%E9%82%8F%E8%BC%AF%E9%99%A3%E5%88%97" class="mw-redirect" title="可程式逻辑阵列">PLA</a> ·</span> <span class="nowrap"><a href="/wiki/%E9%80%9A%E7%94%A8%E9%98%B5%E5%88%97%E9%80%BB%E8%BE%91" title="通用阵列逻辑">GAL</a> ·</span> <span class="nowrap"><a href="/wiki/%E8%A4%87%E9%9B%9C%E5%8F%AF%E7%A8%8B%E5%BC%8F%E9%82%8F%E8%BC%AF%E8%A3%9D%E7%BD%AE" class="mw-redirect" title="复杂可程式逻辑装置">CPLD</a> ·</span> <span class="nowrap"><a href="/wiki/%E7%8E%B0%E5%9C%BA%E5%8F%AF%E7%BC%96%E7%A8%8B%E9%80%BB%E8%BE%91%E9%97%A8%E9%98%B5%E5%88%97" title="现场可编程逻辑门阵列">FPGA</a>） ·</span> <span class="nowrap"><a href="/wiki/%E7%89%B9%E6%AE%8A%E6%87%89%E7%94%A8%E7%A9%8D%E9%AB%94%E9%9B%BB%E8%B7%AF" title="特殊应用积体电路">ASIC</a> ·</span> <span class="nowrap"><a href="/wiki/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1" title="集成电路设计">设计</a> ·</span> <span class="nowrap"><a href="/wiki/%E5%8A%9F%E8%83%BD%E9%AA%8C%E8%AF%81" title="功能验证">验证</a> ·</span> <span class="nowrap"><a href="/wiki/%E9%9B%BB%E5%AD%90%E8%A8%AD%E8%A8%88%E8%87%AA%E5%8B%95%E5%8C%96" title="电子设计自动化">电子设计自动化</a> ·</span> <span class="nowrap"><a href="/wiki/%E7%A1%AC%E4%BB%B6%E6%8F%8F%E8%BF%B0%E8%AF%AD%E8%A8%80" title="硬件描述语言">硬件描述语言</a>（<a href="/wiki/Verilog" title="Verilog">Verilog</a> ·</span> <span class="nowrap"><a href="/wiki/VHDL" title="VHDL">VHDL</a>） ·</span> <span class="nowrap"><a href="/wiki/%E9%80%BB%E8%BE%91%E7%BB%BC%E5%90%88" title="逻辑综合">逻辑综合</a> ·</span> <span class="nowrap"><a href="/wiki/%E7%A1%AC%E4%BB%B6%E9%AA%8C%E8%AF%81%E8%AF%AD%E8%A8%80" title="硬件验证语言">硬件验证语言</a>（<a href="/wiki/SystemVerilog" title="SystemVerilog">SystemVerilog</a>）</span></div></td></tr></tbody></table></td></tr></tbody></table>
+<table cellspacing="0" class="navbox" style="border-spacing:0"><tbody><tr><td style="padding:2px"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tbody><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view"><a href="/wiki/Template:%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E5%BD%A2%E5%BC%8F%E6%96%87%E6%B3%95" title="Template:形式语言与形式文法"><abbr title="查看该模板" style=";;background:none transparent;border:none;">查</abbr></a></li><li class="nv-talk"><a href="/wiki/Template_talk:%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E5%BD%A2%E5%BC%8F%E6%96%87%E6%B3%95" title="Template talk:形式语言与形式文法"><abbr title="讨论该模板" style=";;background:none transparent;border:none;">论</abbr></a></li><li class="nv-edit"><a class="external text" href="https://zh.wikipedia.org/w/index.php?title=Template:%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E5%BD%A2%E5%BC%8F%E6%96%87%E6%B3%95&amp;action=edit"><abbr title="编辑该模板" style=";;background:none transparent;border:none;">编</abbr></a></li></ul></div><div style="font-size:110%"><a href="/wiki/%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%90%86%E8%AE%BA" class="mw-redirect" title="自动机理论">自动机理论</a>：<a href="/wiki/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80" title="形式语言">形式语言</a>和<a href="/wiki/%E5%BD%A2%E5%BC%8F%E6%96%87%E6%B3%95" title="形式文法">形式文法</a></div></th></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px"><div style="padding:0em 0.25em">
+<table style="width: 100%">
+<tbody><tr>
+<th><a href="/wiki/%E4%B9%94%E5%A7%86%E6%96%AF%E5%9F%BA%E8%B0%B1%E7%B3%BB" title="乔姆斯基谱系">乔姆斯基层级</a>
+</th>
+<th><a href="/wiki/%E5%BD%A2%E5%BC%8F%E6%96%87%E6%B3%95" title="形式文法">文法</a>
+</th>
+<th><a href="/wiki/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80" title="形式语言">语言</a>
+</th>
+<th>极小<a href="/wiki/%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%90%86%E8%AE%BA" class="mw-redirect" title="自动机理论">自动机</a>
+</th></tr>
+<tr>
+<td>类型 0
+</td>
+<td><a href="/wiki/%E6%97%A0%E9%99%90%E5%88%B6%E6%96%87%E6%B3%95" title="无限制文法">无限制</a>
+</td>
+<td><a href="/wiki/%E9%80%92%E5%BD%92%E5%8F%AF%E6%9E%9A%E4%B8%BE%E8%AF%AD%E8%A8%80" title="递归可枚举语言">递归可枚举</a>
+</td>
+<td><a href="/wiki/%E5%9B%BE%E7%81%B5%E6%9C%BA" title="图灵机">图灵机</a>
+</td></tr>
+<tr>
+<td>—
+</td>
+<td>(无公用名)
+</td>
+<td><a href="/wiki/%E9%80%92%E5%BD%92%E8%AF%AD%E8%A8%80" title="递归语言">递归</a>
+</td>
+<td><a href="/wiki/%E5%88%A4%E5%AE%9A%E5%99%A8" title="判定器">判定器</a>
+</td></tr>
+<tr>
+<td>类型 1
+</td>
+<td><a href="/wiki/%E4%B8%8A%E4%B8%8B%E6%96%87%E6%9C%89%E5%85%B3%E6%96%87%E6%B3%95" title="上下文有关文法">上下文有关</a>
+</td>
+<td><a href="/wiki/%E4%B8%8A%E4%B8%8B%E6%96%87%E6%9C%89%E5%85%B3%E8%AF%AD%E8%A8%80" title="上下文有关语言">上下文有关</a>
+</td>
+<td><a href="/wiki/%E7%BA%BF%E6%80%A7%E6%9C%89%E7%95%8C%E8%87%AA%E5%8A%A8%E6%9C%BA" title="线性有界自动机">线性有界</a>
+</td></tr>
+<tr>
+<td>—
+</td>
+<td><a href="/wiki/%E9%99%84%E6%A0%87%E6%96%87%E6%B3%95" title="附标文法">附标</a>
+</td>
+<td><a href="/wiki/%E9%99%84%E6%A0%87%E8%AF%AD%E8%A8%80" title="附标语言">附标</a>
+</td>
+<td><a href="/wiki/%E5%B5%8C%E5%A5%97%E5%A0%86%E6%A0%88%E8%87%AA%E5%8A%A8%E6%9C%BA" title="嵌套堆栈自动机">嵌套堆栈</a>
+</td></tr>
+<tr>
+<td>—
+</td>
+<td><a href="/w/index.php?title=Generalized_context-free_grammar&amp;action=edit&amp;redlink=1" class="new" title="Generalized context-free grammar（页面不存在）">Linear context-free rewriting systems</a> etc.
+</td>
+<td><a href="/wiki/%E4%B8%8A%E4%B8%8B%E6%96%87%E6%9C%89%E9%97%9C%E6%96%87%E6%B3%95" class="mw-redirect" title="上下文有关文法">上下文有关文法</a>
+</td>
+<td><a href="/w/index.php?title=Thread_automata&amp;action=edit&amp;redlink=1" class="new" title="Thread automata（页面不存在）">Thread automata</a>
+</td></tr>
+<tr>
+<td>—
+</td>
+<td><a href="/wiki/%E6%A0%91-%E9%82%BB%E6%8E%A5%E6%96%87%E6%B3%95" title="树-邻接文法">树-邻接</a>
+</td>
+<td><a href="/wiki/%E9%80%82%E5%BA%A6%E4%B8%8A%E4%B8%8B%E6%96%87%E6%9C%89%E5%85%B3%E8%AF%AD%E8%A8%80" title="适度上下文有关语言">适度上下文有关</a>
+</td>
+<td><a href="/wiki/%E5%B5%8C%E5%85%A5%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA" title="嵌入下推自动机">嵌入下推</a>
+</td></tr>
+<tr>
+<td>类型 2
+</td>
+<td><a href="/wiki/%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95" title="上下文无关文法">上下文无关</a>
+</td>
+<td><a href="/wiki/%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E8%AF%AD%E8%A8%80" title="上下文无关语言">上下文无关</a>
+</td>
+<td><a href="/wiki/%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA" title="下推自动机">非确定下推</a>
+</td></tr>
+<tr>
+<td>—
+</td>
+<td><a href="/wiki/%E7%A1%AE%E5%AE%9A%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95" title="确定上下文无关文法">确定上下文无关</a>
+</td>
+<td><a href="/wiki/%E7%A1%AE%E5%AE%9A%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E8%AF%AD%E8%A8%80" class="mw-redirect" title="确定上下文无关语言">确定上下文无关</a>
+</td>
+<td><a href="/wiki/%E7%A1%AE%E5%AE%9A%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA" title="确定下推自动机">确定下推</a>
+</td></tr>
+<tr>
+<td>—
+</td>
+<td><a href="/w/index.php?title=Nested_word&amp;action=edit&amp;redlink=1" class="new" title="Nested word（页面不存在）">Visibly pushdown</a>
+</td>
+<td><a href="/w/index.php?title=Nested_word&amp;action=edit&amp;redlink=1" class="new" title="Nested word（页面不存在）">Visibly pushdown</a>
+</td>
+<td><a href="/w/index.php?title=Nested_word&amp;action=edit&amp;redlink=1" class="new" title="Nested word（页面不存在）">Visibly pushdown</a>
+</td></tr>
+<tr>
+<td>类型 3
+</td>
+<td><a href="/wiki/%E6%AD%A3%E5%88%99%E6%96%87%E6%B3%95" title="正则文法">正则</a>
+</td>
+<td><a href="/wiki/%E6%AD%A3%E5%88%99%E8%AF%AD%E8%A8%80" title="正则语言">正则</a>
+</td>
+<td><a class="mw-selflink selflink">有限</a>
+</td></tr>
+<tr>
+<td>—
+</td>
+<td>—
+</td>
+<td><a href="/w/index.php?title=Star-free_language&amp;action=edit&amp;redlink=1" class="new" title="Star-free language（页面不存在）">Star-free</a>
+</td>
+<td><a href="/w/index.php?title=Aperiodic_finite_state_automaton&amp;action=edit&amp;redlink=1" class="new" title="Aperiodic finite state automaton（页面不存在）">Counter-free (with aperiodic finite monoid)</a>
+</td></tr></tbody></table>
+</div></td></tr><tr style="height:2px"><td colspan="3"></td></tr><tr><td class="navbox-abovebelow" colspan="2"><div><small><span style="white-space:nowrap;">每个语言范畴都是其直接上面的范畴的<a href="/wiki/%E5%AD%90%E9%9B%86" title="子集">真子集</a></span> <span style="white-space:nowrap;">每个语言范畴内的语言都可以用同一行的文法和自动机表示</span></small></div></td></tr></tbody></table></td></tr></tbody></table>
+<!-- 
+NewPP limit report
+Parsed by mw1413
+Cached time: 20200817101341
+Cache expiry: 2592000
+Dynamic content: false
+Complications: []
+CPU time usage: 0.764 seconds
+Real time usage: 0.992 seconds
+Preprocessor visited node count: 6857/1000000
+Post‐expand include size: 543276/2097152 bytes
+Template argument size: 14663/2097152 bytes
+Highest expansion depth: 19/40
+Expensive parser function count: 65/500
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 828/5000000 bytes
+Lua time usage: 0.300/10.000 seconds
+Lua memory usage: 17.68 MB/50 MB
+Number of Wikibase entities loaded: 0/400
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  602.280      1 -total
+ 81.74%  492.294     10 Template:Navbox
+ 47.64%  286.955      1 Template:CPU_technologies
+ 32.82%  197.657     60 Template:Link-en
+ 32.23%  194.098     63 Template:Internal_link_helper
+ 21.87%  131.716      2 Template:Lang-en
+ 14.64%   88.176      3 Template:Navbox_subgroup
+ 11.02%   66.343      6 Template:Category_handler
+ 10.29%   61.985     63 Template:Lan
+ 10.07%   60.644      1 Template:NoteTA
+-->
+
+<!-- Saved in parser cache with key zhwiki:pcache:idhash:4341-0!userlang=zh-hans!zh-hans!math=5 and timestamp 20200817101340 and revision id 59565349
+ -->
+</div><noscript><img src="//zh.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript>
+<div class="printfooter">取自“<a dir="ltr" href="https://zh.wikipedia.org/w/index.php?title=有限状态机&amp;oldid=59565349">https://zh.wikipedia.org/w/index.php?title=有限状态机&amp;oldid=59565349</a>”</div></div>
+		<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:%E9%A1%B5%E9%9D%A2%E5%88%86%E7%B1%BB" title="Special:页面分类">分类</a>：<ul><li><a href="/wiki/Category:%E8%87%AA%E5%8A%A8%E6%9C%BA" title="Category:自动机">自动机</a></li><li><a href="/wiki/Category:%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86" title="Category:编译原理">编译原理</a></li><li><a href="/wiki/Category:%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90" title="Category:数字电子">数字电子</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">隐藏分类：<ul><li><a href="/wiki/Category:%E5%90%AB%E6%9C%89%E8%8B%B1%E8%AA%9E%E7%9A%84%E6%A2%9D%E7%9B%AE" title="Category:含有英語的條目">含有英语的条目</a></li><li><a href="/wiki/Category:%E8%87%AA2018%E5%B9%B43%E6%9C%88%E5%B8%A6%E6%9C%89%E5%A4%B1%E6%95%88%E9%93%BE%E6%8E%A5%E7%9A%84%E6%9D%A1%E7%9B%AE" title="Category:自2018年3月带有失效链接的条目">自2018年3月带有失效链接的条目</a></li><li><a href="/wiki/Category:%E6%9D%A1%E7%9B%AE%E6%9C%89%E6%B0%B8%E4%B9%85%E5%A4%B1%E6%95%88%E7%9A%84%E5%A4%96%E9%83%A8%E9%93%BE%E6%8E%A5" title="Category:条目有永久失效的外部链接">条目有永久失效的外部链接</a></li><li><a href="/wiki/Category:%E8%87%AA2018%E5%B9%B41%E6%9C%88%E5%B8%A6%E6%9C%89%E5%A4%B1%E6%95%88%E9%93%BE%E6%8E%A5%E7%9A%84%E6%9D%A1%E7%9B%AE" title="Category:自2018年1月带有失效链接的条目">自2018年1月带有失效链接的条目</a></li><li><a href="/wiki/Category:%E4%BD%BF%E7%94%A8ISBN%E9%AD%94%E6%9C%AF%E9%93%BE%E6%8E%A5%E7%9A%84%E9%A1%B5%E9%9D%A2" title="Category:使用ISBN魔术链接的页面">使用ISBN魔术链接的页面</a></li></ul></div></div>
+	</div>
+</div>
+<div id='mw-data-after-content'>
+	<div class="read-more-container"></div>
+</div>
+
+<div id="mw-navigation">
+	<h2>导航菜单</h2>
+	<div id="mw-head">
+		<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-personal" class="vector-menu" aria-labelledby="p-personal-label" role="navigation" 
+	  lang="zh-Hans" dir="ltr">
+	<h3 id="p-personal-label">
+		<span>个人工具</span>
+	</h3>
+	<!-- Please do not use the .body class, it is deprecated. -->
+	<div class="body vector-menu-content">
+		<!-- Please do not use the .menu class, it is deprecated. -->
+		<ul class="vector-menu-content-list"><li id="pt-anonuserpage">未登录</li><li id="pt-anontalk"><a href="/wiki/Special:%E6%88%91%E7%9A%84%E8%AE%A8%E8%AE%BA%E9%A1%B5" title="有关本IP地址的编辑的讨论[n]" accesskey="n">讨论</a></li><li id="pt-anoncontribs"><a href="/wiki/Special:%E6%88%91%E7%9A%84%E8%B4%A1%E7%8C%AE" title="来自此IP地址的编辑列表[y]" accesskey="y">贡献</a></li><li id="pt-createaccount"><a href="/w/index.php?title=Special:%E5%88%9B%E5%BB%BA%E8%B4%A6%E6%88%B7&amp;returnto=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;returntoquery=variant%3Dzh-hans" title="建议您创建一个账户并登录，但这不是强制的">创建账户</a></li><li id="pt-login"><a href="/w/index.php?title=Special:%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95&amp;returnto=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;returntoquery=variant%3Dzh-hans" title="我们鼓励您登录；然而，这不是强制性的[o]" accesskey="o">登录</a></li></ul>
+		
+	</div>
+</nav>
+
+		<div id="left-navigation">
+			<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-namespaces" class="vector-menu vector-menu-tabs vectorTabs" aria-labelledby="p-namespaces-label" role="navigation" 
+	  lang="zh-Hans" dir="ltr">
+	<h3 id="p-namespaces-label">
+		<span>名字空间</span>
+	</h3>
+	<!-- Please do not use the .body class, it is deprecated. -->
+	<div class="body vector-menu-content">
+		<!-- Please do not use the .menu class, it is deprecated. -->
+		<ul class="vector-menu-content-list"><li id="ca-nstab-main" class="selected"><a href="/wiki/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" title="浏览条目正文[c]" accesskey="c">条目</a></li><li id="ca-talk"><a href="/wiki/Talk:%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" rel="discussion" title="关于内容页面的讨论[t]" accesskey="t">讨论</a></li></ul>
+		
+	</div>
+</nav>
+
+			<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-variants" class="vector-menu vector-menu-dropdown vectorMenu" aria-labelledby="p-variants-label" role="navigation" 
+	  lang="zh-Hans" dir="ltr">
+	<input type="checkbox" class="vector-menu-checkbox vectorMenuCheckbox" aria-labelledby="p-variants-label" />
+	<h3 id="p-variants-label">
+		<span>简体</span>
+	</h3>
+	<!-- Please do not use the .body class, it is deprecated. -->
+	<div class="body vector-menu-content">
+		<!-- Please do not use the .menu class, it is deprecated. -->
+		<ul class="menu vector-menu-content-list"><li id="ca-varlang-0"><a href="/zh/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" lang="zh" hreflang="zh">不转换</a></li><li id="ca-varlang-1" class="selected"><a href="/zh-hans/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" lang="zh-Hans" hreflang="zh-Hans">简体</a></li><li id="ca-varlang-2"><a href="/zh-hant/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" lang="zh-Hant" hreflang="zh-Hant">繁體</a></li><li id="ca-varlang-3"><a href="/zh-cn/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" lang="zh-Hans-CN" hreflang="zh-Hans-CN">大陆简体</a></li><li id="ca-varlang-4"><a href="/zh-hk/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" lang="zh-Hant-HK" hreflang="zh-Hant-HK">香港繁體</a></li><li id="ca-varlang-5"><a href="/zh-mo/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" lang="zh-Hant-MO" hreflang="zh-Hant-MO">澳門繁體</a></li><li id="ca-varlang-6"><a href="/zh-my/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" lang="zh-Hans-MY" hreflang="zh-Hans-MY">大马简体</a></li><li id="ca-varlang-7"><a href="/zh-sg/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" lang="zh-Hans-SG" hreflang="zh-Hans-SG">新加坡简体</a></li><li id="ca-varlang-8"><a href="/zh-tw/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" lang="zh-Hant-TW" hreflang="zh-Hant-TW">臺灣正體</a></li></ul>
+		
+	</div>
+</nav>
+
+		</div>
+		<div id="right-navigation">
+			<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-views" class="vector-menu vector-menu-tabs vectorTabs" aria-labelledby="p-views-label" role="navigation" 
+	  lang="zh-Hans" dir="ltr">
+	<h3 id="p-views-label">
+		<span>视图</span>
+	</h3>
+	<!-- Please do not use the .body class, it is deprecated. -->
+	<div class="body vector-menu-content">
+		<!-- Please do not use the .menu class, it is deprecated. -->
+		<ul class="vector-menu-content-list"><li id="ca-view" class="selected"><a href="/wiki/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA">阅读</a></li><li id="ca-edit"><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=edit" title="编辑本页[e]" accesskey="e">编辑</a></li><li id="ca-history"><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=history" title="本页面过去的版本[h]" accesskey="h">查看历史</a></li></ul>
+		
+	</div>
+</nav>
+
+			<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-cactions" class="vector-menu-empty emptyPortlet vector-menu vector-menu-dropdown vectorMenu" aria-labelledby="p-cactions-label" role="navigation" 
+	  lang="zh-Hans" dir="ltr">
+	<input type="checkbox" class="vector-menu-checkbox vectorMenuCheckbox" aria-labelledby="p-cactions-label" />
+	<h3 id="p-cactions-label">
+		<span>更多</span>
+	</h3>
+	<!-- Please do not use the .body class, it is deprecated. -->
+	<div class="body vector-menu-content">
+		<!-- Please do not use the .menu class, it is deprecated. -->
+		<ul class="menu vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+			<div id="p-search" role="search">
+	<h3  lang="zh-Hans" dir="ltr">
+		<label for="searchInput">搜索</label>
+	</h3>
+	<form action="/w/index.php" id="searchform">
+		<div id="simpleSearch">
+			<input type="search" name="search" placeholder="搜索维基百科" title="搜索Wikipedia[f]" accesskey="f" id="searchInput"/>
+			<input type="hidden" name="title" value="Special:搜索">
+			<input type="submit" name="fulltext" value="搜索" title="搜索含这些文字的页面" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/>
+			<input type="submit" name="go" value="前往" title="若相同标题存在，则直接前往该页面" id="searchButton" class="searchButton"/>
+		</div>
+	</form>
+</div>
+
+		</div>
+	</div>
+	
+<div id="mw-panel">
+	<div id="p-logo" role="banner">
+		<a  title="首页" class="mw-wiki-logo" href="/wiki/Wikipedia:%E9%A6%96%E9%A1%B5"></a>
+	</div>
+	<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-navigation" class="vector-menu vector-menu-portal portal portal-first" aria-labelledby="p-navigation-label" role="navigation" 
+	  lang="zh-Hans" dir="ltr">
+	<h3 id="p-navigation-label">
+		<span>导航</span>
+	</h3>
+	<!-- Please do not use the .body class, it is deprecated. -->
+	<div class="body vector-menu-content">
+		<!-- Please do not use the .menu class, it is deprecated. -->
+		<ul class="vector-menu-content-list"><li id="n-mainpage-description"><a href="/wiki/Wikipedia:%E9%A6%96%E9%A1%B5" title="访问首页[z]" accesskey="z">首页</a></li><li id="n-indexpage"><a href="/wiki/Wikipedia:%E5%88%86%E7%B1%BB%E7%B4%A2%E5%BC%95" title="以分类索引搜寻中文维基百科">分类索引</a></li><li id="n-Featured_content"><a href="/wiki/Portal:%E7%89%B9%E8%89%B2%E5%85%A7%E5%AE%B9" title="查看中文维基百科的特色内容">特色内容</a></li><li id="n-currentevents"><a href="/wiki/Portal:%E6%96%B0%E8%81%9E%E5%8B%95%E6%85%8B" title="查看当前事件的背景信息">新闻动态</a></li><li id="n-recentchanges"><a href="/wiki/Special:%E6%9C%80%E8%BF%91%E6%9B%B4%E6%94%B9" title="本wiki最近更改的列表[r]" accesskey="r">最近更改</a></li><li id="n-randompage"><a href="/wiki/Special:%E9%9A%8F%E6%9C%BA%E9%A1%B5%E9%9D%A2" title="载入一个随机页面[x]" accesskey="x">随机条目</a></li><li id="n-sitesupport"><a href="https://donate.wikimedia.org/?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=spontaneous&amp;uselang=zh-hans" title="如果您在维基百科受益良多，您可以考虑资助我们">资助维基百科</a></li></ul>
+		
+	</div>
+</nav>
+
+	<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-help" class="vector-menu vector-menu-portal portal" aria-labelledby="p-help-label" role="navigation" 
+	  lang="zh-Hans" dir="ltr">
+	<h3 id="p-help-label">
+		<span>帮助</span>
+	</h3>
+	<!-- Please do not use the .body class, it is deprecated. -->
+	<div class="body vector-menu-content">
+		<!-- Please do not use the .menu class, it is deprecated. -->
+		<ul class="vector-menu-content-list"><li id="n-help"><a href="/wiki/Help:%E7%9B%AE%E5%BD%95" title="查找帮助的地方">帮助</a></li><li id="n-portal"><a href="/wiki/Wikipedia:%E7%A4%BE%E7%BE%A4%E9%A6%96%E9%A1%B5" title="关于本项目，您可做的事，何处找到您所需">维基社群</a></li><li id="n-policy"><a href="/wiki/Wikipedia:%E6%96%B9%E9%87%9D%E8%88%87%E6%8C%87%E5%BC%95" title="查看维基百科的方针和指引">方针与指引</a></li><li id="n-villagepump"><a href="/wiki/Wikipedia:%E4%BA%92%E5%8A%A9%E5%AE%A2%E6%A0%88" title="参与维基百科社群的讨论">互助客栈</a></li><li id="n-Information_desk"><a href="/wiki/Wikipedia:%E7%9F%A5%E8%AF%86%E9%97%AE%E7%AD%94" title="解答任何与维基百科无关的问题的地方">知识问答</a></li><li id="n-conversion"><a href="/wiki/Wikipedia:%E5%AD%97%E8%AF%8D%E8%BD%AC%E6%8D%A2" title="提出字词转换请求">字词转换</a></li><li id="n-IRC"><a href="/wiki/Wikipedia:IRC%E8%81%8A%E5%A4%A9%E9%A2%91%E9%81%93">IRC即时聊天</a></li><li id="n-contact"><a href="/wiki/Wikipedia:%E8%81%94%E7%BB%9C%E6%88%91%E4%BB%AC" title="如何联络维基百科">联络我们</a></li><li id="n-about"><a href="/wiki/Wikipedia:%E5%85%B3%E4%BA%8E" title="查看维基百科的简介">关于维基百科</a></li></ul>
+		
+	</div>
+</nav>
+<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-tb" class="vector-menu vector-menu-portal portal" aria-labelledby="p-tb-label" role="navigation" 
+	  lang="zh-Hans" dir="ltr">
+	<h3 id="p-tb-label">
+		<span>工具</span>
+	</h3>
+	<!-- Please do not use the .body class, it is deprecated. -->
+	<div class="body vector-menu-content">
+		<!-- Please do not use the .menu class, it is deprecated. -->
+		<ul class="vector-menu-content-list"><li id="t-whatlinkshere"><a href="/wiki/Special:%E9%93%BE%E5%85%A5%E9%A1%B5%E9%9D%A2/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" title="所有链接至本页面的wiki页面的列表[j]" accesskey="j">链入页面</a></li><li id="t-recentchangeslinked"><a href="/wiki/Special:%E9%93%BE%E5%87%BA%E6%9B%B4%E6%94%B9/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA" rel="nofollow" title="链自本页的页面的最近更改[k]" accesskey="k">相关更改</a></li><li id="t-upload"><a href="/wiki/Project:%E4%B8%8A%E4%BC%A0" title="上传文件[u]" accesskey="u">上传文件</a></li><li id="t-specialpages"><a href="/wiki/Special:%E7%89%B9%E6%AE%8A%E9%A1%B5%E9%9D%A2" title="所有特殊页面的列表[q]" accesskey="q">特殊页面</a></li><li id="t-permalink"><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;oldid=59565349" title="本页面该版本的固定链接">固定链接</a></li><li id="t-info"><a href="/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=info" title="关于此页面的更多信息">页面信息</a></li><li id="t-cite"><a href="/w/index.php?title=Special:%E5%BC%95%E7%94%A8%E6%AD%A4%E9%A1%B5%E9%9D%A2&amp;page=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;id=59565349&amp;wpFormIdentifier=titleform" title="关于如何引用本页的信息">引用本页</a></li><li id="t-wikibase"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q176452" title="查看连接的数据存储库项[g]" accesskey="g">维基数据项</a></li></ul>
+		
+	</div>
+</nav>
+<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-electronpdfservice-sidebar-portlet-heading" class="vector-menu vector-menu-portal portal" aria-labelledby="p-electronpdfservice-sidebar-portlet-heading-label" role="navigation" 
+	  lang="zh-Hans" dir="ltr">
+	<h3 id="p-electronpdfservice-sidebar-portlet-heading-label">
+		<span>打印/导出</span>
+	</h3>
+	<!-- Please do not use the .body class, it is deprecated. -->
+	<div class="body vector-menu-content">
+		<!-- Please do not use the .menu class, it is deprecated. -->
+		<ul class="vector-menu-content-list"><li id="electron-print_pdf"><a href="/w/index.php?title=Special:ElectronPdf&amp;page=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;action=show-download-screen">下载为PDF</a></li><li id="t-print"><a href="javascript:print();" rel="alternate" title="本页面的可打印版本[p]" accesskey="p">可打印版本</a></li></ul>
+		
+	</div>
+</nav>
+<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-wikibase-otherprojects" class="vector-menu vector-menu-portal portal" aria-labelledby="p-wikibase-otherprojects-label" role="navigation" 
+	  lang="zh-Hans" dir="ltr">
+	<h3 id="p-wikibase-otherprojects-label">
+		<span>在其他项目中</span>
+	</h3>
+	<!-- Please do not use the .body class, it is deprecated. -->
+	<div class="body vector-menu-content">
+		<!-- Please do not use the .menu class, it is deprecated. -->
+		<ul class="vector-menu-content-list"><li class="wb-otherproject-link wb-otherproject-commons"><a href="https://commons.wikimedia.org/wiki/Category:Finite_state_machine" hreflang="en">维基共享资源</a></li></ul>
+		
+	</div>
+</nav>
+
+	<!-- Please do not use role attribute as CSS selector, it is deprecated. -->
+<nav id="p-lang" class="vector-menu vector-menu-portal portal" aria-labelledby="p-lang-label" role="navigation" 
+	  lang="zh-Hans" dir="ltr">
+	<h3 id="p-lang-label">
+		<span>其他语言</span>
+	</h3>
+	<!-- Please do not use the .body class, it is deprecated. -->
+	<div class="body vector-menu-content">
+		<!-- Please do not use the .menu class, it is deprecated. -->
+		<ul class="vector-menu-content-list"><li class="interlanguage-link interwiki-ar"><a href="https://ar.wikipedia.org/wiki/%D8%A2%D9%84%D8%A9_%D8%B0%D8%A7%D8%AA_%D8%AD%D8%A7%D9%84%D8%A7%D8%AA_%D9%85%D9%86%D8%AA%D9%87%D9%8A%D8%A9" title="آلة ذات حالات منتهية – 阿拉伯语" lang="ar" hreflang="ar" class="interlanguage-link-target">العربية</a></li><li class="interlanguage-link interwiki-bg"><a href="https://bg.wikipedia.org/wiki/%D0%9A%D1%80%D0%B0%D0%B5%D0%BD_%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82" title="Краен автомат – 保加利亚语" lang="bg" hreflang="bg" class="interlanguage-link-target">Български</a></li><li class="interlanguage-link interwiki-bs"><a href="https://bs.wikipedia.org/wiki/Kona%C4%8Dni_automat" title="Konačni automat – 波斯尼亚语" lang="bs" hreflang="bs" class="interlanguage-link-target">Bosanski</a></li><li class="interlanguage-link interwiki-ca"><a href="https://ca.wikipedia.org/wiki/Aut%C3%B2mat_finit" title="Autòmat finit – 加泰罗尼亚语" lang="ca" hreflang="ca" class="interlanguage-link-target">Català</a></li><li class="interlanguage-link interwiki-cs"><a href="https://cs.wikipedia.org/wiki/Kone%C4%8Dn%C3%BD_automat" title="Konečný automat – 捷克语" lang="cs" hreflang="cs" class="interlanguage-link-target">Čeština</a></li><li class="interlanguage-link interwiki-de"><a href="https://de.wikipedia.org/wiki/Endlicher_Automat" title="Endlicher Automat – 德语" lang="de" hreflang="de" class="interlanguage-link-target">Deutsch</a></li><li class="interlanguage-link interwiki-en"><a href="https://en.wikipedia.org/wiki/Finite-state_machine" title="Finite-state machine – 英语" lang="en" hreflang="en" class="interlanguage-link-target">English</a></li><li class="interlanguage-link interwiki-eo"><a href="https://eo.wikipedia.org/wiki/Finia_a%C5%ADtomato" title="Finia aŭtomato – 世界语" lang="eo" hreflang="eo" class="interlanguage-link-target">Esperanto</a></li><li class="interlanguage-link interwiki-es badge-Q17437798 badge-goodarticle" title="优良条目"><a href="https://es.wikipedia.org/wiki/Aut%C3%B3mata_finito" title="Autómata finito – 西班牙语" lang="es" hreflang="es" class="interlanguage-link-target">Español</a></li><li class="interlanguage-link interwiki-et"><a href="https://et.wikipedia.org/wiki/L%C3%B5plik_olekumasin" title="Lõplik olekumasin – 爱沙尼亚语" lang="et" hreflang="et" class="interlanguage-link-target">Eesti</a></li><li class="interlanguage-link interwiki-eu"><a href="https://eu.wikipedia.org/wiki/Automata_finitu" title="Automata finitu – 巴斯克语" lang="eu" hreflang="eu" class="interlanguage-link-target">Euskara</a></li><li class="interlanguage-link interwiki-fa"><a href="https://fa.wikipedia.org/wiki/%D9%85%D8%A7%D8%B4%DB%8C%D9%86_%D8%AD%D8%A7%D9%84%D8%A7%D8%AA_%D9%85%D8%AA%D9%86%D8%A7%D9%87%DB%8C" title="ماشین حالات متناهی – 波斯语" lang="fa" hreflang="fa" class="interlanguage-link-target">فارسی</a></li><li class="interlanguage-link interwiki-fi"><a href="https://fi.wikipedia.org/wiki/%C3%84%C3%A4rellinen_automaatti" title="Äärellinen automaatti – 芬兰语" lang="fi" hreflang="fi" class="interlanguage-link-target">Suomi</a></li><li class="interlanguage-link interwiki-fr"><a href="https://fr.wikipedia.org/wiki/Automate_fini" title="Automate fini – 法语" lang="fr" hreflang="fr" class="interlanguage-link-target">Français</a></li><li class="interlanguage-link interwiki-gl"><a href="https://gl.wikipedia.org/wiki/Aut%C3%B3mata_finito" title="Autómata finito – 加利西亚语" lang="gl" hreflang="gl" class="interlanguage-link-target">Galego</a></li><li class="interlanguage-link interwiki-he"><a href="https://he.wikipedia.org/wiki/%D7%90%D7%95%D7%98%D7%95%D7%9E%D7%98_%D7%A1%D7%95%D7%A4%D7%99" title="אוטומט סופי – 希伯来语" lang="he" hreflang="he" class="interlanguage-link-target">עברית</a></li><li class="interlanguage-link interwiki-hr"><a href="https://hr.wikipedia.org/wiki/Kona%C4%8Dni_automat" title="Konačni automat – 克罗地亚语" lang="hr" hreflang="hr" class="interlanguage-link-target">Hrvatski</a></li><li class="interlanguage-link interwiki-hy"><a href="https://hy.wikipedia.org/wiki/%D5%8E%D5%A5%D6%80%D5%BB%D5%A1%D5%BE%D5%B8%D6%80_%D5%A1%D5%BE%D5%BF%D5%B8%D5%B4%D5%A1%D5%BF" title="Վերջավոր ավտոմատ – 亚美尼亚语" lang="hy" hreflang="hy" class="interlanguage-link-target">Հայերեն</a></li><li class="interlanguage-link interwiki-it"><a href="https://it.wikipedia.org/wiki/Automa_a_stati_finiti" title="Automa a stati finiti – 意大利语" lang="it" hreflang="it" class="interlanguage-link-target">Italiano</a></li><li class="interlanguage-link interwiki-ja"><a href="https://ja.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E3%82%AA%E3%83%BC%E3%83%88%E3%83%9E%E3%83%88%E3%83%B3" title="有限オートマトン – 日语" lang="ja" hreflang="ja" class="interlanguage-link-target">日本語</a></li><li class="interlanguage-link interwiki-ka"><a href="https://ka.wikipedia.org/wiki/%E1%83%A1%E1%83%90%E1%83%A1%E1%83%A0%E1%83%A3%E1%83%9A%E1%83%98_%E1%83%9B%E1%83%90%E1%83%9C%E1%83%A5%E1%83%90%E1%83%9C%E1%83%90" title="სასრული მანქანა – 格鲁吉亚语" lang="ka" hreflang="ka" class="interlanguage-link-target">ქართული</a></li><li class="interlanguage-link interwiki-ko"><a href="https://ko.wikipedia.org/wiki/%EC%9C%A0%ED%95%9C_%EC%83%81%ED%83%9C_%EA%B8%B0%EA%B3%84" title="유한 상태 기계 – 韩语" lang="ko" hreflang="ko" class="interlanguage-link-target">한국어</a></li><li class="interlanguage-link interwiki-lmo"><a href="https://lmo.wikipedia.org/wiki/Automa_a_stat_finii" title="Automa a stat finii – Lombard" lang="lmo" hreflang="lmo" class="interlanguage-link-target">Lumbaart</a></li><li class="interlanguage-link interwiki-lt"><a href="https://lt.wikipedia.org/wiki/Baigtinis_automatas" title="Baigtinis automatas – 立陶宛语" lang="lt" hreflang="lt" class="interlanguage-link-target">Lietuvių</a></li><li class="interlanguage-link interwiki-lv"><a href="https://lv.wikipedia.org/wiki/Gal%C4%ABgs_autom%C4%81ts" title="Galīgs automāts – 拉脱维亚语" lang="lv" hreflang="lv" class="interlanguage-link-target">Latviešu</a></li><li class="interlanguage-link interwiki-mk"><a href="https://mk.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D0%B5%D1%87%D0%B5%D0%BD_%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82" title="Конечен автомат – 马其顿语" lang="mk" hreflang="mk" class="interlanguage-link-target">Македонски</a></li><li class="interlanguage-link interwiki-mwl"><a href="https://mwl.wikipedia.org/wiki/Out%C3%B3mato_fenito" title="Outómato fenito – 米兰德斯语" lang="mwl" hreflang="mwl" class="interlanguage-link-target">Mirandés</a></li><li class="interlanguage-link interwiki-nl"><a href="https://nl.wikipedia.org/wiki/Eindigetoestandsautomaat" title="Eindigetoestandsautomaat – 荷兰语" lang="nl" hreflang="nl" class="interlanguage-link-target">Nederlands</a></li><li class="interlanguage-link interwiki-no"><a href="https://no.wikipedia.org/wiki/Endelig_tilstandsmaskin" title="Endelig tilstandsmaskin – 书面挪威语" lang="nb" hreflang="nb" class="interlanguage-link-target">Norsk bokmål</a></li><li class="interlanguage-link interwiki-pl"><a href="https://pl.wikipedia.org/wiki/Automat_sko%C5%84czony" title="Automat skończony – 波兰语" lang="pl" hreflang="pl" class="interlanguage-link-target">Polski</a></li><li class="interlanguage-link interwiki-pt"><a href="https://pt.wikipedia.org/wiki/M%C3%A1quina_de_estados_finita" title="Máquina de estados finita – 葡萄牙语" lang="pt" hreflang="pt" class="interlanguage-link-target">Português</a></li><li class="interlanguage-link interwiki-ro"><a href="https://ro.wikipedia.org/wiki/Automat_finit" title="Automat finit – 罗马尼亚语" lang="ro" hreflang="ro" class="interlanguage-link-target">Română</a></li><li class="interlanguage-link interwiki-ru"><a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D0%B5%D1%87%D0%BD%D1%8B%D0%B9_%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82" title="Конечный автомат – 俄语" lang="ru" hreflang="ru" class="interlanguage-link-target">Русский</a></li><li class="interlanguage-link interwiki-sh"><a href="https://sh.wikipedia.org/wiki/Kona%C4%8Dni_automat" title="Konačni automat – 塞尔维亚-克罗地亚语" lang="sh" hreflang="sh" class="interlanguage-link-target">Srpskohrvatski / српскохрватски</a></li><li class="interlanguage-link interwiki-sk"><a href="https://sk.wikipedia.org/wiki/Kone%C4%8Dn%C3%BD_automat" title="Konečný automat – 斯洛伐克语" lang="sk" hreflang="sk" class="interlanguage-link-target">Slovenčina</a></li><li class="interlanguage-link interwiki-sr"><a href="https://sr.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D0%B0%D1%87%D0%B0%D0%BD_%D0%B0%D1%83%D1%82%D0%BE%D0%BC%D0%B0%D1%82" title="Коначан аутомат – 塞尔维亚语" lang="sr" hreflang="sr" class="interlanguage-link-target">Српски / srpski</a></li><li class="interlanguage-link interwiki-sv"><a href="https://sv.wikipedia.org/wiki/%C3%84ndlig_automat" title="Ändlig automat – 瑞典语" lang="sv" hreflang="sv" class="interlanguage-link-target">Svenska</a></li><li class="interlanguage-link interwiki-th"><a href="https://th.wikipedia.org/wiki/%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%99%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%81%E0%B8%B1%E0%B8%94" title="เครื่องสถานะจำกัด – 泰语" lang="th" hreflang="th" class="interlanguage-link-target">ไทย</a></li><li class="interlanguage-link interwiki-tr"><a href="https://tr.wikipedia.org/wiki/Sonlu_durum_makinesi" title="Sonlu durum makinesi – 土耳其语" lang="tr" hreflang="tr" class="interlanguage-link-target">Türkçe</a></li><li class="interlanguage-link interwiki-uk"><a href="https://uk.wikipedia.org/wiki/%D0%A1%D0%BA%D1%96%D0%BD%D1%87%D0%B5%D0%BD%D0%BD%D0%B8%D0%B9_%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82" title="Скінченний автомат – 乌克兰语" lang="uk" hreflang="uk" class="interlanguage-link-target">Українська</a></li><li class="interlanguage-link interwiki-vi"><a href="https://vi.wikipedia.org/wiki/M%C3%A1y_tr%E1%BA%A1ng_th%C3%A1i_h%E1%BB%AFu_h%E1%BA%A1n" title="Máy trạng thái hữu hạn – 越南语" lang="vi" hreflang="vi" class="interlanguage-link-target">Tiếng Việt</a></li><li class="interlanguage-link interwiki-zh-yue"><a href="https://zh-yue.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E7%8B%80%E6%85%8B%E6%A9%9F" title="有限狀態機 – Cantonese" lang="yue" hreflang="yue" class="interlanguage-link-target">粵語</a></li></ul>
+		<div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q176452#sitelinks-wikipedia" title="编辑跨语言链接" class="wbc-editpage">编辑链接</a></span></div>
+	</div>
+</nav>
+
+</div>
+
+</div>
+
+<footer id="footer" class="mw-footer" role="contentinfo"  lang="zh-Hans" dir="ltr">
+	<ul id="footer-info" >
+		<li id="footer-info-lastmod"> 本页面最后修订于2020年5月8日 (星期五) 22:33。</li>
+		<li id="footer-info-copyright">本站的全部文字在<a rel="license" href="//zh.wikipedia.org/wiki/Wikipedia:CC-BY-SA-3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" title="Wikipedia:CC-BY-SA-3.0协议文本">知识共享 署名-相同方式共享 3.0协议</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/deed.zh" style="display:none;"></a>之条款下提供，附加条款亦可能应用。（请参阅<a href="//foundation.wikimedia.org/wiki/Terms_of_Use">使用条款</a>）<br />
+Wikipedia&reg;和维基百科标志是<a href="//wikimediafoundation.org">维基媒体基金会</a>的注册商标；维基&trade;是维基媒体基金会的商标。<br />
+维基媒体基金会是按美国国内税收法501(c)(3)登记的<a href="//wikimediafoundation.org/wiki/Tax_Deductibility/en">非营利慈善机构</a>。<br /></li>
+	</ul>
+	<ul id="footer-places" >
+		<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">隐私政策</a></li>
+		<li id="footer-places-about"><a href="/wiki/Wikipedia:%E5%85%B3%E4%BA%8E" title="Wikipedia:关于">关于维基百科</a></li>
+		<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E" title="Wikipedia:免责声明">免责声明</a></li>
+		<li id="footer-places-mobileview"><a href="//zh.m.wikipedia.org/w/index.php?title=%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA&amp;variant=zh-hans&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">手机版视图</a></li>
+		<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">开发者</a></li>
+		<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/zh.wikipedia.org">统计</a></li>
+		<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Cookie_statement">Cookie声明</a></li>
+	</ul>
+	<ul id="footer-icons" class="noprint">
+		<li id="footer-copyrightico"><a href="https://wikimediafoundation.org/"><img src="/static/images/footer/wikimedia-button.png" srcset="/static/images/footer/wikimedia-button-1.5x.png 1.5x, /static/images/footer/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation" loading="lazy" /></a></li>
+		<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/"><img src="/static/images/footer/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/footer/poweredby_mediawiki_132x47.png 1.5x, /static/images/footer/poweredby_mediawiki_176x62.png 2x" width="88" height="31" loading="lazy"/></a></li>
+	</ul>
+	<div style="clear: both;"></div>
+</footer>
+
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.764","walltime":"0.992","ppvisitednodes":{"value":6857,"limit":1000000},"postexpandincludesize":{"value":543276,"limit":2097152},"templateargumentsize":{"value":14663,"limit":2097152},"expansiondepth":{"value":19,"limit":40},"expensivefunctioncount":{"value":65,"limit":500},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":828,"limit":5000000},"entityaccesscount":{"value":0,"limit":400},"timingprofile":["100.00%  602.280      1 -total"," 81.74%  492.294     10 Template:Navbox"," 47.64%  286.955      1 Template:CPU_technologies"," 32.82%  197.657     60 Template:Link-en"," 32.23%  194.098     63 Template:Internal_link_helper"," 21.87%  131.716      2 Template:Lang-en"," 14.64%   88.176      3 Template:Navbox_subgroup"," 11.02%   66.343      6 Template:Category_handler"," 10.29%   61.985     63 Template:Lan"," 10.07%   60.644      1 Template:NoteTA"]},"scribunto":{"limitreport-timeusage":{"value":"0.300","limit":"10.000"},"limitreport-memusage":{"value":18534780,"limit":52428800}},"cachereport":{"origin":"mw1413","timestamp":"20200817101341","ttl":2592000,"transientcontent":false}}});});</script>
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Article","name":"\u6709\u9650\u72b6\u6001\u673a","url":"https:\/\/zh.wikipedia.org\/wiki\/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA","sameAs":"http:\/\/www.wikidata.org\/entity\/Q176452","mainEntity":"http:\/\/www.wikidata.org\/entity\/Q176452","author":{"@type":"Organization","name":"\u7ef4\u57fa\u5a92\u4f53\u9879\u76ee\u8d21\u732e\u8005"},"publisher":{"@type":"Organization","name":"Wikimedia Foundation, Inc.","logo":{"@type":"ImageObject","url":"https:\/\/www.wikimedia.org\/static\/images\/wmf-hor-googpub.png"}},"datePublished":"2003-09-08T03:35:45Z","dateModified":"2020-05-08T22:33:54Z","image":"https:\/\/upload.wikimedia.org\/wikipedia\/commons\/c\/cf\/Finite_state_machine_example_with_comments.svg","headline":"\u6578\u5b78\u8a08\u7b97\u6a21\u578b; \u62bd\u50cf\u6a5f\u5668\u53ef\u4ee5\u5728\u4efb\u4f55\u7d66\u5b9a\u6642\u9593\u6070\u597d\u8655\u65bc\u6709\u9650\u6578\u91cf\u7684\u72c0\u614b\u4e4b\u4e00\u4e2d"}</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":176,"wgHostname":"mw1265"});});</script>
+</body></html>
