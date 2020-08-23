@@ -20,7 +20,7 @@
 <p>设定硬件连接：ATmega16的PB3引脚串联电阻、LED后接地。PB3--R--LED--GND。高电平点亮LED，低电平关闭LED。</br>
 如果想让LED有不同亮度，就要改变通过它的电流。PWM，调节占空比可以改变它的等效电流。占空比：50%是方波，100%是维持高电平，0%是维持低电平。如果脉冲之间的间隔足够短，利用视觉暂留现象，就可以使人看不出来LED实际上是在不停的开启/关闭。</br>
 </p>
-<p>AVR微控制器，C语言编程，winavr/avrgcc编译工具（不同的编译平台代码会有不同, 其他AVR编译开发平台有Arduino Software/ICC-AVR等）</br>
+<p>AVR微控制器，C语言编程，winavr/avrgcc编译工具（不同的编译平台代码会有不同, 其他AVR编译开发平台有Arduino Software、ICC-AVR等）</br>
 代码还没有测试，预先尴尬😅
 </p>
 <pre><code class="language-c">#include &lt;avr/io.h&gt;        
