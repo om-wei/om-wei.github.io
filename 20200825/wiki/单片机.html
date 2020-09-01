@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="zh" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>单片机 - 维基百科，自由的百科全书</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"zh","wgMonthNames":["","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],"wgRequestId":"34a13fc1-6e7c-4f09-a501-5200a3ac93a4","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"单片机","wgTitle":"单片机","wgCurRevisionId":60240316,"wgRevisionId":60240316,"wgArticleId":30053,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgPageContentLanguage":"zh","wgPageContentModel":"wikitext","wgRelevantPageName":"单片机","wgRelevantArticleId":30053,"wgUserVariant":"zh","wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgMediaViewerOnClick":!0,"wgMediaViewerEnabledByDefault":!0,"wgPopupsReferencePreviews":
+!1,"wgPopupsConflictsWithNavPopupGadget":!1,"wgVisualEditor":{"pageLanguageCode":"zh","pageLanguageDir":"ltr","pageVariantFallbacks":["zh-hans","zh-hant","zh-cn","zh-tw","zh-hk","zh-sg","zh-mo","zh-my"]},"wgMFMode":"stable","wgMFAmc":!1,"wgMFAmcOutreachActive":!1,"wgMFAmcOutreachUserEligible":!1,"wgMFLazyLoadImages":!0,"wgMFDisplayWikibaseDescriptions":{"search":!0,"nearby":!0,"watchlist":!0,"tagline":!0},"wgMFIsPageContentModelEditable":!0,"wgWMESchemaEditAttemptStepOversample":!1,"wgULSCurrentAutonym":"中文","wgNoticeProject":"wikipedia","wgCentralAuthMobileDomain":!0,"wgEditSubmitButtonLabelPublish":!0,"wgWikibaseItemId":"Q165678","wgMinervaPermissions":{"watch":!0,"talk":!1},"wgMinervaFeatures":{"beta":!1,"donate":!0,"mobileOptionsLink":!0,"categories":!1,"pageIssues":!0,"talkAtTop":!1,"historyInPageActions":!1,"overflowSubmenu":!1,"tabsOnSpecials":!1,"personalMenu":!1,"mainMenuExpanded":!1,"simplifiedTalk":!0
+},"wgMinervaDownloadNamespaces":[0]};RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","noscript":"ready","user.styles":"ready","ext.globalCssJs.user":"ready","user":"ready","user.options":"loading","skins.minerva.base.styles":"ready","skins.minerva.content.styles":"ready","skins.minerva.content.styles.images":"ready","mediawiki.hlist":"ready","mediawiki.ui.icon":"ready","mediawiki.ui.button":"ready","skins.minerva.icons.wikimedia":"ready","skins.minerva.mainMenu.icons":"ready","skins.minerva.mainMenu.styles":"ready","mobile.init.styles":"ready","ext.wikimediaBadges":"ready"};RLPAGEMODULES=["site","mediawiki.page.ready","skins.minerva.options","skins.minerva.scripts","ext.gadget.AdvancedSiteNotices","ext.gadget.NavFrame","ext.gadget.collapsibleTables","ext.gadget.notifyConversion","ext.centralauth.centralautologin","ext.popups","mobile.init","ext.relatedArticles.readMore.bootstrap","ext.eventLogging","ext.wikimediaEvents","ext.navigationTiming",
+"mw.externalguidance.init","ext.centralNotice.geoIP","ext.centralNotice.startUp"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=zh&amp;modules=ext.wikimediaBadges%7Cmediawiki.hlist%7Cmediawiki.ui.button%2Cicon%7Cmobile.init.styles%7Cskins.minerva.base.styles%7Cskins.minerva.content.styles%7Cskins.minerva.content.styles.images%7Cskins.minerva.icons.wikimedia%7Cskins.minerva.mainMenu.icons%2Cstyles&amp;only=styles&amp;skin=minerva"/>
+<script async="" src="/w/load.php?lang=zh&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=minerva&amp;target=mobile"></script>
+<meta name="generator" content="MediaWiki 1.36.0-wmf.5"/>
+<meta name="referrer" content="origin"/>
+<meta name="referrer" content="origin-when-crossorigin"/>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<meta name="theme-color" content="#eaecf0"/>
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/1/18/PIC18F8720.jpg"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0"/>
+<link rel="manifest" href="/w/api.php?action=webapp-manifest"/>
+<link rel="alternate" type="application/x-wiki" title="编辑本页" href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit"/>
+<link rel="edit" title="编辑本页" href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit"/>
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png"/>
+<link rel="shortcut icon" href="/static/favicon/wikipedia.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (zh)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//zh.wikipedia.org/w/api.php?action=rsd"/>
+<link rel="alternate" hreflang="zh" href="/zh/%E5%8D%95%E7%89%87%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hans" href="/zh-hans/%E5%8D%95%E7%89%87%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hant" href="/zh-hant/%E5%8D%95%E7%89%87%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hans-CN" href="/zh-cn/%E5%8D%95%E7%89%87%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hant-HK" href="/zh-hk/%E5%8D%95%E7%89%87%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hant-MO" href="/zh-mo/%E5%8D%95%E7%89%87%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hans-MY" href="/zh-my/%E5%8D%95%E7%89%87%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hans-SG" href="/zh-sg/%E5%8D%95%E7%89%87%E6%9C%BA"/>
+<link rel="alternate" hreflang="zh-Hant-TW" href="/zh-tw/%E5%8D%95%E7%89%87%E6%9C%BA"/>
+<link rel="alternate" hreflang="x-default" href="/wiki/%E5%8D%95%E7%89%87%E6%9C%BA"/>
+<link rel="license" href="//creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="canonical" href="https://zh.wikipedia.org/wiki/%E5%8D%95%E7%89%87%E6%9C%BA"/>
+<link rel="dns-prefetch" href="//login.wikimedia.org"/>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-单片机 rootpage-单片机 stable issues-group-B skin-minerva action-view skin--responsive">
+<div id="mw-mf-viewport">
+	<div id="mw-mf-page-center">
+		<a class="mw-mf-page-center__mask" href="#"></a>
+		<header class="header-container header-chrome">
+			<form class="header" action="/w/index.php" method="get">
+				<nav class="navigation-drawer toggle-list view-border-box">
+					<input type="checkbox" id="main-menu-input" class="toggle-list__checkbox" role="button" aria-labelledby="mw-mf-main-menu-button">
+					<label for="main-menu-input" id="mw-mf-main-menu-button"
+						class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-menu-base20 mw-ui-icon-flush-left toggle-list__toggle"
+						title="打开主菜单" data-event-name="ui.mainmenu">打开主菜单</label>
+					<div id="mw-mf-page-left" class="menu toggle-list__list view-border-box">
+	<ul id="p-navigation">
+			<li class="">
+			    <a href="/wiki/Wikipedia:%E9%A6%96%E9%A1%B5" class="mw-ui-icon mw-ui-icon-before mw-ui-icon-minerva-home" data-event-name="menu.home"><span>首页</span></a>
+			</li>
+			<li class="">
+			    <a href="/wiki/Special:Random#/random" class="mw-ui-icon mw-ui-icon-before mw-ui-icon-minerva-die " data-event-name="menu.random"><span>随机</span></a>
+			</li>
+			<li class="jsonly">
+			    <a href="/wiki/Special:%E9%99%84%E8%BF%91" class="mw-ui-icon mw-ui-icon-before mw-ui-icon-minerva-mapPin nearby" data-event-name="menu.nearby"><span>附近</span></a>
+			</li>
+	</ul>
+	<ul id="p-personal">
+			<li class="">
+			    <a href="/w/index.php?title=Special:%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95&amp;returnto=%E5%8D%95%E7%89%87%E6%9C%BA" class="menu__item--login mw-ui-icon mw-ui-icon-before mw-ui-icon-minerva-logIn " data-event-name="menu.login"><span>登录</span></a>
+			</li>
+	</ul>
+	<ul id="pt-preferences">
+			<li class="jsonly">
+			    <a href="/w/index.php?title=Special:%E7%A7%BB%E5%8A%A8%E7%89%88%E9%80%89%E9%A1%B9&amp;returnto=%E5%8D%95%E7%89%87%E6%9C%BA" class="menu__item--settings mw-ui-icon mw-ui-icon-before mw-ui-icon-minerva-settings " data-event-name="menu.settings"><span>设置</span></a>
+			</li>
+	</ul>
+	<ul id="p-donation">
+			<li class="">
+			    <a href="https://donate.wikimedia.org/?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=spontaneous&amp;uselang=zh-hans&amp;utm_key=minerva" class="mw-ui-icon mw-ui-icon-before mw-ui-icon-minerva-heart " data-event-name="menu.donate"><span>资助维基百科</span></a>
+			</li>
+	</ul>
+	<ul class="hlist">
+			<li class="">
+			    <a href="/wiki/Wikipedia:%E5%85%B3%E4%BA%8E" class="" data-event-name=""><span>关于维基百科</span></a>
+			</li>
+			<li class="">
+			    <a href="/wiki/Wikipedia:%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E" class="" data-event-name=""><span>免责声明</span></a>
+			</li>
+	</ul>
+</div>
+
+					<label class="main-menu-mask" for="main-menu-input"></label>
+				</nav>
+				<div class="branding-box">
+					<a href="/wiki/Wikipedia:%E9%A6%96%E9%A1%B5">
+						<span><img src="/static/images/mobile/copyright/wikipedia-wordmark-en.svg" width="119" height="18" alt="Wikipedia"/></span>
+						
+					</a>
+				</div>
+				<div class="search-box">
+					<input class="search mw-ui-background-icon-search skin-minerva-search-trigger" type="search" name="search" id="searchInput"
+						autocomplete="off" placeholder="搜索维基百科" aria-label="搜索维基百科"
+						value="">
+				</div>
+				<nav class="minerva-user-navigation" aria-label="用户导航">
+					<div><button id="searchIcon" class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-search-base20 skin-minerva-search-trigger" type="submit">搜索</button></div>
+					
+				</nav>
+			</form>
+		</header>
+		<main id="content" class="mw-body">
+			<div class="banner-container">
+			<div id="siteNotice"></div>
+			</div>
+			
+			<div class="pre-content heading-holder">
+				<div class="page-heading">
+					<h1 id="section_0">单片机</h1>
+					<div class="tagline"></div>
+				</div>
+				<nav class="page-actions-menu">
+	<ul id="page-actions" class="page-actions-menu__list">
+		<li id="language-selector" class="page-actions-menu__list-item">
+				<a id="" href="/wiki/Special:%E7%A7%BB%E5%8A%A8%E7%89%88%E8%AF%AD%E8%A8%80/%E5%8D%95%E7%89%87%E6%9C%BA" class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-language-base20 mw-ui-icon-with-label-desktop language-selector"
+					data-mw="interface"
+					data-event-name="menu.languages" role="button" title="语言">语言</a>
+		</li>
+		<li id="page-actions-watch" class="page-actions-menu__list-item">
+				<a id="ca-watch" href="/w/index.php?title=Special:%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95&amp;returnto=%E5%8D%95%E7%89%87%E6%9C%BA" class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-star-base20 mw-ui-icon-with-label-desktop watch-this-article mw-watchlink menu__item--page-actions-watch"
+					data-mw="interface"
+					data-event-name="menu.watch" role="button" title="监视">监视</a>
+		</li>
+		<li id="page-actions-edit" class="page-actions-menu__list-item">
+				<a id="ca-edit" href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit&amp;section=0" class="edit-page menu__item--page-actions-edit mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 mw-ui-icon-with-label-desktop"
+					data-mw="interface"
+					data-event-name="menu.edit" role="button" title="编辑此页面的序言章节">编辑</a>
+		</li>
+	</ul>
+</nav>
+<!-- version 1.0.2 (change every time you update a partial) -->
+
+				
+				
+				<div class="minerva__subtitle"></div>
+			</div>
+			
+			<div id="bodyContent" class="content"><div id="mw-content-text" lang="zh" dir="ltr" class="mw-content-ltr"><script>function mfTempOpenSection(id){var block=document.getElementById("mf-section-"+id);block.className+=" open-block";block.previousSibling.className+=" open-block";}</script><div class="mw-parser-output"><section class="mf-section-0" id="mf-section-0"><table class="box-Unreferenced plainlinks metadata ambox ambox-content" role="presentation"><tbody><tr><td class="mbox-text"><span class="mbox-text-span">此條目<b>没有列出任何<a href="/wiki/Wikipedia:%E5%88%97%E6%98%8E%E6%9D%A5%E6%BA%90" title="Wikipedia:列明来源">参考或来源</a></b>。<span class="hide-when-compact"></span> <small class="date-container"><i>(<span class="date">2016年2月2日</span>)</i></small><span class="hide-when-compact"><br><small>維基百科所有的內容都應該<a href="/wiki/Wikipedia:%E5%8F%AF%E4%BE%9B%E6%9F%A5%E8%AD%89" title="Wikipedia:可供查證">可供查證</a>。请协助補充<a href="/wiki/Wikipedia:%E5%8F%AF%E9%9D%A0%E6%9D%A5%E6%BA%90" title="Wikipedia:可靠来源">可靠来源</a>以<a class="external text" href="https://zh.wikipedia.org/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit">改善这篇条目</a>。<a href="/wiki/Wikipedia:%E5%8F%AF%E4%BE%9B%E6%9F%A5%E8%AF%81" class="mw-redirect" title="Wikipedia:可供查证">无法查证</a>的內容可能會因為異議提出而移除。</small></span><span class="hide-when-compact"></span></span></td></tr></tbody></table><div id="noteTA-ea17aca7" class="noteTA"><div class="noteTA-group"><div data-noteta-group-source="module" data-noteta-group="IT"></div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:222px;"><a href="/wiki/File:PIC18F8720.jpg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/1/18/PIC18F8720.jpg/220px-PIC18F8720.jpg" decoding="async" width="220" height="220" class="thumbimage" data-file-width="425" data-file-height="425"></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:PIC18F8720.jpg" class="internal" title="放大"></a></div>80針腳TQFP封裝的<a href="/wiki/PIC" class="mw-disambig" title="PIC">PIC</a>18F8720 微控制器</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:222px;"><a href="/wiki/File:78K0S_Do-It.jpg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/ba/78K0S_Do-It.jpg/220px-78K0S_Do-It.jpg" decoding="async" width="220" height="160" class="thumbimage" data-file-width="1520" data-file-height="1108"></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:78K0S_Do-It.jpg" class="internal" title="放大"></a></div>NEC單片機78K0S</div></div></div>
+<p><b>单片机</b>，全称<b>单片微型计算机</b>（英語：<span lang="en"><b>single-chip microcomputer</b></span>），又稱<b>微控制器</b>（<span lang="en"><b>microcontroller</b></span>），是把<a href="/wiki/%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8" title="中央处理器">中央处理器</a>、<a href="/wiki/%E9%9B%BB%E8%85%A6%E8%A8%98%E6%86%B6%E9%AB%94" title="電腦記憶體">存储器</a>、定时/计数器（<span lang="en">timer/counter</span>）、各種<a href="/wiki/I/O" title="I/O">输入输出接口</a>等都集成在一块<a href="/wiki/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF" title="集成电路">集成电路</a><a href="/wiki/%E8%8A%AF%E7%89%87" class="mw-redirect" title="芯片">芯片</a>上的<a href="/wiki/%E5%BE%AE%E5%9E%8B%E8%AE%A1%E7%AE%97%E6%9C%BA" title="微型计算机">微型计算机</a>。与应用在个人电脑中的通用型<a href="/wiki/%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8" title="微处理器">微处理器</a>相比，它更强调自供应（不用外接硬件）和节约成本。它的最大优点是体积小，可放在仪表内部，但存储量小，输入输出接口简单，功能较低。由于其发展非常迅速，旧的单片机的定义已不能满足，所以在很多应用场合被称为范围更广的微控制器；由於單晶片微電腦常用於當控制器故又名single chip microcontroller。“单晶片”是台湾对单片机的称呼；中国大陆主要采用“单片机”的称呼，英文缩写为MCU。
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none"><div class="toctitle" lang="zh" dir="ltr"><h2 id="mw-toc-heading">目录</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul><li class="toclevel-1 tocsection-1"><a href="#%E6%A6%82%E8%BF%B0"><span class="tocnumber">1</span> <span class="toctext">概述</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E4%BD%8D%E5%85%83%E6%95%B0"><span class="tocnumber">2</span> <span class="toctext">单片机的位元数</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA"><span class="tocnumber">3</span> <span class="toctext">常见的单片机</span></a>
+<ul><li class="toclevel-2 tocsection-4"><a href="#%E5%85%B6%E4%BB%96%E7%B3%BB%E5%88%97%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA"><span class="tocnumber">3.1</span> <span class="toctext">其他系列的单片机</span></a></li>
+</ul></li>
+<li class="toclevel-1 tocsection-5"><a href="#%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E5%BC%80%E5%8F%91"><span class="tocnumber">4</span> <span class="toctext">单片机的开发</span></a>
+<ul><li class="toclevel-2 tocsection-6"><a href="#%E7%A1%AC%E4%BB%B6"><span class="tocnumber">4.1</span> <span class="toctext">硬件</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#%E8%BD%AF%E4%BB%B6%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83"><span class="tocnumber">4.2</span> <span class="toctext">软件開發環境</span></a>
+<ul><li class="toclevel-3 tocsection-8"><a href="#PROTEUS"><span class="tocnumber">4.2.1</span> <span class="toctext">PROTEUS</span></a></li>
+</ul></li>
+</ul></li>
+<li class="toclevel-1 tocsection-9"><a href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="tocnumber">5</span> <span class="toctext">参考文献</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#%E5%A4%96%E9%83%A8%E9%93%BE%E6%8E%A5"><span class="tocnumber">6</span> <span class="toctext">外部链接</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#%E5%8F%82%E8%A7%81"><span class="tocnumber">7</span> <span class="toctext">参见</span></a></li>
+</ul></div>
+
+</section><h2 class="section-heading" onclick="javascript:mfTempOpenSection(1)"><div class="mw-ui-icon mw-ui-icon-element indicator mw-ui-icon-small mw-ui-icon-flush-left"></div><span id=".E6.A6.82.E8.BF.B0"></span><span class="mw-headline" id="概述">概述</span><span class="mw-editsection"><a href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit&amp;section=1" title="编辑章节：概述" data-section="1" class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right">编辑</a></span></h2><section class="mf-section-1 collapsible-block" id="mf-section-1">
+<p>绝大多数现在的单片机都是基于<a href="/wiki/%E5%86%AF%C2%B7%E8%AF%BA%E4%BC%8A%E6%9B%BC%E7%BB%93%E6%9E%84" title="冯·诺伊曼结构">冯·诺伊曼结构</a>的，这种结构清楚地定义了<a href="/wiki/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F" title="嵌入式系统">嵌入式系统</a>所必需的四个基本部分：一个中央处理器核心，程序存储器（只读存储器或者<a href="/wiki/%E9%97%AA%E5%AD%98" title="闪存">闪存</a>）、数据存储器（随机存储器）、一个或者更多的定时/计数器，还有用来与外围设备以及扩展资源进行通信的输入/输出端口——所有这些都被集成在单个集成电路芯片上。
+</p><p>说单片机与通用型中央处理单元芯片不同，是因为前者一般很容易配合最小型的外部支持芯片制成工作计算机。这样就可以很容易的把单片机系统植入装置内部来控制装置了。近年来为了在指令和数据上使用不同的字宽，并提高处理器线速度，<a href="/wiki/%E5%93%88%E4%BD%9B%E7%BB%93%E6%9E%84" title="哈佛结构">哈佛结构</a>在<a href="/wiki/%E5%BE%AE%E6%8E%A7%E5%88%B6%E5%99%A8" class="mw-redirect" title="微控制器">微控制器</a>（Microcontrollers）和<a href="/wiki/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%99%A8" class="mw-redirect" title="数字信号处理器">数字信号处理器</a>也逐渐得到了广泛的应用。
+</p><p>传统的微处理器是不允许这么做的。它要完成单片机的工作，就必须连接一些其他芯片。比如说，因为芯片上没有数据存储器，就必须要添加一些RAM的存储芯片，虽然所添加存储器的容量很灵活，但是至少还是要添加。另外还需要添加很多连线来传递芯片之间的数据。与以上的情况相比，单片机的工作则相对独立，一个典型的微控制器只需要一个<a href="/w/index.php?title=%E6%97%B6%E9%92%9F%E5%8F%91%E7%94%9F%E5%99%A8&amp;action=edit&amp;redlink=1" class="new" title="时钟发生器（页面不存在）">时钟发生器</a>和很少的RAM和ROM（或者EPROM, E<sup>2</sup>PROM）就可以在软件和晶振下工作了。同时，微控制器具有丰富的输入输出设备，例如<a href="/wiki/%E6%A8%A1%E6%8B%9F%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2%E5%99%A8" class="mw-redirect" title="模拟数字转换器">模拟数字转换器</a>、<a href="/wiki/%E5%AE%9A%E6%99%82%E5%99%A8" title="定時器">定时器</a>、<a href="/wiki/%E4%B8%B2%E5%8F%A3" class="mw-redirect" title="串口">串口</a>，以及其他串行通讯接口，比如<a href="/wiki/I%C2%B2C" title="I²C">I<sup>2</sup>C</a>，<a href="/wiki/%E5%BA%8F%E5%88%97%E5%91%A8%E9%82%8A%E4%BB%8B%E9%9D%A2" title="序列周邊介面">串行周边接口</a>，<a href="/wiki/%E6%8E%A7%E5%88%B6%E5%99%A8%E5%8D%80%E5%9F%9F%E7%B6%B2%E8%B7%AF" title="控制器區域網路">控制器局域网</a>等。通常，这些集成在内部的设备可以通过特殊的指令来操作。
+</p><p>单片机时钟频率通常较同时代的计算机芯片低，但它价格低廉，能够提供充足的程序存储器、丰富的片上接口。某些架构的单片机生产厂商众多，例如<a href="/wiki/8051" class="mw-redirect" title="8051">8051</a>系列、<a href="/wiki/Z80" class="mw-disambig" title="Z80">Z80</a>系列。一些现代的微控制器支持一些内建的高级编程语言，比如<a href="/wiki/BASIC" title="BASIC">BASIC(培基)</a>语言、<a href="/wiki/C%E8%AF%AD%E8%A8%80" title="C语言">C语言</a>、<a href="/wiki/C%2B%2B" title="C++">C++</a>等。
+</p>
+</section><h2 class="section-heading" onclick="javascript:mfTempOpenSection(2)"><div class="mw-ui-icon mw-ui-icon-element indicator mw-ui-icon-small mw-ui-icon-flush-left"></div><span id=".E5.8D.95.E7.89.87.E6.9C.BA.E7.9A.84.E4.BD.8D.E5.85.83.E6.95.B0"></span><span class="mw-headline" id="单片机的位元数">单片机的位元数</span><span class="mw-editsection"><a href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit&amp;section=2" title="编辑章节：单片机的位元数" data-section="2" class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right">编辑</a></span></h2><section class="mf-section-2 collapsible-block" id="mf-section-2">
+<p>根据<a href="/wiki/%E5%8C%AF%E6%B5%81%E6%8E%92" class="mw-disambig" title="匯流排">匯流排</a>或資料<a href="/wiki/%E6%9A%AB%E5%AD%98%E5%99%A8" class="mw-redirect" title="暫存器">暫存器</a>的宽度，单片机又分为4位元、8位元、16位元和32位元单片机。4位单片机多用于冰箱、洗衣机、微波炉等家电控制中；8位、16位单片机主要用于一般的控制领域，一般不使用<a href="/wiki/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F" title="操作系统">操作系统</a>；32位用于<a href="/wiki/%E7%BD%91%E7%BB%9C" class="mw-disambig" title="网络">网络</a>操作、<a href="/wiki/%E5%A4%9A%E5%AA%92%E4%BD%93" title="多媒体">多媒体</a>处理等复杂处理的场合，一般要使用<a href="/wiki/%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F" title="嵌入式操作系统">嵌入式操作系统</a>。
+</p>
+</section><h2 class="section-heading" onclick="javascript:mfTempOpenSection(3)"><div class="mw-ui-icon mw-ui-icon-element indicator mw-ui-icon-small mw-ui-icon-flush-left"></div><span id=".E5.B8.B8.E8.A7.81.E7.9A.84.E5.8D.95.E7.89.87.E6.9C.BA"></span><span class="mw-headline" id="常见的单片机">常见的单片机</span><span class="mw-editsection"><a href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit&amp;section=3" title="编辑章节：常见的单片机" data-section="3" class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right">编辑</a></span></h2><section class="mf-section-3 collapsible-block" id="mf-section-3">
+<p><a href="/wiki/%E5%BE%AE%E8%8A%AF" class="mw-redirect" title="微芯">微芯</a>（Microchip）的<a href="/wiki/PIC" class="mw-disambig" title="PIC">PIC</a>系列出货量居于业界领导者地位；<a href="/wiki/Atmel" title="Atmel">Atmel</a>的51系列及<a href="/wiki/Atmel_AVR" title="Atmel AVR">AVR</a>系列种类众多，受支持面广；<a href="/wiki/%E5%BE%B7%E5%B7%9E%E4%BB%AA%E5%99%A8" title="德州仪器">德州仪器</a>的<a href="/wiki/MSP430" title="MSP430">MSP430</a>系列以低功耗闻名，常用于医疗电子产品及仪器仪表中；<a href="/wiki/%E7%91%9E%E8%90%A8" class="mw-disambig" title="瑞萨">瑞萨</a>单片机在日本使用广泛。
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:222px;"><a href="/wiki/File:W65C265S8PL-8_lg.jpg" class="image"><noscript><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/ad/W65C265S8PL-8_lg.jpg/220px-W65C265S8PL-8_lg.jpg" decoding="async" width="220" height="220" class="thumbimage" data-file-width="300" data-file-height="300"></noscript><span class="lazy-image-placeholder" style="width: 220px;height: 220px;" data-src="//upload.wikimedia.org/wikipedia/commons/thumb/a/ad/W65C265S8PL-8_lg.jpg/220px-W65C265S8PL-8_lg.jpg" data-alt="" data-width="220" data-height="220" data-class="thumbimage"> </span></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:W65C265S8PL-8_lg.jpg" class="internal" title="放大"></a></div>WDC的W65C265S8PL單晶片</div></div></div>
+<ul><li><a href="/wiki/%E8%8B%B1%E7%89%B9%E5%B0%94" title="英特尔">英特尔</a>
+<ul><li>8-bit <a href="/wiki/%E8%8B%B1%E7%89%B9%E7%88%BE8051" title="英特爾8051">8051</a>系列
+<ul><li>8XC42</li>
+<li>MCS48</li>
+<li><a href="/wiki/MCS-51" class="mw-redirect" title="MCS-51">MCS51</a> : Intel 8051系列歷史悠久，相容產品眾多，使用廣泛</li>
+<li>8xC251</li></ul></li>
+<li>16-bit
+<ul><li>MCS96系列</li>
+<li>MXS296</li></ul></li>
+<li>32-bit
+<ul><li>i960</li></ul></li></ul></li></ul><ul><li><a href="/wiki/ARM_Holdings" class="mw-redirect" title="ARM Holdings">ARM</a> （Acorn RISC Machine）系列单片机</li></ul><div class="thumb tright"><div class="thumbinner" style="width:222px;"><a href="/wiki/File:Microcontrollers_Atmega32_Atmega8.jpg" class="image"><noscript><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Microcontrollers_Atmega32_Atmega8.jpg/220px-Microcontrollers_Atmega32_Atmega8.jpg" decoding="async" width="220" height="202" class="thumbimage" data-file-width="2360" data-file-height="2168"></noscript><span class="lazy-image-placeholder" style="width: 220px;height: 202px;" data-src="//upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Microcontrollers_Atmega32_Atmega8.jpg/220px-Microcontrollers_Atmega32_Atmega8.jpg" data-alt="" data-width="220" data-height="202" data-class="thumbimage"> </span></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Microcontrollers_Atmega32_Atmega8.jpg" class="internal" title="放大"></a></div>两台<a href="/wiki/Atmel" title="Atmel">Atmel</a>牌的ATmega单片机</div></div></div>
+<ul><li><a href="/wiki/Atmel_AVR" title="Atmel AVR">AVR系列</a>（愛特梅爾公司）
+<ul><li>Atmel AT91 series (ARM 处理器等)</li>
+<li>AT90 series – AVR (Atmel 的高性能RISC 8位单片机，老产品)</li>
+<li>ATmega series – AVR (Atmel 的高性能RISC 8 位单片机，新产品)</li>
+<li>ATXmega series – AVR (Atmel 的高性能RISC 32 位单片机，新产品)</li>
+<li>Atmel AT89 series (Intel 8051/MCS51 架构8位单片机)</li>
+<li>MARC4</li></ul></li></ul><ul><li>Cypress MicroSystems（赛普拉斯微系统公司）
+<ul><li>CY8C2xxxx (PSoC)</li></ul></li></ul><ul><li><a href="/wiki/%E9%A3%9E%E6%80%9D%E5%8D%A1%E5%B0%94" title="飞思卡尔">飞思卡尔半导体</a>
+<ul><li>8-bit
+<ul><li>68HC05 (CPU05)</li>
+<li>68HC08 (CPU08)</li>
+<li>68HC11 (CPU11)</li></ul></li>
+<li>16-bit
+<ul><li>68HC12 (CPU12)</li>
+<li>68HC16 (CPU16)</li>
+<li>Freescale DSP56800 (DSPcontroller)</li></ul></li>
+<li>32-bit
+<ul><li>Freescale 683XX (CPU32)</li>
+<li>MPC500</li>
+<li>MPC 860 (PowerQUICC)</li>
+<li>MPC 8240/8250 (PowerQUICC II)</li>
+<li>MPC 8540/8555/8560 (PowerQUICC III)</li></ul></li></ul></li></ul><ul><li>Holtek（盛群半導體）
+<ul><li>HT48FXX Flash I/O type</li>
+<li>HT48RXX I/O type</li>
+<li>HT46RXX A/D type</li>
+<li>HT49RXX LCD type</li></ul></li></ul><ul><li><a href="/wiki/%E5%BE%AE%E6%99%B6%E7%89%87%E7%A7%91%E6%8A%80" title="微晶片科技">微晶片科技</a>（微芯公司）的<a href="/wiki/PIC%E5%BE%AE%E6%8E%A7%E5%88%B6%E5%99%A8" title="PIC微控制器">PIC微控制器</a>系列
+<ul><li>8-bit : PIC10 PIC12 PIC16 PIC18</li>
+<li>16-bit : PIC24F PIC24H dsPIC30 dsPIC33</li>
+<li>32bit : PIC32 （採用<a href="/wiki/MIPS%E7%A7%91%E6%8A%80%E5%85%AC%E5%8F%B8" class="mw-redirect" title="MIPS科技公司">MIPS</a> M4K 核心架構）</li></ul></li></ul><ul><li><a href="/wiki/%E7%BE%8E%E5%9C%8B%E5%9C%8B%E5%AE%B6%E5%8D%8A%E5%B0%8E%E9%AB%94" class="mw-redirect" title="美國國家半導體">美國國家半導體</a>
+<ul><li><a href="/wiki/COP8" title="COP8">COP8</a></li>
+<li><a href="/wiki/CR16" title="CR16">CR16</a></li></ul></li></ul><ul><li>NEC
+<ul><li>78K</li></ul></li></ul><ul><li><a href="/wiki/%E6%81%A9%E6%99%BA%E6%B5%A6%E5%8D%8A%E5%AF%BC%E4%BD%93" title="恩智浦半导体">恩智浦半导体</a>
+<ul><li>LPC2000</li>
+<li>LPC900</li>
+<li>LPC700</li></ul></li></ul><ul><li>Parallax, Inc.
+<ul><li><a href="/wiki/BASIC_Stamp" title="BASIC Stamp">BASIC Stamp</a></li></ul></li></ul><ul><li><a href="/wiki/%E7%91%9E%E8%90%A8%E7%A7%91%E6%8A%80" class="mw-redirect" title="瑞萨科技">瑞萨科技</a>系列单片机
+<ul><li>Renesas 16-bits
+<ul><li>Renesas M16C Series</li>
+<li>Renesas M32C Series</li>
+<li>Renesas R8C Series</li>
+<li>Renesas M16C/Tiny Series</li>
+<li>Renesas R8C/Tiny Series</li>
+<li>Renesas H8/Tiny Series</li></ul></li></ul></li></ul><ul><li><a href="/wiki/%E6%84%8F%E6%B3%95%E5%8D%8A%E5%B0%8E%E9%AB%94" title="意法半導體">意法半導體</a>
+<ul><li>STM32 series (ARM Cortex-M3 系列，32位)</li>
+<li>STM8 series (自主RISC指令集，8 位)</li></ul></li></ul><ul><li>SyncMOS <a href="/w/index.php?title=%E6%96%B0%E8%8C%82%E5%9C%8B%E9%9A%9B%E7%A7%91%E6%8A%80&amp;action=edit&amp;redlink=1" class="new" title="新茂國際科技（页面不存在）">新茂國際科技</a>全系列单片机
+<ul><li>SM59RXXA2 8-bits 1T(RISC)</li>
+<li>SM59DXXG2 8-bits 6T(ISP)</li>
+<li>SM59XX 8-bits 12T(ISP)</li>
+<li>SM89XX 8-bits 12T(Traditional 8051)</li>
+<li>SM79XX 8-bits 12T(Customization)</li></ul></li></ul><ul><li>PADAUK<a href="/w/index.php?title=%E5%BA%94%E5%B9%BF%E7%A7%91%E6%8A%80&amp;action=edit&amp;redlink=1" class="new" title="应广科技（页面不存在）">应广科技</a>全系列单片机(多核心单片机)
+<ul><li>P201CS/CD  8-bits</li>
+<li>P211CS/CD  8-bits</li>
+<li>p232CS/CD  8-bits</li>
+<li>P234CS/CD  8-bits</li></ul></li></ul><ul><li>ZiLOG
+<ul><li>Z8</li>
+<li>Z86E02</li></ul></li></ul><ul><li>STC 宏晶系列单片机
+<ul><li>STC89C series 6T/12T增强性单片机 (Intel 8051架构，有外部总线)</li>
+<li>STC11F/11L series 2T 增强性单片机 (Intel 8051增强架构，无外部总线程序支持)</li>
+<li>STC12C/12LE series 2T 增强性单片机 (Intel 8051增强架构，无外部总线程序支持)</li>
+<li>STC15C/15LE series 2T 增强性单片机 (Intel 8051增强架构，无外部总线程序支持，正在开发中)</li></ul></li></ul><ul><li>Kernel-IC 华芯单片机 LS系列
+<ul><li>LSx051 series 12T 双核单片机(Intel 8051架构，无外部总线)</li>
+<li>LSx151 series 12T 三核单片机(Intel 8051架构，无外部总线)</li>
+<li>LS052A series 6T  三核单片机(Intel 8051架构，无外部总线)</li></ul></li></ul><ul><li><a href="/wiki/%E6%96%B0%E5%94%90%E7%A7%91%E6%8A%80" title="新唐科技">新唐科技</a> Nuvoton NuMicro Family
+<ul><li>8051 单片机 (8-bits)</li>
+<li>ARM Cortex-M0 单片机 (32-bits)</li>
+<li>ARM Cortex-M4 单片机 (32-bits)</li></ul></li></ul><h3 class="in-block"><span id=".E5.85.B6.E4.BB.96.E7.B3.BB.E5.88.97.E7.9A.84.E5.8D.95.E7.89.87.E6.9C.BA"></span><span class="mw-headline" id="其他系列的单片机">其他系列的单片机</span><span class="mw-editsection"><a href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit&amp;section=4" title="编辑章节：其他系列的单片机" data-section="4" class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right">编辑</a></span></h3>
+<ul><li>MSP430系列单片机</li>
+<li>LM3S系列单片机</li>
+<li><a href="/wiki/%E5%8C%97%E4%BA%AC%E5%90%9B%E6%AD%A3" title="北京君正">北京君正</a> JZ系列单片机</li>
+<li>8098、80196系列单片机</li>
+<li>AT8P5X系列单片机</li>
+<li>CZG8000系列单片机</li></ul></section><h2 class="section-heading" onclick="javascript:mfTempOpenSection(4)"><div class="mw-ui-icon mw-ui-icon-element indicator mw-ui-icon-small mw-ui-icon-flush-left"></div><span id=".E5.8D.95.E7.89.87.E6.9C.BA.E7.9A.84.E5.BC.80.E5.8F.91"></span><span class="mw-headline" id="单片机的开发">单片机的开发</span><span class="mw-editsection"><a href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit&amp;section=5" title="编辑章节：单片机的开发" data-section="5" class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right">编辑</a></span></h2><section class="mf-section-4 collapsible-block" id="mf-section-4">
+<p>单片机的软件开发中，以往多使用<a href="/wiki/%E7%B5%84%E5%90%88%E8%AA%9E%E8%A8%80" class="mw-redirect" title="組合語言">汇编语言</a>，如今越来越多的使用C语言，又或者使用<a href="/wiki/BASIC%E8%AF%AD%E8%A8%80" class="mw-redirect" title="BASIC语言">BASIC语言</a>等更适合初学者的语言，部分<a href="/wiki/%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83" title="集成开发环境">集成开发环境</a>支持C++。单片机的<a href="/wiki/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95" title="软件测试">软件测试</a>需要使用<a href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91%E5%99%A8&amp;action=edit&amp;redlink=1" class="new" title="单片机开发器（页面不存在）">单片机开发器</a>或<a href="/wiki/%E6%A8%A1%E6%8B%9F%E5%99%A8" class="mw-redirect" title="模拟器">模擬器</a>。
+</p><p>随着技术的发展，2000年后已经有很多单片机自带了ISP（在线编程设计）或支持IAP，彻底地改变了传统的开发模式，使得开发单片机系统时不会损坏芯片的引脚，加速了产品的上市并降低了研发成本，缩短了从设计、制造到现场调试的时间，简化了生产流程，大大提高了工作效率。这类单片机包括AT89S系列单片机、AVR系列单片机等。
+</p>
+<h3 class="in-block"><span id=".E7.A1.AC.E4.BB.B6"></span><span class="mw-headline" id="硬件">硬件</span><span class="mw-editsection"><a href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit&amp;section=6" title="编辑章节：硬件" data-section="6" class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right">编辑</a></span></h3>
+<p>开发板可以进一步简化程序的开发和烧制过程。开发板可能包含实际芯片或是<a href="/wiki/%E4%BB%BF%E7%9C%9F%E5%99%A8" title="仿真器">仿真器</a>。通过配套的下载线连接电脑与开发板，在电脑上编写程序下载到开发板。批量生产会用到编程器。
+</p>
+<h3 class="in-block"><span id=".E8.BD.AF.E4.BB.B6.E9.96.8B.E7.99.BC.E7.92.B0.E5.A2.83"></span><span class="mw-headline" id="软件開發環境">软件開發環境</span><span class="mw-editsection"><a href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit&amp;section=7" title="编辑章节：软件開發環境" data-section="7" class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right">编辑</a></span></h3>
+<p>一些知名的微控制器開發環境有：
+</p>
+<ul><li><a href="/wiki/%E5%BE%AE%E8%8A%AF" class="mw-redirect" title="微芯">微芯</a>公司的 MPLAB <a href="/wiki/IDE" class="mw-disambig" title="IDE">IDE</a> 可用於該公司全系列微控制器的開發與除錯，除支持該公司的 ASM<a href="/wiki/%E7%B5%84%E8%AD%AF%E5%99%A8" class="mw-redirect" title="組譯器">組譯器</a> <a href="/wiki/C%E8%AF%AD%E8%A8%80" title="C语言">C语言</a><a href="/wiki/%E7%B7%A8%E8%AD%AF%E5%99%A8" title="編譯器">編譯器</a>外，也支援許多第三方的編譯器。</li>
+<li><a href="/wiki/ARM" class="mw-redirect" title="ARM">ARM</a>公司的 μVision <a href="/wiki/%E6%95%B4%E5%90%88%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83" class="mw-redirect" title="整合開發環境">整合開發環境</a>（原為 Keil 公司產品，2005年該公司已由 ARM 購併），包含組譯器與 C編譯器，可用于51单片机及ARM开发。</li></ul><h4 class="in-block"><span class="mw-headline" id="PROTEUS">PROTEUS</span><span class="mw-editsection"><a href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit&amp;section=8" title="编辑章节：PROTEUS" data-section="8" class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right">编辑</a></span></h4>
+<p><a href="/wiki/Proteus" title="Proteus">Proteus</a>软件是初学者入门的首选软件，它是Labcenter Electronics公司的一款商业版电路设计与仿真软件。內包括ISIS、ARES等软件模块。ARES模块主要用来完成PCB的设计，ISIS模块用来完成电路原理图的布图与仿真。
+</p><p>Proteus的软件仿真基于VSM技术，它与其他软件最大的不同也是最大的优势就在于能仿真大量的单片机芯片，比如MCS-51系列、PIC系列等等，甚至ARM处理器，以及单片机外围电路，比如键盘、LED、LCD等等。该软件还附带了一些案例和丰富的帮助文件。
+</p>
+</section><h2 class="section-heading" onclick="javascript:mfTempOpenSection(5)"><div class="mw-ui-icon mw-ui-icon-element indicator mw-ui-icon-small mw-ui-icon-flush-left"></div><span id=".E5.8F.82.E8.80.83.E6.96.87.E7.8C.AE"></span><span class="mw-headline" id="参考文献">参考文献</span><span class="mw-editsection"><a href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit&amp;section=9" title="编辑章节：参考文献" data-section="9" class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right">编辑</a></span></h2><section class="mf-section-5 collapsible-block" id="mf-section-5">
+<div class="reflist" style="list-style-type: decimal;">
+</div>
+</section><h2 class="section-heading" onclick="javascript:mfTempOpenSection(6)"><div class="mw-ui-icon mw-ui-icon-element indicator mw-ui-icon-small mw-ui-icon-flush-left"></div><span id=".E5.A4.96.E9.83.A8.E9.93.BE.E6.8E.A5"></span><span class="mw-headline" id="外部链接">外部链接</span><span class="mw-editsection"><a href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit&amp;section=10" title="编辑章节：外部链接" data-section="10" class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right">编辑</a></span></h2><section class="mf-section-6 collapsible-block" id="mf-section-6">
+<ul><li><a rel="nofollow" class="external text" href="https://web.archive.org/web/20190430033914/http://sdcc.sourceforge.net/">SDCC - Small Device C Compiler</a> - 一个支持多种微控制器的编译器自由软件</li>
+<li><a rel="nofollow" class="external text" href="https://web.archive.org/web/20120919184446/http://www.51hei.com/">一个免费提供单片机教程的网站</a></li></ul></section><h2 class="section-heading" onclick="javascript:mfTempOpenSection(7)"><div class="mw-ui-icon mw-ui-icon-element indicator mw-ui-icon-small mw-ui-icon-flush-left"></div><span id=".E5.8F.82.E8.A7.81"></span><span class="mw-headline" id="参见">参见</span><span class="mw-editsection"><a href="/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;action=edit&amp;section=11" title="编辑章节：参见" data-section="11" class="mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-edit-base20 edit-page mw-ui-icon-flush-right">编辑</a></span></h2><section class="mf-section-7 collapsible-block" id="mf-section-7">
+<ul><li><a href="/wiki/%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8" title="微处理器">微处理器</a>、<a href="/wiki/%E6%95%B8%E4%BD%8D%E8%A8%8A%E8%99%9F%E8%99%95%E7%90%86%E5%99%A8" title="數位訊號處理器">數位訊號處理器</a>、<a href="/wiki/%E5%8D%95%E6%9D%BF%E6%9C%BA" title="单板机">单板机</a></li>
+<li><a href="/wiki/%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F" title="嵌入式操作系统">嵌入式操作系统</a></li>
+<li><a href="/wiki/%E7%B3%BB%E7%B5%B1%E5%96%AE%E6%99%B6%E7%89%87" class="mw-redirect" title="系統單晶片">系統單晶片</a></li>
+<li><a href="/wiki/%E5%B7%A5%E6%A5%AD%E9%9B%BB%E8%85%A6" title="工業電腦">工業電腦</a></li>
+<li><a href="/wiki/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E6%8E%A7%E5%88%B6%E5%99%A8" title="数字信号控制器">数字信号控制器</a></li></ul><div style="clear: both; height: 1em"></div>
+</section></div><noscript><img src="//zh.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1&amp;mobile=1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div><div class="printfooter">
+取自“<a dir="ltr" href="https://zh.wikipedia.org/w/index.php?title=单片机&amp;oldid=60240316">https://zh.wikipedia.org/w/index.php?title=单片机&amp;oldid=60240316</a>”</div>
+</div>
+			<div class="post-content" id="page-secondary-actions">
+			
+			</div>
+		</main>
+		<footer class="mw-footer minerva-footer">
+		<div class="last-modified-bar">
+	<div class="post-content last-modified-bar__content">
+		<span class="last-modified-bar__icon mw-ui-icon mw-ui-icon-mw-ui-icon-small mw-ui-icon-wikimedia-history-base20 "></span>
+		<a class="last-modified-bar__text modified-enhancement" href="/wiki/Special:%E5%8E%86%E5%8F%B2/%E5%8D%95%E7%89%87%E6%9C%BA"
+				data-user-name="Hamish"
+				data-user-gender="unknown"
+				data-timestamp="1592890462">
+				<span>最后编辑于2020年6月23日 (星期二) 05:34</span>
+		</a>
+		<span class="mw-ui-icon mw-ui-icon-small mw-ui-icon-mf-expand-gray mf-mw-ui-icon-rotate-anti-clockwise indicator"></span>
+	</div>
+</div>
+
+		<div class="post-content footer-content">
+			<div id='mw-data-after-content'>
+	<div class="read-more-container"></div>
+</div>
+
+			<h2><img src="/static/images/mobile/copyright/wikipedia-wordmark-en.svg" width="119" height="18" alt="Wikipedia"/></h2>
+			<div class="license">除非另有声明，本网站内容采用<a class="external" rel="nofollow" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>授权。</div>
+			<ul class="footer-info hlist hlist-separated">
+				<li id="footer-info-lastmod"> 本页面最后修订于2020年6月23日 (星期二) 05:34。</li><li id="footer-info-copyright">本站的全部文字在<a rel="license" href="//zh.wikipedia.org/wiki/Wikipedia:CC-BY-SA-3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" title="Wikipedia:CC-BY-SA-3.0协议文本">知识共享 署名-相同方式共享 3.0协议</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/deed.zh" style="display:none;"></a>之条款下提供，附加条款亦可能应用。（请参阅<a href="//foundation.wikimedia.org/wiki/Terms_of_Use">使用条款</a>）<br />
+Wikipedia&reg;和维基百科标志是<a href="//wikimediafoundation.org">维基媒体基金会</a>的注册商标；维基&trade;是维基媒体基金会的商标。<br />
+维基媒体基金会是按美国国內稅收法501(c)(3)登记的<a href="//wikimediafoundation.org/wiki/Tax_Deductibility/en">非营利慈善机构</a>。<br /></li>
+			</ul>
+			<ul class="footer-places hlist hlist-separated">
+				<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">隐私政策</a></li><li id="footer-places-about"><a href="/wiki/Wikipedia:%E5%85%B3%E4%BA%8E" title="Wikipedia:关于">关于维基百科</a></li><li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E" title="Wikipedia:免责声明">免责声明</a></li><li id="footer-places-terms-use"><a href="https://foundation.wikimedia.org/wiki/Terms_of_Use">使用条款</a></li><li id="footer-places-desktop-toggle"><a id="mw-mf-display-toggle" href="//zh.wikipedia.org/w/index.php?title=%E5%8D%95%E7%89%87%E6%9C%BA&amp;mobileaction=toggle_view_desktop">桌面版</a></li><li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">开发者</a></li><li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/zh.wikipedia.org">统计</a></li><li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Cookie_statement">Cookie声明</a></li>
+			</ul>
+		</div>
+		</footer>
+	</div>
+</div>
+<div class="mw-notification-area" data-mw="interface"></div>
+<!-- v:8.3.0 -->
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"1.020","walltime":"1.244","ppvisitednodes":{"value":9419,"limit":1000000},"postexpandincludesize":{"value":755400,"limit":2097152},"templateargumentsize":{"value":19887,"limit":2097152},"expansiondepth":{"value":16,"limit":40},"expensivefunctioncount":{"value":118,"limit":500},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":0,"limit":5000000},"entityaccesscount":{"value":1,"limit":400},"timingprofile":["100.00%  895.794      1 -total"," 91.36%  818.397     15 Template:Navbox"," 38.68%  346.500    112 Template:Internal_link_helper"," 32.94%  295.069     92 Template:Link-en"," 30.16%  270.138      1 Template:CPU_technologies"," 17.93%  160.625      1 Template:Lang-en"," 15.07%  134.980      5 Template:Navbox_subgroup"," 11.71%  104.892    112 Template:Lan","  9.45%   84.612      1 Template:Computer_sizes","  9.00%   80.611      1 Template:Microcontrollers"]},"scribunto":{"limitreport-timeusage":{"value":"0.486","limit":"10.000"},"limitreport-memusage":{"value":18864844,"limit":52428800}},"cachereport":{"origin":"mw1351","timestamp":"20200822201455","ttl":2592000,"transientcontent":false}}});});</script>
+<script>(window.NORLQ=window.NORLQ||[]).push(function(){var ns,i,p,img;ns=document.getElementsByTagName('noscript');for(i=0;i<ns.length;i++){p=ns[i].nextSibling;if(p&&p.className&&p.className.indexOf('lazy-image-placeholder')>-1){img=document.createElement('img');img.setAttribute('src',p.getAttribute('data-src'));img.setAttribute('width',p.getAttribute('data-width'));img.setAttribute('height',p.getAttribute('data-height'));img.setAttribute('alt',p.getAttribute('data-alt'));p.parentNode.replaceChild(img,p);}}});</script><script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Article","name":"\u5355\u7247\u673a","url":"https:\/\/zh.wikipedia.org\/wiki\/%E5%8D%95%E7%89%87%E6%9C%BA","sameAs":"http:\/\/www.wikidata.org\/entity\/Q165678","mainEntity":"http:\/\/www.wikidata.org\/entity\/Q165678","author":{"@type":"Organization","name":"\u7ef4\u57fa\u5a92\u4f53\u9879\u76ee\u8d21\u732e\u8005"},"publisher":{"@type":"Organization","name":"Wikimedia Foundation, Inc.","logo":{"@type":"ImageObject","url":"https:\/\/www.wikimedia.org\/static\/images\/wmf-hor-googpub.png"}},"datePublished":"2004-05-20T01:57:01Z","dateModified":"2020-06-23T05:34:22Z","image":"https:\/\/upload.wikimedia.org\/wikipedia\/commons\/1\/18\/PIC18F8720.jpg"}</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":247,"wgHostname":"mw1320"});});</script>		</body>
+		</html>
+		
