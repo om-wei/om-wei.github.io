@@ -1,0 +1,96 @@
+<head>
+<title>礼记·大学</title>
+<meta charset="UTF-8"/>
+</head>
+
+<style>
+*{margin:0;padding:0;line-height:1;overflow:hidden;}
+div{width:1em;position:absolute;}
+</style>
+
+<script>
+w=window;n=w.innerWidth;m=w.innerHeight;d=document;q="px";
+/* 将要显示的内容分成数组 */
+dx=[
+" ︽礼记 大学︾",
+" 大学之道，在明明德，在亲民，在止于至善。",
+" 知止而后有定，定而后能静，静而后能安，安而后能虑，虑而后能得。",
+" 物有本末，事有终始，知所先后，则近道矣。",
+" 古之欲明明德于天下者，先治其国；",
+" 欲治其国者，先齐其家；欲齐其家者，先修其身；",
+" 欲修其身者，先正其心；欲正其心者，先诚其意；",
+" 欲诚其意者，先致其知，致知在格物。",
+" 物格而后知至，知至而后意诚，意诚而后心正，心正而后身修，",
+" 身修而后家齐，家齐而后国治，国治而后天下平。",
+" 自天子以至于庶人，一是皆以修身为本。",
+" 其本乱而末治者否矣，其所厚者薄，而其所薄者厚，未之有也。",
+" 此谓知本，此谓知之至也。",
+" 所谓诚其意者，毋自欺也，如恶恶臭，如好好色，此之谓自谦。",
+" 故君子必慎其独也。",
+" 小人闲居为不善，无所不至，见君子而后厌然，掩其不善而著其善。",
+" 人之视己，如见其肺肝然，则何益矣！",
+" 此谓诚于中，形于外，故君子必慎其独也。",
+" 曾子曰︰“十目所视，十手所指，其严乎！”",
+" 福润屋，德润身，心广体胖，故君子必诚其意。"];
+
+function z(a,b) {
+	return Math.floor(Math.random()*(b-a)+a)
+}
+
+function g() {
+	for(i=0;i<Math.floor(n/50);i++){ // 根据窗口宽度确定条目数量 
+		r=d.createElement("div");
+		s=dx[z(0,dx.length-1)]; // 按照随机索引，取出一节
+		/* 将一节文字创建格式 */
+		for(j=0; j<s.length;j++){ 
+			x=d.createElement("pre");
+			y=d.createTextNode(s[j]);
+			x.appendChild(y);
+			x.style.opacity=0;
+			r.appendChild(x)
+		}
+		r.id="r"+i;
+		r.t=z(-99,0);
+		with(r.style){
+			left=z(0,n)+q;
+			// top=z(-m,0)+q;
+			top=z(-m/2,0)+q;
+			fontSize=z(18,40)+q // 文字大小
+		}
+		d.body.appendChild(r);
+		setInterval("u("+i+")",z(80,160)) // 间隔，下落速度
+		// setInterval("u("+i+")",z(60,120))  
+	}
+}
+
+function u(j) {
+	e=d.getElementById("r"+j);
+	c=e.childNodes;
+	t=e.t+1;
+	if((v=t-c.length-50)>0){
+		if((e.style.opacity=1-v/32)==0){
+			for(f in c)
+				if(c[f].style)
+					c[f].style.opacity=0;
+			with(e.style){
+				left=z(0,n)+q;
+				top=z(-m/3,m*2/3)+q;
+				opacity=1
+			}
+			t=-50
+		}
+	}
+	e.t=t;
+	if(t<0||t>c.length+12)
+		return;
+	for(f=t;f&&f>t-12;f--){
+		s=1-(t-f)/16;
+		if(f<c.length&&c[f].style){
+			c[f].style.opacity=s;
+		}
+	}
+}
+</script>
+
+<!-- <body text=#0f0 bgcolor=#000 onload=g()> -->
+<body text=#fff bgcolor=#000 onload=g()> <!-- text颜色 -->
