@@ -1,3 +1,8 @@
+<head>
+<meta charset="UTF-8"/>
+<title>单片机与单片系统</title>
+</head>
+
 <h1>单片机与单片系统</h1>
 <p>数的表示</br>
 如果我们想要表示8个数，比如从0-7。可以用一只灯泡使用八种亮度来实现（先不考虑用不同颜色来表示），也可以使用三个灯泡开/关状态来实现。前者可以看作是模拟量，根据亮度识数不容易辨识，后者看作数字量或开关量，需要编号/编码如关关开是1，开关关是4。如果一个灯泡相当于一个位，那么前者用一个位表示了八个数，考虑作八进制，后者用一个位表示两个数，考虑作二进制，用三个位表示八个数。</br>
@@ -18,7 +23,7 @@
 这是很多人学习的第一款单片机，我也不例外。我们那会儿是通过郭天祥老师的视频学习的，网上这方面的资料很丰富。</br>
 8051最初由intel设计生产MCS 51单片机，后来多由Atmel公司生产，如AT89C51。国内STC的8051系列单片机也多被使用。</br>
 8051是一款经典的单片机，教科书大都以它作为单片机教学内容。而微机原理多以intel的8086来教学。x86指令集架构最初开发于8086。</p>
-<p>AVR单片机</br>
+<p>AVR</br>
 <img src="./Arduino_Logo.png" alt="Arduino Logo"></br>
 8位 | 哈佛体系结构 | 精简指令集</br>
 AVR单片机就用在我工作的第一家单位的产品上。当时维护着汇编语言代码。AVR studio 是Atmel公司推出的开发环境，只能用汇编语言开发。avr-gcc是开发工具链，原生于Linux操作系统，移植于Windows操作系统上为winavr。2016年，Atmel公司被microchip公司收购。新的开发平台有Atmel Studio软件开发工具，Arduino提供了硬件、软件平台，这两个自己没有使用过，Arduino或许是更好的平台。</p>
@@ -33,8 +38,8 @@ STM32F1系列 | Cortex-M3 | ARMv7-M架构</br>
 STM32F103是这个系列里常用的一款。ST提供了标准外设库STM32F10x_StdPeriph_Lib，调用库可以简化开发，减少开发时间。曾经用它做过CAN协议的转接器，开发工具用的是Keil。现在ST提供了STM32Cube开发工具。</br>
 STM32F4系列| Cortex-M4 | ARMv7E-M架构（E:具有DSP）</br>
 作为物联网应用，上海庆科推出了EMW3165模块，它集成了Cortex-M4核和Wi-Fi模块。做过一份短期工作，用EMW3165在其Mico操作系统上进行二次开发，做智能印章原型。</p>
-<h3>单片系统(Soc:System on Chip)，多称为片上系统。</h3>
-<a href="./wiki/%E5%8D%95%E7%89%87%E7%B3%BB%E7%BB%9F.html">单片系统</a></br>
+<h3>单片系统</h3>
+<a href="./wiki/%E5%8D%95%E7%89%87%E7%B3%BB%E7%BB%9F.html">单片系统</a>(Soc:System on Chip)，多称为片上系统。</br>
 <p>单片系统更为复杂，以手机为例。先继续了解ARM：</br>
 初为所知的基于ARM的<a href="./wiki/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F.html">嵌入式系统</a>开发，处理器有ARM7、ARM9、ARM11，它们属于Armv6及之前架构。从Armv7架构开始，ARM分出了三种：</br>
 A-profile | Crotex-A系列 | 面向应用(Application)</br>
