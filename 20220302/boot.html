@@ -1,0 +1,34 @@
+<h1>boot</h1>
+
+<p>阮一峰最近有一篇博文</a><a href="https://www.ruanyifeng.com/blog/2022/02/weekly-issue-195.html"> "你做过不在乎结果的项目吗？" </a>。不管怎么，boot对自己来说是兴趣项目。</p>
+
+<p>uboot一般用它来引导程序。它属于(bare-metal)裸机程序，就是直接与硬件打交道，区别于交互于操作系统的应用类程序。<br>
+uboot本身兼容多个平台，功能强大。作为成熟的软件，uboot-1.1.6版本就有3000多个源文件，数万行的源代码。<br>
+处境如此，自己也有几本大部头技术书籍，但是逐渐发觉那是讲如何建造大厦，而现在只需要一个能遮风挡雨的小屋。<br>
+现在需要的是能够大致理解其过程，还需要足够的简单。</p>
+
+<p>uboot相当于PC中的BIOS和bootloader，做简单类比：<br>
+PC: BIOS程序通常寄存在主板中单独的ROM中，bootloader则是在硬盘特定位置。启动时，首先BIOS初始化好硬件，之后从硬盘中读取运行bootloader，再由它引导操作系统。比如Windows、Linux、BSD...<br>
+TQ2440:uboot放置在Flash中，开发板配有NOR Flash和NAND Flash两种，通过一个开关配置从哪里启动。uboot存放从Flash起始位置即地址0开始。上电后uboot对CPU初始化和主板其他设备的初始化，之后引导操作系统，比如嵌入式linux、windows CE...<br>
+无论在PC还是开发板，它们在开机启动时运行，整个过程并且通常不过数秒。并且它们除了引导操作系统，还有很多其他特性，都有能力下载、执行其他程序。</p>
+
+<p>这个boot项目的定位是学习uboot和提取其关键代码进行简化，匹配TQ2440开发板。它只启动了开发板必要设备SDRAM、NAND Flash、网卡。<br>
+boot将系统初始化到确定状态，可以通过tftp把其他程序二进制文件从PC主机载入到开发版SDRAM中运行。这样就不用依赖JTAG下载、运行程序了。<br>
+目前boot只能运行其他bare-metal程序，还不能像uboot那样引导操作系统。 boot项目地址<a href="https://github.com/om-wei/boot.git"> "github:boot" </a></p>
+
+<p>手头上的是广州天嵌的TQ2440开发板，主要配置如下<br>
+SOC（单片系统）：三星产的S3C2440，它集成了ARM920T处理器其核心为ARM9TDMI，属于ARM的v4T架构。<br>
+SDRAM:三星K4S561632N，64MB (32MB x 2)<br>
+NANDFLASH:三星K9F2G08x0B，256MB<br>
+网络芯片：DAVICOM的DM9000，10/100M PHY</p>
+
+<p>软件开发工具，gcc-arm-none-eabi，gcc工具链 arm目标平台 none无操作系统 eabi嵌入式应用二进制接口</p>
+
+<p>在做boot的阶段，由于很多都是别人做好的工作，自己主要厘清关系，很多东西可以不用深入，但是这样它的很多特性没能利用起来。</p>
+
+<p>通过OM引脚设置为NAND Flash启动方式后，TQ2440开发板在上电后硬件会将NAND Flash前4K内容复制到S3C2440中称为SteppingStone的4K-SRAM中，CPU再从SRAM中执行。CPU、SDRAM、NAND Flash的初始化必须在这里完成，因为电路结构不同，CPU在SRAM、NOR Flash可以直接执行程序，而NAND Flash不可以。之后将整个boot程序复制到SDRAM中，这时从SRAM转到SDRAM执行start_armboot函数，这就是start.s程序内容。程序中的Flash驱动代码是从H-JTAG软件中提取的,感谢“twentyone“。<br>
+网络方面，PC主机运行tftp服务器，把目标文件放在指定目录内。开发板可以通过串口设置好开发板和服务器的IP地址，arp获取服务器MAC地址，tftp具备了网络请求的条件后，由串口提供目标文件的名字和在SDRAM的运行地址，接下来执行tftp请求、二进制程序下载、在SDRAM运行程序的操作。</p>
+
+<p>2012年，大学快毕业的时候买的TQ2440开发版，但是没能真正上手，放置了很长时间。后来被自己无意破坏了开发板上的原有uboot，于是它就“变砖了”。2019年秋冬之际开始决定学习uboot，这也是起初上传的半试验品。此后又停顿了好久，继NOR Flash后NAND Flash也罢工了，为此换了一片NAND Flash。</p>
+
+<p>“它很容易学，并且随着使用经验的增加，使用者会越来越感到得心应手。” 摘自 K&amp;R C 第一版序言译文。</p>
